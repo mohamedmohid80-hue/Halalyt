@@ -19,10 +19,14 @@
   "homepage": "https://github.com/mohamedmohid80-hue/Halalyt#readme",
   "dependencies": {
     "@remotion/cli": "^4.0.544",
+    "@remotion/google-fonts": "^4.0.544",
     "hyperframes": "^0.9.65",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "remotion": "^4.0.544"
   },
-  "private": true
+  "private": true,
+  "devDependencies": {
+    "@types/react": "^18.3.12"
+  }
 }

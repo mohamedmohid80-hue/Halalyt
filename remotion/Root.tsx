@@ -1,18 +1,16 @@
 import React from 'react';
-import {AbsoluteFill, Composition, interpolate, useCurrentFrame} from 'remotion';
-
-const Hello: React.FC = () => {
-  const frame = useCurrentFrame();
-  const opacity = interpolate(frame, [0, 20], [0, 1], {extrapolateRight: 'clamp'});
-  return (
-    <AbsoluteFill style={{background: '#0b3d2e', justifyContent: 'center', alignItems: 'center'}}>
-      <div style={{color: 'white', fontSize: 90, fontFamily: 'sans-serif', opacity, textAlign: 'center'}}>
-        Halal YT<br />Remotion OK
-      </div>
-    </AbsoluteFill>
-  );
-};
+import {Composition} from 'remotion';
+import {Hook, HOOK_DURATION_S, HOOK_FPS} from './Hook';
 
 export const Root: React.FC = () => (
-  <Composition id="Hello" component={Hello} durationInFrames={45} fps={30} width={1080} height={1920} />
+  <>
+    <Composition
+      id="Ep01-Hook"
+      component={Hook}
+      durationInFrames={Math.round(HOOK_DURATION_S * HOOK_FPS)}
+      fps={HOOK_FPS}
+      width={1920}
+      height={1080}
+    />
+  </>
 );
