@@ -1,0 +1,160 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Hook Frame Board</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Lilita+One&family=Nunito:wght@600;800;900&display=swap" rel="stylesheet">
+<style>
+  :root{--ink:#17201B;--paper:#FAF6EE;--deen:#1E7B4F;--gold:#E8A92E;--warn:#E5484D;--sky:#2F80ED;}
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{background:#E9E4DA;font-family:Nunito,sans-serif;color:var(--ink);padding:28px}
+  h1{font:400 40px "Lilita One";margin-bottom:4px}
+  .sub{font:700 16px Nunito;opacity:.7;margin-bottom:22px}
+  .grid{display:grid;grid-template-columns:repeat(4,480px);gap:22px}
+  .panel{background:#fff;border-radius:14px;overflow:hidden;box-shadow:0 4px 14px rgba(0,0,0,.08)}
+  .frame{width:480px;height:270px;position:relative;overflow:hidden;background:var(--paper)}
+  .scene{width:1920px;height:1080px;transform:scale(.25);transform-origin:0 0;position:absolute;top:0;left:0}
+  .meta{padding:12px 14px 14px;font-size:14px;line-height:1.35}
+  .t{font:400 20px "Lilita One";color:var(--deen)}
+  .t span{color:var(--ink);opacity:.45;font:700 13px Nunito;margin-left:6px}
+  .vo{font-weight:800;margin:4px 0 6px}
+  .row{display:flex;gap:6px;margin-top:2px}
+  .k{font-weight:900;min-width:52px;opacity:.55;font-size:12px;text-transform:uppercase;padding-top:1px}
+  /* scene elements, in 1920x1080 units */
+  .abs{position:absolute}
+  .hadi{position:absolute;bottom:60px}
+  .card{position:absolute;background:#fff;border:6px solid var(--ink);border-radius:18px;box-shadow:0 12px 30px rgba(0,0,0,.15)}
+  .sticker{position:absolute;font-family:"Lilita One";-webkit-text-stroke:8px var(--ink);paint-order:stroke fill;text-shadow:6px 6px 0 rgba(23,32,27,.25);letter-spacing:1px;white-space:nowrap}
+  .line{position:absolute;font:900 64px Nunito;color:var(--ink);white-space:nowrap}
+  .btn{background:var(--warn);color:#fff;font:900 54px Nunito;border-radius:16px;padding:18px 54px;border:6px solid var(--ink);display:inline-block}
+  .thumb{background:linear-gradient(135deg,#CFE3D8,#F3DDB0);border:5px solid var(--ink);border-radius:12px;position:relative}
+  .play{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:0;height:0;border-left:70px solid rgba(23,32,27,.75);border-top:42px solid transparent;border-bottom:42px solid transparent}
+  .field{height:34px;border-radius:8px;background:#ECE7DD;margin-top:16px}
+  .cursor{position:absolute;width:0;height:0;border-left:30px solid transparent;border-right:30px solid transparent;border-bottom:80px solid var(--sky);transform:rotate(-30deg);filter:drop-shadow(0 0 0 #fff) drop-shadow(3px 3px 0 var(--ink))}
+  .bubble{position:absolute;background:#fff;border:7px solid var(--ink);border-radius:60px;padding:30px 46px;font:900 58px Nunito}
+  .dots{position:absolute;border:7px solid var(--ink);background:#fff;border-radius:50%}
+  .motion{position:absolute;height:10px;border-radius:5px;background:var(--ink);opacity:.25}
+  .counter{position:absolute;white-space:nowrap;transform:translateX(-50%);font-family:"Lilita One";color:var(--gold);-webkit-text-stroke:10px var(--ink);paint-order:stroke fill;text-shadow:8px 8px 0 rgba(23,32,27,.25)}
+  .shake{position:absolute;inset:0;border:14px dashed rgba(229,72,77,.35);border-radius:4px}
+  .num{position:absolute;font-family:"Lilita One";color:var(--gold);-webkit-text-stroke:12px var(--ink);paint-order:stroke fill}
+</style>
+</head>
+<body>
+<h1>Hook · Frame Board</h1>
+<div class="sub">"What Makes a YouTube Video Haram?" · 0:00–0:33 · 16 frames · times match the voiceover file to the word</div>
+<div class="grid" id="grid"></div>
+
+<script>
+const H = p => `../../brand/hadi/hadi-${p}.svg`;
+const hadi = (pose, x = 120, h = 900) => `<img class="hadi" src="${H(pose)}" style="left:${x}px;height:${h}px">`;
+const sticker = (txt, color, x, y, size = 130, rot = -4) =>
+  `<div class="sticker" style="left:${x}px;top:${y}px;font-size:${size}px;color:${color};transform:rotate(${rot}deg)">${txt}</div>`;
+const motion = (x, y, n = 3) => Array.from({length: n}, (_, i) =>
+  `<div class="motion" style="left:${x - i * 30}px;top:${y + i * 60}px;width:${180 - i * 40}px"></div>`).join('');
+
+const upload = (state = 'idle') => `
+  <div class="card" style="left:860px;top:150px;width:900px;height:760px;padding:44px">
+    <div style="font:900 52px Nunito">Upload video</div>
+    <div class="thumb" style="width:800px;height:300px;margin-top:26px"><div class="play"></div></div>
+    <div style="font:800 34px Nunito;margin-top:22px;opacity:.6">Title</div>
+    <div class="field" style="width:720px"></div>
+    ${state === 'progress' || state === 'frozen'
+      ? `<div style="margin-top:40px;height:44px;border:5px solid var(--ink);border-radius:22px;overflow:hidden;background:#fff">
+           <div style="width:${state === 'frozen' ? 62 : 30}%;height:100%;background:var(--deen)"></div></div>
+         <div style="font:800 32px Nunito;margin-top:10px;opacity:.6">${state === 'frozen' ? 'Uploading… 62%' : 'Uploading… 30%'}</div>`
+      : `<div style="margin-top:46px"><span class="btn">UPLOAD</span></div>`}
+  </div>`;
+
+const checklist = n => {
+  const items = ['TITLE', 'THUMBNAIL', 'VIEWS'];
+  return `<div class="card" style="left:900px;top:200px;width:820px;height:680px;padding:60px 70px">
+    ${items.map((it, i) => `<div style="display:flex;align-items:center;gap:40px;margin-bottom:56px;opacity:${i < n ? 1 : .25}">
+      <div style="width:120px;height:120px;border:7px solid var(--ink);border-radius:22px;display:flex;align-items:center;justify-content:center;font:400 100px 'Lilita One';color:var(--deen);background:#fff">${i < n ? '✓' : ''}</div>
+      <div style="font:400 92px 'Lilita One'">${it}</div></div>`).join('')}
+  </div>`;
+};
+
+const videoCard = (x, y, w, rot, label) => `
+  <div class="card" style="left:${x}px;top:${y}px;width:${w}px;padding:20px;transform:rotate(${rot}deg)">
+    <div class="thumb" style="width:100%;height:${w * 0.5}px"><div class="play"></div></div>
+    <div style="font:900 36px Nunito;margin-top:16px">${label}</div>
+    <div class="field" style="width:70%;margin-top:12px;height:24px"></div>
+  </div>`;
+
+const thought = (lines, x = 760, y = 140) => `
+  <div class="dots" style="left:${x - 120}px;top:${y + 430}px;width:46px;height:46px"></div>
+  <div class="dots" style="left:${x - 60}px;top:${y + 350}px;width:70px;height:70px"></div>
+  <div class="bubble" style="left:${x}px;top:${y}px;width:980px;height:330px;border-radius:170px;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;gap:10px">${lines.map(l => `<div>${l}</div>`).join('')}</div>`;
+
+const counter = (n, big = false) => `
+  ${videoCard(820, 180, 640, 0, 'my_video_final_v2.mp4')}
+  <div class="counter" style="left:1140px;top:${big ? 700 : 730}px;font-size:${big ? 190 : 150}px">${n} views</div>`;
+
+const FRAMES = [
+  { t: '0:00.0', vo: 'Be honest…', scene: hadi('phone') + upload() + `<div class="cursor" style="left:1180px;top:820px"></div>`,
+    vis: 'Frame 1, no intro. Hadi checking his phone (left). Upload screen on the right, cursor near UPLOAD.',
+    mot: 'Hadi breathing bob. Slow push-in on the card.', sfx: 'none' },
+  { t: '0:01.4', vo: '…the last time you uploaded a video…', scene: hadi('phone') + upload('progress') + `<div class="cursor" style="left:1060px;top:880px"></div>`,
+    vis: 'Cursor clicks UPLOAD. Progress bar starts filling (green).',
+    mot: 'Button squash on click (95% → 100%).', sfx: 'mouse click' },
+  { t: '0:03.9', vo: '…and actually stopped to ask…', scene: hadi('think') + upload('frozen'),
+    vis: 'Progress bar FREEZES at 62%. Hadi switches to think pose with a ? bubble.',
+    mot: 'Pose swap (2-frame cut). ? bubble pops.', sfx: 'soft pop' },
+  { t: '0:05.7', vo: '…is this halal?', scene: hadi('think') + upload('frozen') + sticker('HALAL?', 'var(--gold)', 1000, 40, 150, -6),
+    vis: 'Sticker "HALAL?" in gold above the card.',
+    mot: 'Pop (0 → 115% → 100%).', sfx: 'pop' },
+  { t: '0:06.4', vo: 'Most of us check the title…', scene: hadi('neutral') + checklist(1),
+    vis: 'Whip to a checklist card: TITLE ✓ (THUMBNAIL and VIEWS greyed out).',
+    mot: 'Upload card whips out left, checklist whips in from right. ✓ pops on "title" (7.9 s).', sfx: 'whoosh · pop' },
+  { t: '0:08.8', vo: '…the thumbnail. The views.', scene: hadi('thumbsup') + checklist(3),
+    vis: 'THUMBNAIL ✓ (8.8 s), VIEWS ✓ (9.8 s). Hadi thumbs up, smug.',
+    mot: 'Each ✓ pops on its word.', sfx: 'pop · pop' },
+  { t: '0:10.6', vo: 'But what if I told you…', scene: hadi('think', 760, 940),
+    vis: 'Hard cut: everything clears. Hadi alone, centred, on empty paper.',
+    mot: 'Cut + slow push-in (100% → 106%). The quiet makes it land.', sfx: 'none' },
+  { t: '0:12.6', vo: '…the most common things creators do on YouTube…', scene:
+      hadi('point', 60, 860) + videoCard(820, 240, 520, -5, 'You won\'t BELIEVE…') + videoCard(1100, 180, 520, 3, 'EXPOSED 😳') + videoCard(1380, 300, 470, -2, 'Funny Islamic meme'),
+    vis: 'Hadi points right. 3 generic video cards (our own mock-ups) cascade in.',
+    mot: 'Cascade: each card whips in on top of the last (12.6 / 13.4 / 14.2 s).', sfx: 'whoosh ×3' },
+  { t: '0:15.6', vo: '…are actually HARAM…', scene:
+      hadi('point', 60, 860) + videoCard(820, 240, 520, -5, 'You won\'t BELIEVE…') + videoCard(1100, 180, 520, 3, 'EXPOSED 😳') + videoCard(1380, 300, 470, -2, 'Funny Islamic meme') + sticker('HARAM', 'var(--warn)', 920, 400, 260, -8) + '<div class="shake"></div>',
+    vis: 'Big red "HARAM" stamp slams across the cards.',
+    mot: 'Stamp (300% → 100% in 4 frames) + the hook\'s only screen shake (±8 px, 3 frames).', sfx: 'deep thud' },
+  { t: '0:16.7', vo: '…and most people doing them have no idea.', scene: hadi('shock', 760, 900),
+    vis: 'Cards whip out. Hadi centred, shock pose, ! bubble.',
+    mot: 'Whip-out left, Hadi pose swap, ! pops.', sfx: 'whoosh · pop' },
+  { t: '0:19.5', vo: 'Now, I know what you\'re thinking.', scene: hadi('neutral', 120, 860) + thought(['<span style="font-size:90px;letter-spacing:12px;opacity:.5">…</span>']),
+    vis: 'Hadi steps back to the left. Empty thought bubble grows from his head.',
+    mot: 'Bubble dots pop in order, then the bubble scales up.', sfx: 'pop pop pop' },
+  { t: '0:21.5', vo: 'It\'s just YouTube, right? It\'s just content.', scene: hadi('neutral', 120, 860) + thought(['"It\'s just YouTube… right?"', '"It\'s just content."']),
+    vis: 'The two lines appear inside the bubble as he says them (21.5 s, 23.1 s).',
+    mot: 'Word-by-word reveal synced to the voice.', sfx: 'none' },
+  { t: '0:23.8', vo: 'Well… not exactly.', scene: hadi('facepalm', 120, 860) + sticker('NOT EXACTLY.', 'var(--warn)', 820, 380, 170, -4),
+    vis: 'Thought bubble bursts. Hadi facepalms. "NOT EXACTLY." sticker in red.',
+    mot: 'Bubble pops away (scale to 0 in 3 frames), sticker pops on "exactly" (25.3 s).', sfx: 'bubble pop · pop' },
+  { t: '0:25.9', vo: 'Every video you upload can be watched thousands of times.', scene: counter('1,204'),
+    vis: 'One video card in the centre. Gold view counter under it starts rolling up.',
+    mot: 'Card whips in; counter rolls 0 → thousands by "times" (29.1 s). Slow push-in.', sfx: 'whoosh · soft counter ticks' },
+  { t: '0:29.5', vo: 'And every one of those views…', scene: counter('48,930', true),
+    vis: 'Counter keeps climbing and grows bigger.',
+    mot: 'Counter scales 100% → 125%. Push-in continues.', sfx: 'ticks speed up' },
+  { t: '0:31.3', vo: '…counts for something.', scene: counter('48,930', true) + `<div class="abs" style="left:0;top:0;width:1920px;height:1080px;background:radial-gradient(circle at 50% 70%,transparent 30%,rgba(23,32,27,.18))"></div>`,
+    vis: 'Counter freezes. Soft vignette closes in. Hold 0.4 s of silence.',
+    mot: 'Ticks stop dead on "counts". At 32.8 s, whip into the big "1" for Point 1.', sfx: 'ticks stop → whoosh into Point 1' },
+];
+
+document.getElementById('grid').innerHTML = FRAMES.map((f, i) => `
+  <div class="panel">
+    <div class="frame"><div class="scene">${f.scene}</div></div>
+    <div class="meta">
+      <div class="t">${i + 1}. ${f.t}<span>${i === 0 ? 'hook' : ''}</span></div>
+      <div class="vo">“${f.vo}”</div>
+      <div class="row"><div class="k">Visual</div><div>${f.vis}</div></div>
+      <div class="row"><div class="k">Motion</div><div>${f.mot}</div></div>
+      <div class="row"><div class="k">SFX</div><div>${f.sfx}</div></div>
+    </div>
+  </div>`).join('');
+</script>
+</body>
+</html>
