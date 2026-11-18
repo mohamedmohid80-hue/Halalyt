@@ -19,8 +19,8 @@ Pick a recitation from a reciter or channel that allows reuse, or ask for permis
 
 | Quote | Source | Grade |
 |---|---|---|
-| "Woe to the one who speaks and lies to make people laugh…" | Sunan Abi Dawud 4990, Jami' at-Tirmidhi 2315 | Hasan |
-| "Whoever cheats is not one of us." | Sahih Muslim 102 | Sahih |
+| "Woe to the one who speaks and lies to make people laugh…" | Sunan Abi Dawud 4990, Jami' at-Tirmidhi 2315 | Hasan (Al-Albani) (verified) |
+| "Whoever cheats us is not one of us." | Sahih Muslim 101 (verified) | Sahih |
 | "Whoever lies about me on purpose, let him take his seat in the Fire." | Sahih al-Bukhari 110 | Sahih |
 | "Whoever starts a good / bad practice in Islam…" | Sahih Muslim 1017 | Sahih |
 | "Actions are only by intentions." | Sahih al-Bukhari 1, Sahih Muslim 1907 | Sahih |

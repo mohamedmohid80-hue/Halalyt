@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Point 1 Frame Board</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Comic+Neue:wght@700&family=Amiri:wght@700&family=Poppins:wght@900&family=Nunito:wght@700;800;900&display=swap" rel="stylesheet">
+<style>
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{background:#E6E6E6;font-family:Nunito,sans-serif;color:#151515;padding:28px}
+  h1{font:900 40px Poppins;margin-bottom:4px}
+  .sub{font:700 16px Nunito;opacity:.7;margin-bottom:22px;max-width:1900px}
+  .grid{display:grid;grid-template-columns:repeat(4,480px);gap:20px}
+  .panel{background:#fff;border-radius:12px;overflow:hidden;box-shadow:0 3px 12px rgba(0,0,0,.08)}
+  .frame{width:480px;height:270px;position:relative;overflow:hidden;background:#fff;border-bottom:1px solid #eee}
+  .scene{width:1920px;height:1080px;transform:scale(.25);transform-origin:0 0;position:absolute;top:0;left:0;background:#fff}
+  .meta{padding:10px 14px 14px;font-size:14px;line-height:1.35}
+  .t{font:900 18px Poppins;color:#C0392B}
+  .vo{font-weight:900;margin:3px 0 6px}
+  .row{display:flex;gap:6px;margin-top:2px}
+  .k{font-weight:900;min-width:58px;opacity:.5;font-size:12px;text-transform:uppercase;padding-top:1px}
+  .img{position:absolute}
+  .photo{box-shadow:0 10px 30px rgba(0,0,0,.25)}
+  .sticker{position:absolute;font-family:Poppins;font-weight:900;-webkit-text-stroke:14px #111;paint-order:stroke fill;text-shadow:0 10px 18px rgba(0,0,0,.35);white-space:nowrap;letter-spacing:-1px}
+  .line{position:absolute;left:0;width:1920px;text-align:center;font:700 64px "Comic Neue";color:#111}
+  .cap{position:absolute;font-family:Poppins;font-weight:900;color:#fff;-webkit-text-stroke:12px #111;paint-order:stroke fill;white-space:nowrap}
+  .ph{position:absolute;border:8px dashed #999;border-radius:12px;background:#F4F4F4;display:flex;align-items:center;justify-content:center;text-align:center;font:900 60px Nunito;color:#777;line-height:1.2}
+  .hl{position:absolute;background:rgba(255,214,0,.45);border-radius:6px}
+  .wipe{position:absolute;background:#F03A2E}
+  .arrow{position:absolute;font:900 120px Nunito;color:#111;opacity:.18}
+.hcard{position:absolute;left:260px;top:120px;width:1400px;height:840px;background:#fff;border:3px solid #ddd;border-radius:10px;box-shadow:0 10px 30px rgba(0,0,0,.12);padding:60px 80px;font-family:Nunito}
+  .hcard .ar{font:700 64px Amiri;direction:rtl;text-align:center;line-height:1.7;color:#111}
+  .hcard .en{font:800 46px Nunito;text-align:center;margin-top:30px;line-height:1.4;color:#222}
+  .hcard .en b{background:rgba(46,204,64,.28);border-radius:6px;padding:0 6px}
+  .hcard .src{position:absolute;bottom:50px;left:80px;right:80px;text-align:center;font:800 30px Nunito;color:#666}
+  .hcard .lead{font:900 40px Nunito;color:#1E7B4F;text-align:center;margin-bottom:24px}
+</style>
+</head>
+<body>
+<h1>Point 1 · Lying for Views · Frame Board</h1>
+<div class="sub">Section 2 · 0:00–0:46 of this voiceover · 22 beats · times are the spoken word; every slide-in STARTS 0.25 s before its word so it has landed when the word is said (fix for the late slide-ins). Hadith cards follow the respect rules: clean, no stickers, no SFX, no Hadi.</div>
+<div class="grid" id="grid"></div>
+<script>
+const A = 'assets/';
+const img = (src, x, y, w, o = {}) => `<img class="img ${o.photo ? 'photo' : ''}" src="${A}${src}" style="left:${x}px;top:${y}px;width:${w}px;${o.rot ? `transform:rotate(${o.rot}deg);` : ''}${o.border ? 'border:6px solid #111;' : ''}">`;
+const hadi = (pose, x, h = 860) => `<img class="img" src="../../brand/hadi/hadi-${pose}.svg" style="left:${x}px;bottom:40px;height:${h}px">`;
+const sticker = (txt, color, x, y, size = 150, rot = 0) => `<div class="sticker" style="left:${x}px;top:${y}px;font-size:${size}px;color:${color};transform:rotate(${rot}deg)">${txt}</div>`;
+const line = (txt, y = 500) => `<div class="line" style="top:${y}px">${txt}</div>`;
+const cap = (txt, x, y, size = 90) => `<div class="cap" style="left:${x}px;top:${y}px;font-size:${size}px">${txt}</div>`;
+const ph = (txt, x, y, w, h) => `<div class="ph" style="left:${x}px;top:${y}px;width:${w}px;height:${h}px">${txt}</div>`;
+const center = (src, w, top, o) => img(src, (1920 - w) / 2, top, w, o);
+
+const hcard = (lead, ar, en, src) => `<div class="hcard"><div class="lead">${lead}</div><div class="ar">${ar}</div><div class="en">${en}</div><div class="src">${src}</div></div>`;
+const AR1 = 'وَيْلٌ لِلَّذِي يُحَدِّثُ فَيَكْذِبُ لِيُضْحِكَ بِهِ الْقَوْمَ، وَيْلٌ لَهُ، وَيْلٌ لَهُ';
+const SRC1 = 'Sunan Abi Dawud 4990 · Jami\' at-Tirmidhi 2315 · Grade: Hasan (Al-Albani)';
+const AR2 = 'وَمَنْ غَشَّنَا فَلَيْسَ مِنَّا';
+const SRC2 = 'Sahih Muslim 101 · Grade: Sahih';
+const F = [
+  { t:'0:00.0', vo:'Number one…', s: sticker('#1', '#FFD400', 760, 300, 380, -3),
+    vis:'Huge "#1" keyword.', mot:'Quick pop (3 frames) on frame 1.', src:'—' },
+  { t:'0:01.4', vo:'…lying for views.', s: img('emoji-lying.png', 300, 250, 560) + sticker('LYING FOR VIEWS', '#F03A2E', 860, 430, 112, -3),
+    vis:'3D lying-face emoji (the long nose) + red keyword "LYING FOR VIEWS".', mot:'Emoji slides in, sticker pops on "lying".', src:'Fluent 3D emoji' },
+  { t:'0:03.0', vo:'You\'ve seen these titles.', s: center('yt-logo.png', 520, 200) + center('yt-believe-title0.png', 1500, 560),
+    vis:'YouTube logo, then a real clickbait title under it.', mot:'Logo cut-in, title slides in on "titles" (3.5 s).', src:'Real YouTube screenshot' },
+  { t:'0:04.6', vo:'You won\'t BELIEVE what happened.', s: center('yt-believe-title0.png', 1700, 450) + `<div class="hl" style="left:110px;top:470px;width:900px;height:90px;mix-blend-mode:multiply"></div>`,
+    vis:'Punch-in on the title. Yellow highlighter under "You Won\'t Believe What Happened".', mot:'Punch-in (scale jump), highlighter sweeps on "believe" (5.2 s).', src:'Real YouTube screenshot' },
+  { t:'0:06.6', vo:'He did THIS in the masjid.', s: img('emoji-mosque.png', 260, 230, 620) + sticker('IN THE MASJID?!', '#FFD400', 900, 420, 130, -3),
+    vis:'3D mosque emoji + keyword "IN THE MASJID?!" in clickbait yellow.', mot:'Emoji slides in, sticker pops on "masjid" (7.9 s).', src:'Fluent 3D emoji' },
+  { t:'0:08.9', vo:'And then you click…', s: center('yt-believe-title0.png', 1500, 470) + `<img class="img" src="assets/cursor.svg" style="left:900px;top:520px;width:80px">`,
+    vis:'Back to the title; a cursor clicks it.', mot:'Cursor glides in, click on "click" (9.2 s).', src:'Real screenshot' },
+  { t:'0:10.5', vo:'…and nothing happens.', s: center('emoji-expressionless.png', 560, 200) + line('nothing happens.', 840),
+    vis:'Expressionless 3D emoji, small plain line "nothing happens."', mot:'Hard cut, total stillness for 0.5 s (no zoom), then slow zoom.', src:'Fluent 3D emoji' },
+  { t:'0:12.0', vo:'Or worse…', s: `<div class="wipe" style="left:900px;top:0;width:1020px;height:1080px"></div>` + sticker('OR WORSE…', '#F03A2E', 280, 430, 170, -3),
+    vis:'Red wipe, keyword "OR WORSE…".', mot:'Red wipe 0.35 s, sticker pops on "worse".', src:'—' },
+  { t:'0:13.0', vo:'…the whole story is MADE UP.', s: img('emoji-lipstick.png', 330, 230, 560) + sticker('MADE UP', '#F03A2E', 950, 420, 190, -3),
+    vis:'Pun: a lipstick (make-up) emoji for "made up" + red keyword "MADE UP".', mot:'Emoji slides in, sticker pops on "made" (14.0 s).', src:'Fluent 3D emoji' },
+  { t:'0:15.2', vo:'The Prophet, sallallahu alayhi wa sallam, said…', s: hcard('The Prophet ﷺ said:', '', '', ''),
+    vis:'Clean hadith card starts: only "The Prophet ﷺ said:" at the top.', mot:'Fade in over 12 frames. Very slow zoom (100→103%). No SFX.', src:'—' },
+  { t:'0:18.1', vo:'Woe to the one who speaks and lies to make people laugh.', s: hcard('The Prophet ﷺ said:', AR1, '"<b>Woe to the one who speaks and lies to make people laugh.</b> Woe to him, woe to him."', SRC1),
+    vis:'Arabic text + English translation + source and grade at the bottom. The phrase being read turns green.', mot:'Arabic and English fade in on "woe" (18.1 s). Green highlight follows the voice.', src:'Hadith text verified (hadith-api dataset, from sunnah.com numbering)' },
+  { t:'0:21.7', vo:'Woe to him. Woe to him.', s: hcard('The Prophet ﷺ said:', AR1, '"Woe to the one who speaks and lies to make people laugh. <b>Woe to him, woe to him.</b>"', SRC1),
+    vis:'Same card; highlight moves to "Woe to him, woe to him."', mot:'Highlight moves on 21.7 s and 23.0 s.', src:'—' },
+  { t:'0:24.2', vo:'And he also said: Whoever cheats is not one of us.', s: hcard('He ﷺ also said:', AR2, '"<b>Whoever cheats us is not one of us.</b>"', SRC2),
+    vis:'Second clean card, same layout.', mot:'Cross-fade 8 frames. Highlight on "whoever cheats" (25.7 s) → "is not one of us" (26.4 s).', src:'Hadith text verified' },
+  { t:'0:28.3', vo:'Now think about it.', s: hadi('think', 760),
+    vis:'Hadi returns in the thinking pose.', mot:'Slides in from the right, landing on "think".', src:'Hadi' },
+  { t:'0:29.4', vo:'If lying to make people laugh…', s: center('emoji-rofl.png', 580, 220),
+    vis:'3D rolling-on-the-floor-laughing emoji.', mot:'Slides in, landing on "laugh" (30.4 s).', src:'Fluent 3D emoji' },
+  { t:'0:30.7', vo:'…is THAT serious…', s: center('emoji-rofl.png', 580, 220) + sticker('THAT SERIOUS', '#F03A2E', 470, 760, 150, -3),
+    vis:'Red keyword "THAT SERIOUS" stamps over the laughing emoji.', mot:'Stamp (400%→100% in 0.3 s) on "serious" (31.3 s).', src:'—' },
+  { t:'0:32.3', vo:'…what about lying to get MILLIONS of views?', s: img('emoji-money.png', 300, 250, 520) + sticker('1,000,000 views', '#FFD400', 830, 440, 118, -3),
+    vis:'Money-mouth emoji + gold view counter rolling up to 1,000,000.', mot:'Emoji slides in; counter rolls from "millions" (33.3 s) to "views" (34.0 s).', src:'Fluent 3D emoji' },
+  { t:'0:35.0', vo:'The fix is simple.', s: img('emoji-wrench.png', 330, 260, 520) + sticker('THE FIX', '#2ECC40', 960, 420, 200, -3),
+    vis:'Pun: wrench emoji for "fix" + green keyword "THE FIX".', mot:'Emoji slides in, sticker pops on "fix" (35.1 s).', src:'Fluent 3D emoji' },
+  { t:'0:36.6', vo:'Your title can be exciting. It can make people curious.', s: img('emoji-starstruck.png', 200, 280, 420) + sticker('EXCITING ✓', '#2ECC40', 650, 330, 120, -2) + img('emoji-monocle.png', 1380, 520, 360) + sticker('CURIOUS ✓', '#2ECC40', 650, 640, 120, -2),
+    vis:'Star-struck emoji + "EXCITING ✓", then monocle emoji + "CURIOUS ✓".', mot:'First pair on "exciting" (37.3 s), second pair on "curious" (38.8 s), cut-ins.', src:'Fluent 3D emoji' },
+  { t:'0:39.7', vo:'But it has to be TRUE.', s: img('emoji-check.png', 330, 260, 520) + sticker('TRUE', '#2ECC40', 980, 380, 260, -3),
+    vis:'Green check emoji + big "TRUE".', mot:'Hard cut on "but", sticker pops on "true" (40.6 s).', src:'Fluent 3D emoji' },
+  { t:'0:41.5', vo:'If your video doesn\'t deliver what the title promises…', s: center('yt-believe-title0.png', 1500, 470) + img('emoji-cross.png', 820, 330, 300),
+    vis:'The clickbait title again; a red ✕ stamps on it on "doesn\'t deliver".', mot:'Title slides in; ✕ stamps on "deliver" (42.5 s).', src:'Real screenshot + Fluent emoji' },
+  { t:'0:44.6', vo:'…change the title.', s: hadi('thumbsup', 260) + sticker('CHANGE THE TITLE', '#2ECC40', 820, 440, 112, -3),
+    vis:'Hadi thumbs up + green "CHANGE THE TITLE".', mot:'Hadi slides in landing on "change", sticker pops on "title" (45.0 s). Then cut to Point 2.', src:'Hadi' },
+];
+document.getElementById('grid').innerHTML = F.map((f, i) => `
+  <div class="panel"><div class="frame"><div class="scene">${f.s}</div></div>
+  <div class="meta"><div class="t">${i + 1} · ${f.t}</div><div class="vo">“${f.vo}”</div>
+  <div class="row"><div class="k">Visual</div><div>${f.vis}</div></div>
+  <div class="row"><div class="k">Motion</div><div>${f.mot}</div></div>
+  <div class="row"><div class="k">Source</div><div>${f.src}</div></div></div></div>`).join('');
+</script>
+</body>
+</html>

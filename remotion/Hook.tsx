@@ -8,6 +8,8 @@ const {fontFamily: COMIC} = loadComic('normal', {weights: ['700'], subsets: ['la
 
 export const HOOK_FPS = 30;
 export const HOOK_DURATION_S = 33.2;
+/** Slide-ins start this long before their word (they take 0.25 s to land). */
+export const LEAD = 0.25;
 
 const H = (f: string) => staticFile(`hook/${f}`);
 const HADI = (pose: string) => staticFile(`hadi/hadi-${pose}.svg`);
@@ -134,7 +136,9 @@ export const Hook: React.FC = () => {
   const t = useT();
 
   // Beat boundaries: word timestamps from the voiceover (faster-whisper).
-  const B = [0, 0.64, 2.26, 4.32, 4.64, 6.42, 8.8, 9.7, 10.6, 12.56, 16.68, 18.0, 19.52, 20.86, 22.5, 23.82, 24.64, 25.86, 29.48, 31.26, HOOK_DURATION_S];
+  // Beats that open with a slide-in start LEAD seconds early, so the image has landed when the word is spoken.
+  const L = LEAD;
+  const B = [0, 0.64 - L, 2.26 - L, 4.32, 4.64, 6.42 - L, 8.8, 9.7, 10.6 - L, 12.56 - L, 16.68 - L, 18.0, 19.52, 20.86, 22.5, 23.82 - L, 24.64, 25.86 - L, 29.48, 31.26 - L, HOOK_DURATION_S];
 
   // Counter rolls between "watched" (28.06) and "times" (29.1).
   const views = Math.round(interpolate(t, [28.06, 29.1], [0, 12483], {...clamp, easing: Easing.out(Easing.cubic)}));
@@ -200,9 +204,9 @@ export const Hook: React.FC = () => {
 
       {/* 10-11  the most common things creators do on YouTube ... are actually HARAM */}
       <Beat from={B[9]} to={B[10]}>
-        <Photo src="yt-thumb1.png" x={160} y={300} w={620} rot={-3} at={12.56} />
-        <Photo src="yt-thumb2.png" x={650} y={260} w={620} rot={2} at={12.98} />
-        <Photo src="yt-thumb3.png" x={1140} y={320} w={620} rot={-1} at={13.36} />
+        <Photo src="yt-thumb1.png" x={160} y={300} w={620} rot={-3} at={12.56 - L} />
+        <Photo src="yt-thumb2.png" x={650} y={260} w={620} rot={2} at={12.98 - L} />
+        <Photo src="yt-thumb3.png" x={1140} y={320} w={620} rot={-1} at={13.36 - L} />
         <Emoji src="yt-logo.png" x={700} y={40} w={520} at={14.22} enter="cut" />
         <Sticker text="HARAM" color="#F03A2E" x={560} y={330} size={300} rot={-4} at={15.58} anim="stamp" />
       </Beat>
