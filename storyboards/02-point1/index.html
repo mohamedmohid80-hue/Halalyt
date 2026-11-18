@@ -2,14 +2,14 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<title>Point 1 Frame Board</title>
+<title>Point 1 Explainer Board</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Comic+Neue:wght@700&family=Amiri:wght@700&family=Poppins:wght@900&family=Nunito:wght@700;800;900&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;800;900&family=Nunito:wght@700;800;900&family=Amiri:wght@700&display=swap" rel="stylesheet">
 <style>
   *{box-sizing:border-box;margin:0;padding:0}
   body{background:#E6E6E6;font-family:Nunito,sans-serif;color:#151515;padding:28px}
   h1{font:900 40px Poppins;margin-bottom:4px}
-  .sub{font:700 16px Nunito;opacity:.7;margin-bottom:22px;max-width:1900px}
+  .sub{font:700 16px Nunito;opacity:.7;margin-bottom:22px;max-width:1950px}
   .grid{display:grid;grid-template-columns:repeat(4,480px);gap:20px}
   .panel{background:#fff;border-radius:12px;overflow:hidden;box-shadow:0 3px 12px rgba(0,0,0,.08)}
   .frame{width:480px;height:270px;position:relative;overflow:hidden;background:#fff;border-bottom:1px solid #eee}
@@ -19,16 +19,8 @@
   .vo{font-weight:900;margin:3px 0 6px}
   .row{display:flex;gap:6px;margin-top:2px}
   .k{font-weight:900;min-width:58px;opacity:.5;font-size:12px;text-transform:uppercase;padding-top:1px}
-  .img{position:absolute}
-  .photo{box-shadow:0 10px 30px rgba(0,0,0,.25)}
-  .sticker{position:absolute;font-family:Poppins;font-weight:900;-webkit-text-stroke:14px #111;paint-order:stroke fill;text-shadow:0 10px 18px rgba(0,0,0,.35);white-space:nowrap;letter-spacing:-1px}
-  .line{position:absolute;left:0;width:1920px;text-align:center;font:700 64px "Comic Neue";color:#111}
-  .cap{position:absolute;font-family:Poppins;font-weight:900;color:#fff;-webkit-text-stroke:12px #111;paint-order:stroke fill;white-space:nowrap}
-  .ph{position:absolute;border:8px dashed #999;border-radius:12px;background:#F4F4F4;display:flex;align-items:center;justify-content:center;text-align:center;font:900 60px Nunito;color:#777;line-height:1.2}
-  .hl{position:absolute;background:rgba(255,214,0,.45);border-radius:6px}
-  .wipe{position:absolute;background:#F03A2E}
-  .arrow{position:absolute;font:900 120px Nunito;color:#111;opacity:.18}
-.hcard{position:absolute;left:260px;top:120px;width:1400px;height:840px;background:#fff;border:3px solid #ddd;border-radius:10px;box-shadow:0 10px 30px rgba(0,0,0,.12);padding:60px 80px;font-family:Nunito}
+  svg text{font-family:Poppins}
+  .hcard{position:absolute;left:260px;top:120px;width:1400px;height:840px;background:#fff;border:3px solid #ddd;border-radius:10px;box-shadow:0 10px 30px rgba(0,0,0,.12);padding:60px 80px;font-family:Nunito}
   .hcard .ar{font:700 64px Amiri;direction:rtl;text-align:center;line-height:1.7;color:#111}
   .hcard .en{font:800 46px Nunito;text-align:center;margin-top:30px;line-height:1.4;color:#222}
   .hcard .en b{background:rgba(46,204,64,.28);border-radius:6px;padding:0 6px}
@@ -37,76 +29,136 @@
 </style>
 </head>
 <body>
-<h1>Point 1 · Lying for Views · Frame Board</h1>
-<div class="sub">Section 2 · 0:00–0:46 of this voiceover · 22 beats · times are the spoken word; every slide-in STARTS 0.25 s before its word so it has landed when the word is said (fix for the late slide-ins). Hadith cards follow the respect rules: clean, no stickers, no SFX, no Hadi.</div>
+<h1>Point 1 · Lying for Views · Explainer Board</h1>
+<div class="sub">Every beat now EXPLAINS the line with an animated diagram that builds as the voice speaks: title breakdowns with callouts, a branching "what happens when you click" tree, a 1-lie-vs-millions comparison, a 3-gate checklist and a promise-vs-delivery bar. Frames show the key states; MOTION says how each part draws in. Slide-ins and draw-ons start 0.25 s before their word.</div>
 <div class="grid" id="grid"></div>
 <script>
-const A = 'assets/';
-const img = (src, x, y, w, o = {}) => `<img class="img ${o.photo ? 'photo' : ''}" src="${A}${src}" style="left:${x}px;top:${y}px;width:${w}px;${o.rot ? `transform:rotate(${o.rot}deg);` : ''}${o.border ? 'border:6px solid #111;' : ''}">`;
-const hadi = (pose, x, h = 860) => `<img class="img" src="../../brand/hadi/hadi-${pose}.svg" style="left:${x}px;bottom:40px;height:${h}px">`;
-const sticker = (txt, color, x, y, size = 150, rot = 0) => `<div class="sticker" style="left:${x}px;top:${y}px;font-size:${size}px;color:${color};transform:rotate(${rot}deg)">${txt}</div>`;
-const line = (txt, y = 500) => `<div class="line" style="top:${y}px">${txt}</div>`;
-const cap = (txt, x, y, size = 90) => `<div class="cap" style="left:${x}px;top:${y}px;font-size:${size}px">${txt}</div>`;
-const ph = (txt, x, y, w, h) => `<div class="ph" style="left:${x}px;top:${y}px;width:${w}px;height:${h}px">${txt}</div>`;
-const center = (src, w, top, o) => img(src, (1920 - w) / 2, top, w, o);
-
+const INK = '#151515', RED = '#F03A2E', GREEN = '#22A745', GOLD = '#F2B705', GREY = '#9AA0A6', BLUE = '#2F80ED';
+const svg = inner => `<svg width="1920" height="1080" viewBox="0 0 1920 1080" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <marker id="ah" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="${INK}"/></marker>
+    <marker id="ahr" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="${RED}"/></marker>
+    <marker id="ahg" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="${GREY}"/></marker>
+  </defs>${inner}</svg>`;
+const node = (x, y, w, h, label, o = {}) => `
+  <g><rect x="${x}" y="${y}" width="${w}" height="${h}" rx="26" fill="${o.fill || '#fff'}" stroke="${o.stroke || INK}" stroke-width="8" ${o.dash ? 'stroke-dasharray="22 16"' : ''}/>
+  ${o.icon ? `<text x="${x + 30}" y="${y + h / 2 + 30}" font-size="84">${o.icon}</text>` : ''}
+  <text x="${o.icon ? x + 140 + (w - 140) / 2 : x + w / 2}" y="${y + h / 2 + (o.size || 52) * 0.36}" text-anchor="middle" font-size="${o.size || 52}" font-weight="900" fill="${o.color || INK}">${label}</text></g>`;
+const arrow = (x1, y1, x2, y2, o = {}) => `<path d="M${x1},${y1} ${o.curve ? `C${x1 + o.curve},${y1} ${x2 - o.curve},${y2} ` : 'L'}${x2},${y2}" fill="none" stroke="${o.color || INK}" stroke-width="8" stroke-linecap="round" ${o.dash ? 'stroke-dasharray="20 18"' : ''} marker-end="url(#${o.m || 'ah'})"/>`;
+const label = (x, y, txt, o = {}) => `<text x="${x}" y="${y}" font-size="${o.size || 46}" font-weight="${o.w || 800}" fill="${o.color || INK}" text-anchor="${o.anchor || 'middle'}">${txt}</text>`;
+const callout = (wx, wy, lx, ly, txt, color) => `<rect x="${lx - 260}" y="${ly - 55}" width="520" height="110" rx="55" fill="${color}"/>` + label(lx, ly + 18, txt, {color: '#fff', size: 48, w: 900}) +
+  `<path d="M${lx},${ly + (wy > ly ? 55 : -55)} Q${(lx + wx) / 2 + 60},${(ly + wy) / 2} ${wx},${wy}" fill="none" stroke="${color}" stroke-width="8" stroke-linecap="round" marker-end="url(#ah)"/>`;
+const person = (x, y, s = 1, c = INK) => `<g transform="translate(${x},${y}) scale(${s})"><circle cx="0" cy="-34" r="16" fill="${c}"/><path d="M-22,10 Q-22,-14 0,-14 Q22,-14 22,10 Z" fill="${c}"/></g>`;
+const hadiImg = (pose, x, h = 860) => `<img src="../../brand/hadi/hadi-${pose}.svg" style="position:absolute;left:${x}px;bottom:40px;height:${h}px">`;
+const titleBar = (x, y, w, txt, size = 60) => `<rect x="${x}" y="${y}" width="${w}" height="${size * 1.9}" rx="16" fill="#F5F5F5" stroke="#ddd" stroke-width="3"/>` +
+  `<text x="${x + 40}" y="${y + size * 1.25}" font-family="Roboto, Arial" font-size="${size}" font-weight="600" fill="#0f0f0f">${txt}</text>`;
 const hcard = (lead, ar, en, src) => `<div class="hcard"><div class="lead">${lead}</div><div class="ar">${ar}</div><div class="en">${en}</div><div class="src">${src}</div></div>`;
 const AR1 = 'وَيْلٌ لِلَّذِي يُحَدِّثُ فَيَكْذِبُ لِيُضْحِكَ بِهِ الْقَوْمَ، وَيْلٌ لَهُ، وَيْلٌ لَهُ';
-const SRC1 = 'Sunan Abi Dawud 4990 · Jami\' at-Tirmidhi 2315 · Grade: Hasan (Al-Albani)';
+const SRC1 = "Sunan Abi Dawud 4990 · Jami' at-Tirmidhi 2315 · Grade: Hasan (Al-Albani)";
 const AR2 = 'وَمَنْ غَشَّنَا فَلَيْسَ مِنَّا';
 const SRC2 = 'Sahih Muslim 101 · Grade: Sahih';
+
+// Reusable diagram states
+const feed = (n) => svg(
+  `<rect x="660" y="60" width="600" height="960" rx="60" fill="#fff" stroke="${INK}" stroke-width="10"/>` +
+  [['You Won\'t Believe What', 'Happened… 😱'], ['He did THIS in the', 'masjid 😳'], ['The ENDING will', 'shock you…']].slice(0, n).map(([a, b], i) =>
+    `<rect x="700" y="${130 + i * 290}" width="520" height="160" rx="14" fill="#E9E9E9"/>` +
+    `<text x="700" y="${340 + i * 290}" font-family="Roboto, Arial" font-size="34" font-weight="700">${a}</text>` +
+    `<text x="700" y="${380 + i * 290}" font-family="Roboto, Arial" font-size="34" font-weight="700">${b}</text>`).join(''));
+
+const tree = (stage) => {
+  let s = node(40, 450, 470, 180, 'THE TITLE', {icon: '📰', size: 58}) + arrow(520, 540, 610, 540) +
+    node(620, 450, 400, 180, 'CLICK', {icon: '👆', size: 62});
+  if (stage >= 1) s += arrow(1030, 540, 1150, 200, {curve: 120, color: GREY, dash: true, m: 'ahg'}) + node(1160, 110, 720, 180, 'What you expected', {stroke: GREY, color: GREY, dash: true, size: 56}) +
+    arrow(1030, 540, 1150, 540) + node(1160, 450, 720, 180, 'NOTHING happens', {fill: '#FFF6CC', size: 62});
+  if (stage >= 2) s += arrow(1030, 540, 1150, 880, {curve: 120, color: RED, m: 'ahr'}) + node(1160, 790, 720, 180, 'A MADE-UP story', {fill: '#FFE3E1', stroke: RED, color: RED, size: 62}) +
+    `<rect x="1590" y="730" width="280" height="96" rx="48" fill="${RED}"/>` + label(1730, 795, '= A LIE', {color: '#fff', size: 54, w: 900});
+  return svg(s);
+};
+
+const compare = (stage) => {
+  let s = `<line x1="960" y1="120" x2="960" y2="980" stroke="#ddd" stroke-width="6"/>` +
+    label(480, 170, 'A lie to make people laugh', {size: 52, w: 900}) +
+    person(480, 420, 2.4) + arrow(530, 360, 700, 300) + arrow(530, 400, 720, 420) + arrow(530, 440, 700, 540) +
+    person(760, 300, 1.4, GREY) + person(780, 430, 1.4, GREY) + person(760, 560, 1.4, GREY) +
+    label(480, 720, 'a few people', {size: 48, color: GREY}) +
+    `<rect x="300" y="800" width="360" height="110" rx="55" fill="${RED}"/>` + label(480, 875, 'WOE × 3', {color: '#fff', size: 58, w: 900});
+  if (stage >= 1) {
+    s += label(1440, 170, 'A lie to get views', {size: 52, w: 900}) +
+      `<rect x="1060" y="290" width="240" height="140" rx="14" fill="#111"/><path d="M1160,330 L1210,360 L1160,390 Z" fill="#fff"/>` +
+      arrow(1310, 360, 1420, 360);
+    let dots = '';
+    for (let r = 0; r < 9; r++) for (let c = 0; c < 12; c++) dots += person(1450 + c * 36, 260 + r * 52, 0.55, stage >= 2 ? RED : GREY);
+    s += dots + label(1560, 790, stage >= 2 ? '1,000,000 people misled' : 'thousands…', {size: 48, color: stage >= 2 ? RED : GREY, w: 900}) +
+      (stage >= 2 ? `<rect x="1260" y="840" width="600" height="110" rx="55" fill="${INK}"/>` + label(1560, 915, 'Then how much worse?', {color: '#fff', size: 46, w: 900}) : '');
+  }
+  return svg(s);
+};
+
+const gates = (n) => {
+  const g = [['Exciting?', '🤩'], ['Curious?', '🧐'], ['TRUE?', '✅']];
+  let s = node(60, 470, 300, 140, 'Your title', {size: 46}) ;
+  g.forEach(([t, ic], i) => {
+    const x = 470 + i * 430, on = i < n, last = i === 2;
+    s += arrow(370 + i * 430, 540, 460 + i * 430, 540, {color: on ? INK : '#ccc'}) +
+      `<rect x="${x}" y="${last ? 400 : 430}" width="320" height="${last ? 280 : 220}" rx="26" fill="${on ? (last ? '#E3F7E8' : '#fff') : '#F4F4F4'}" stroke="${on ? (last ? GREEN : INK) : '#ccc'}" stroke-width="${last ? 12 : 7}"/>` +
+      label(x + 160, 510, ic, {size: 70}) + label(x + 160, 600, t, {size: last ? 60 : 50, w: 900, color: on ? (last ? GREEN : INK) : '#bbb'}) +
+      (on ? `<circle cx="${x + 300}" cy="${last ? 410 : 440}" r="42" fill="${GREEN}"/>` + label(x + 300, last ? 432 : 462, '✓', {color: '#fff', size: 60, w: 900}) : '');
+  });
+  if (n >= 3) s += label(1450, 830, 'Only the last gate is non-negotiable', {size: 46, color: GREEN, w: 900});
+  return svg(label(960, 230, 'THE FIX', {size: 110, w: 900, color: GREEN}) + s);
+};
+
+const bars = (fixed) => svg(
+  label(960, 160, fixed ? 'Promise = Delivery ✓' : 'Promise vs Delivery', {size: 80, w: 900, color: fixed ? GREEN : INK}) +
+  label(250, 380, 'Title promises', {size: 48, anchor: 'start'}) +
+  `<rect x="250" y="410" width="${fixed ? 560 : 1420}" height="110" rx="20" fill="${fixed ? GREEN : GOLD}"/>` +
+  label(250, 650, 'Video delivers', {size: 48, anchor: 'start'}) +
+  `<rect x="250" y="680" width="560" height="110" rx="20" fill="${GREEN}"/>` +
+  (fixed ? '' : `<rect x="810" y="680" width="860" height="110" rx="20" fill="none" stroke="${RED}" stroke-width="7" stroke-dasharray="24 16"/>` +
+    label(1240, 755, 'THE GAP = A LIE', {color: RED, size: 56, w: 900})) +
+  (fixed ? titleBar(900, 410, 900, '<tspan text-decoration="line-through" fill="#999">You Won\'t Believe…</tspan>', 46) +
+    titleBar(900, 680, 900, 'What I Found in Killarney 🎯', 46) : ''));
+
 const F = [
-  { t:'0:00.0', vo:'Number one…', s: sticker('#1', '#FFD400', 760, 300, 380, -3),
-    vis:'Huge "#1" keyword.', mot:'Quick pop (3 frames) on frame 1.', src:'—' },
-  { t:'0:01.4', vo:'…lying for views.', s: img('emoji-lying.png', 300, 250, 560) + sticker('LYING FOR VIEWS', '#F03A2E', 860, 430, 112, -3),
-    vis:'3D lying-face emoji (the long nose) + red keyword "LYING FOR VIEWS".', mot:'Emoji slides in, sticker pops on "lying".', src:'Fluent 3D emoji' },
-  { t:'0:03.0', vo:'You\'ve seen these titles.', s: center('yt-logo.png', 520, 200) + center('yt-believe-title0.png', 1500, 560),
-    vis:'YouTube logo, then a real clickbait title under it.', mot:'Logo cut-in, title slides in on "titles" (3.5 s).', src:'Real YouTube screenshot' },
-  { t:'0:04.6', vo:'You won\'t BELIEVE what happened.', s: center('yt-believe-title0.png', 1700, 450) + `<div class="hl" style="left:110px;top:470px;width:900px;height:90px;mix-blend-mode:multiply"></div>`,
-    vis:'Punch-in on the title. Yellow highlighter under "You Won\'t Believe What Happened".', mot:'Punch-in (scale jump), highlighter sweeps on "believe" (5.2 s).', src:'Real YouTube screenshot' },
-  { t:'0:06.6', vo:'He did THIS in the masjid.', s: img('emoji-mosque.png', 260, 230, 620) + sticker('IN THE MASJID?!', '#FFD400', 900, 420, 130, -3),
-    vis:'3D mosque emoji + keyword "IN THE MASJID?!" in clickbait yellow.', mot:'Emoji slides in, sticker pops on "masjid" (7.9 s).', src:'Fluent 3D emoji' },
-  { t:'0:08.9', vo:'And then you click…', s: center('yt-believe-title0.png', 1500, 470) + `<img class="img" src="assets/cursor.svg" style="left:900px;top:520px;width:80px">`,
-    vis:'Back to the title; a cursor clicks it.', mot:'Cursor glides in, click on "click" (9.2 s).', src:'Real screenshot' },
-  { t:'0:10.5', vo:'…and nothing happens.', s: center('emoji-expressionless.png', 560, 200) + line('nothing happens.', 840),
-    vis:'Expressionless 3D emoji, small plain line "nothing happens."', mot:'Hard cut, total stillness for 0.5 s (no zoom), then slow zoom.', src:'Fluent 3D emoji' },
-  { t:'0:12.0', vo:'Or worse…', s: `<div class="wipe" style="left:900px;top:0;width:1020px;height:1080px"></div>` + sticker('OR WORSE…', '#F03A2E', 280, 430, 170, -3),
-    vis:'Red wipe, keyword "OR WORSE…".', mot:'Red wipe 0.35 s, sticker pops on "worse".', src:'—' },
-  { t:'0:13.0', vo:'…the whole story is MADE UP.', s: img('emoji-lipstick.png', 330, 230, 560) + sticker('MADE UP', '#F03A2E', 950, 420, 190, -3),
-    vis:'Pun: a lipstick (make-up) emoji for "made up" + red keyword "MADE UP".', mot:'Emoji slides in, sticker pops on "made" (14.0 s).', src:'Fluent 3D emoji' },
-  { t:'0:15.2', vo:'The Prophet, sallallahu alayhi wa sallam, said…', s: hcard('The Prophet ﷺ said:', '', '', ''),
-    vis:'Clean hadith card starts: only "The Prophet ﷺ said:" at the top.', mot:'Fade in over 12 frames. Very slow zoom (100→103%). No SFX.', src:'—' },
-  { t:'0:18.1', vo:'Woe to the one who speaks and lies to make people laugh.', s: hcard('The Prophet ﷺ said:', AR1, '"<b>Woe to the one who speaks and lies to make people laugh.</b> Woe to him, woe to him."', SRC1),
-    vis:'Arabic text + English translation + source and grade at the bottom. The phrase being read turns green.', mot:'Arabic and English fade in on "woe" (18.1 s). Green highlight follows the voice.', src:'Hadith text verified (hadith-api dataset, from sunnah.com numbering)' },
-  { t:'0:21.7', vo:'Woe to him. Woe to him.', s: hcard('The Prophet ﷺ said:', AR1, '"Woe to the one who speaks and lies to make people laugh. <b>Woe to him, woe to him.</b>"', SRC1),
-    vis:'Same card; highlight moves to "Woe to him, woe to him."', mot:'Highlight moves on 21.7 s and 23.0 s.', src:'—' },
-  { t:'0:24.2', vo:'And he also said: Whoever cheats is not one of us.', s: hcard('He ﷺ also said:', AR2, '"<b>Whoever cheats us is not one of us.</b>"', SRC2),
-    vis:'Second clean card, same layout.', mot:'Cross-fade 8 frames. Highlight on "whoever cheats" (25.7 s) → "is not one of us" (26.4 s).', src:'Hadith text verified' },
-  { t:'0:28.3', vo:'Now think about it.', s: hadi('think', 760),
-    vis:'Hadi returns in the thinking pose.', mot:'Slides in from the right, landing on "think".', src:'Hadi' },
-  { t:'0:29.4', vo:'If lying to make people laugh…', s: center('emoji-rofl.png', 580, 220),
-    vis:'3D rolling-on-the-floor-laughing emoji.', mot:'Slides in, landing on "laugh" (30.4 s).', src:'Fluent 3D emoji' },
-  { t:'0:30.7', vo:'…is THAT serious…', s: center('emoji-rofl.png', 580, 220) + sticker('THAT SERIOUS', '#F03A2E', 470, 760, 150, -3),
-    vis:'Red keyword "THAT SERIOUS" stamps over the laughing emoji.', mot:'Stamp (400%→100% in 0.3 s) on "serious" (31.3 s).', src:'—' },
-  { t:'0:32.3', vo:'…what about lying to get MILLIONS of views?', s: img('emoji-money.png', 300, 250, 520) + sticker('1,000,000 views', '#FFD400', 830, 440, 118, -3),
-    vis:'Money-mouth emoji + gold view counter rolling up to 1,000,000.', mot:'Emoji slides in; counter rolls from "millions" (33.3 s) to "views" (34.0 s).', src:'Fluent 3D emoji' },
-  { t:'0:35.0', vo:'The fix is simple.', s: img('emoji-wrench.png', 330, 260, 520) + sticker('THE FIX', '#2ECC40', 960, 420, 200, -3),
-    vis:'Pun: wrench emoji for "fix" + green keyword "THE FIX".', mot:'Emoji slides in, sticker pops on "fix" (35.1 s).', src:'Fluent 3D emoji' },
-  { t:'0:36.6', vo:'Your title can be exciting. It can make people curious.', s: img('emoji-starstruck.png', 200, 280, 420) + sticker('EXCITING ✓', '#2ECC40', 650, 330, 120, -2) + img('emoji-monocle.png', 1380, 520, 360) + sticker('CURIOUS ✓', '#2ECC40', 650, 640, 120, -2),
-    vis:'Star-struck emoji + "EXCITING ✓", then monocle emoji + "CURIOUS ✓".', mot:'First pair on "exciting" (37.3 s), second pair on "curious" (38.8 s), cut-ins.', src:'Fluent 3D emoji' },
-  { t:'0:39.7', vo:'But it has to be TRUE.', s: img('emoji-check.png', 330, 260, 520) + sticker('TRUE', '#2ECC40', 980, 380, 260, -3),
-    vis:'Green check emoji + big "TRUE".', mot:'Hard cut on "but", sticker pops on "true" (40.6 s).', src:'Fluent 3D emoji' },
-  { t:'0:41.5', vo:'If your video doesn\'t deliver what the title promises…', s: center('yt-believe-title0.png', 1500, 470) + img('emoji-cross.png', 820, 330, 300),
-    vis:'The clickbait title again; a red ✕ stamps on it on "doesn\'t deliver".', mot:'Title slides in; ✕ stamps on "deliver" (42.5 s).', src:'Real screenshot + Fluent emoji' },
-  { t:'0:44.6', vo:'…change the title.', s: hadi('thumbsup', 260) + sticker('CHANGE THE TITLE', '#2ECC40', 820, 440, 112, -3),
-    vis:'Hadi thumbs up + green "CHANGE THE TITLE".', mot:'Hadi slides in landing on "change", sticker pops on "title" (45.0 s). Then cut to Point 2.', src:'Hadi' },
+  { t:'0:00.0', vo:'Number one. Lying for views.', s: hadiImg('point', 100) + svg(label(1250, 380, '#1', {size: 260, w: 900, color: GOLD}) + label(1250, 560, 'LYING FOR VIEWS', {size: 110, w: 900, color: RED}) + `<path d="M820,600 Q1250,650 1690,600" stroke="${RED}" stroke-width="12" fill="none" stroke-linecap="round"/>`),
+    vis:'Hadi points at a title card: "#1" and "LYING FOR VIEWS" with a hand-drawn underline.', mot:'Hadi slides in. "#1" pops (0.0 s), title types on letter by letter from "lying" (1.4 s), underline draws left→right in 0.3 s.' },
+  { t:'0:03.0', vo:'You\'ve seen these titles.', s: feed(3),
+    vis:'A phone with a scrolling feed of clickbait titles (thumbnails blank grey, so no real channel is shown).', mot:'Phone slides up; the feed scrolls upward continuously; the three title rows land one after another on "seen / these / titles".' },
+  { t:'0:04.6', vo:'"You won\'t believe what happened."', s: svg(titleBar(260, 380, 1400, 'You Won\'t <tspan fill="#C0392B">BELIEVE</tspan> <tspan fill="#2F80ED">What</tspan> Happened… 😱', 72) + callout(820, 370, 640, 190, 'EXAGGERATION', RED) + callout(1070, 535, 1250, 790, 'HIDES THE ANSWER', BLUE)),
+    vis:'TITLE BREAKDOWN: the title zooms out of the phone, then labelled callouts point at its tricks.', mot:'Title scales up from the phone (0.3 s). "BELIEVE" turns red + callout draws on "believe" (5.2 s); "What" turns blue + callout draws on "what" (5.4 s).' },
+  { t:'0:06.6', vo:'"He did THIS in the masjid."', s: svg(titleBar(260, 380, 1400, 'He did <tspan fill="#2F80ED">THIS</tspan> in the <tspan fill="#C0392B">masjid</tspan> 😳', 72) + callout(640, 370, 560, 190, 'MYSTERY WORD', BLUE) + callout(1080, 535, 1250, 790, 'EMOTIONAL TRIGGER', RED)),
+    vis:'Same breakdown for the second title.', mot:'Previous title slides out left, this one slides in. Callouts draw on "this" (7.0 s) and "masjid" (7.9 s).' },
+  { t:'0:08.9', vo:'And then you click…', s: tree(0),
+    vis:'BRANCH DIAGRAM starts: [THE TITLE] → [CLICK].', mot:'Node 1 pops, arrow draws (0.25 s), [CLICK] pops on "click" (9.2 s) with a cursor tap.' },
+  { t:'0:10.5', vo:'…and nothing happens.', s: tree(1),
+    vis:'The tree branches: a faded dashed branch "What you expected" and a solid branch "NOTHING happens".', mot:'Dashed grey branch draws first (10.2 s), solid branch draws and its node pops on "nothing" (10.5 s). Camera drifts right.' },
+  { t:'0:12.0', vo:'Or worse, the whole story is made up.', s: tree(2),
+    vis:'A third red branch: "A MADE-UP story", tagged "= A LIE".', mot:'Red branch draws on "worse" (12.2 s), node pops on "made up" (14.0 s), the "= A LIE" tag stamps on "up" (14.3 s).' },
+  { t:'0:15.2', vo:'The Prophet ﷺ said: "Woe to the one who speaks and lies to make people laugh. Woe to him. Woe to him."', s: hcard('The Prophet ﷺ said:', AR1, '"<b>Woe to the one who speaks and lies to make people laugh.</b> Woe to him, woe to him."', SRC1),
+    vis:'Clean hadith card (respect rules: no diagram, no stickers, no SFX).', mot:'The tree fades out. Card fades in over 12 frames; Arabic + English appear on "woe" (18.1 s); green highlight follows the voice (18.1 → 21.7 → 23.0 s).' },
+  { t:'0:24.2', vo:'And he also said: "Whoever cheats is not one of us."', s: hcard('He ﷺ also said:', AR2, '"<b>Whoever cheats us is not one of us.</b>"', SRC2),
+    vis:'Second clean card.', mot:'Cross-fade 8 frames; highlight on "whoever cheats" (25.7 s) then "is not one of us" (26.4 s).' },
+  { t:'0:28.3', vo:'Now think about it.', s: hadiImg('think', 760),
+    vis:'Hadi in the thinking pose, alone. A breath before the comparison.', mot:'Slides in, slow zoom.' },
+  { t:'0:29.4', vo:'If lying to make people laugh is that serious…', s: compare(0),
+    vis:'COMPARISON, left side: one person → arrows → a few people laughing. A red "WOE × 3" tag (from the hadith).', mot:'Split line draws down. Person pops, three arrows draw out in turn, listeners pop on "laugh" (30.4 s). "WOE × 3" stamps on "serious" (31.3 s).' },
+  { t:'0:32.3', vo:'…what about lying to get millions of views?', s: compare(2),
+    vis:'Right side: one video → an exploding grid of people, counter "1,000,000 people misled", then "Then how much worse?".', mot:'Video slides in (32.3 s), arrow draws, the people grid fills row by row from "millions" (33.3 s) and turns red on "views" (34.0 s). Counter rolls with it.' },
+  { t:'0:35.0', vo:'The fix is simple. Your title can be exciting.', s: gates(1),
+    vis:'CHECKLIST PIPELINE: [Your title] → three gates. Gate 1 "Exciting?" turns on with a green tick.', mot:'"THE FIX" pops (35.1 s), gates slide in greyed out, gate 1 lights + tick on "exciting" (37.3 s).' },
+  { t:'0:38.2', vo:'It can make people curious. But it has to be true.', s: gates(3),
+    vis:'Gate 2 "Curious?" ticks, then the big final gate "TRUE?" lights up green, with a note: "Only the last gate is non-negotiable".', mot:'Gate 2 on "curious" (38.8 s). Gate 3 grows 110% and ticks on "true" (40.6 s). Note writes on.' },
+  { t:'0:41.5', vo:'If your video doesn\'t deliver what the title promises…', s: bars(false),
+    vis:'PROMISE vs DELIVERY bars: the title bar is long (gold), the video bar is short (green). The empty gap is outlined red: "THE GAP = A LIE".', mot:'Gold bar grows on "promises" (43.4 s); green bar grows on "deliver" (42.5 s) and stops short; red gap outline draws + label stamps.' },
+  { t:'0:44.6', vo:'…change the title.', s: bars(true),
+    vis:'The clickbait title gets crossed out and rewritten honestly; the promise bar shrinks to match the delivery bar. "Promise = Delivery ✓". ', mot:'Strike-through draws on "change" (44.6 s), new title types on, gold bar shrinks and turns green on "title" (45.0 s).' },
 ];
 document.getElementById('grid').innerHTML = F.map((f, i) => `
   <div class="panel"><div class="frame"><div class="scene">${f.s}</div></div>
-  <div class="meta"><div class="t">${i + 1} · ${f.t}</div><div class="vo">“${f.vo}”</div>
+  <div class="meta"><div class="t">${i + 1} · ${f.t}</div><div class="vo">“${f.vo.replace(/^"|"$/g, '')}”</div>
   <div class="row"><div class="k">Visual</div><div>${f.vis}</div></div>
-  <div class="row"><div class="k">Motion</div><div>${f.mot}</div></div>
-  <div class="row"><div class="k">Source</div><div>${f.src}</div></div></div></div>`).join('');
+  <div class="row"><div class="k">Motion</div><div>${f.mot}</div></div></div></div>`).join('');
 </script>
 </body>
 </html>

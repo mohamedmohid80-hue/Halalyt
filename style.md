@@ -180,6 +180,22 @@ What they *don't* do: springy bounces, wobble loops, glow, gradients, 3D camera 
 - A new visual every **0.5–1 s** during narration. Hold an image longer (2–5 s) only for screenshots the viewer needs to read, or for clips with their own audio.
 - Clips from other videos play in a centred frame with their own audio while the narration pauses.
 
+### 5.7 Explain, don't just illustrate (our addition)
+
+The references show a picture of each word. We go one step further: **when the voiceover explains something, the screen explains it too**, with a diagram that builds up as the words are spoken. Emoji and memes are seasoning, not the main course.
+
+| When the voiceover… | Animate it as |
+|---|---|
+| describes a process or "what happens next" | **Branch / flow diagram**: nodes pop in, arrows draw on, paths split (expected vs reality) |
+| describes a trick or a technique | **Breakdown with callouts**: the real example (a title, thumbnail, comment) with labelled arrows pointing at each part |
+| compares two things | **Split-screen comparison**: left vs right, built one side at a time |
+| talks about scale ("millions") | **Multiplier / grid**: one icon becomes a grid of hundreds, with a counter |
+| gives a rule or checklist | **Gates / pipeline**: the item passes through each check, which ticks green |
+| says something doesn't match | **Bars / meters**: promise vs delivery, with the gap highlighted |
+| tells a story over time | **Timeline**: points appear along a line as the story moves |
+
+Diagram style: white background, thick dark outlines (8 px), rounded nodes, Poppins Black labels, colour by meaning (red = wrong, green = right, gold = key number, grey = "what you expected"). Every part draws on in sync with its word (line draw 0.25 s, node pop 0.1 s), and the whole diagram keeps the slow zoom. Quran and hadith stay on clean cards with no diagrams (§9).
+
 ## 9. Quran and hadith (the respect rules)
 
 These override every other rule.
