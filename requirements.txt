@@ -1,3 +1,4 @@
 faster-whisper==1.2.1
 # PyAV 19 removed an argument faster-whisper 1.2.1 still passes; keep it below 17.
 av>=14,<17
+yt-dlp==2026.10.26
