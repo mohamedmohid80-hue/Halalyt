@@ -2,7 +2,7 @@
 
 The house style for every Halal YT video. It draws on two reference channels I studied frame by frame (a commentary video and a meme-breakdown video, both faceless, both for a Muslim audience). The ideas are borrowed; the look is our own.
 
-**In one line:** a calm, warm, paper-white world where Hadi stands on screen and the evidence slides in next to him. It's playful when we set up the story and still when we quote Allah or His Messenger ﷺ.
+**In one line:** plain white screen, a real internet image for every few words, simple keyframed motion, and Hadi as the narrator. Playful when we set up the story, still when we quote Allah or His Messenger ﷺ.
 
 ---
 
@@ -30,7 +30,7 @@ The house style for every Halal YT video. It draws on two reference channels I s
 ## 2. Canvas and color
 
 - **Long form:** 1920×1080, 30 fps. **Shorts:** 1080×1920, 30 fps (same rules, everything stacked vertically).
-- **Background:** warm paper `#FAF6EE`, never pure white. Optional: a 3% paper-grain texture, never a gradient.
+- **Background:** plain white `#FFFFFF` (see §5.3).
 
 | Token | Hex | Meaning (always the same) |
 |---|---|---|
@@ -84,59 +84,101 @@ Rules:
 
 ---
 
-## 5. The first 3 seconds
+## 5. The visual language (v2, from the frame-by-frame study)
 
-Both references show the hook visual on frame 1 and have something moving by 1.0 s. Our version:
+This section replaces my first attempt, which used drawn mock-ups (fake UI cards, pastel placeholders, a "design system" look). That's what made it feel AI-generated. Measured from the references, the method is simpler and more human:
 
-| Time | Picture | Sound |
+**Every few words, the narration is illustrated by a real image from the internet, placed on plain white, moved with simple keyframes.**
+
+### 5.1 How words become pictures
+
+The references illustrate the *literal word* being said, often as a pun. A new picture arrives roughly **every 0.5–1 s** while the narrator talks (median gap between visual changes: 0.6 s in A, 0.5 s in B).
+
+| Spoken word / idea | What they showed |
+|---|---|
+| "Many of you probably **know who this is**" | The channel character pointing |
+| "a famous Roblox **YouTuber**" | A real photo of him |
+| "his account had been **hacked**" | A stock "hacker in a hoodie with a laptop" photo |
+| "big **fans** of certain YouTubers" | **A photo of an electric fan** (pun) |
+| "that's **dangerous**" | ⚠️ warning sign, then the word in a pink bubbly font |
+| "**YouTuber**, celebrity…" | The YouTube logo |
+| "a harmless **joke**" | A 3D laughing emoji |
+| "these **viral memes**" | The memes themselves |
+| "**directly mocking Islam and Allah**" | Word stickers "DIRECTLY" (red), "mocking" (cyan), an "Islam" calligraphy logo, an "Allah" seal, scattered around the character |
+| "**you might be thinking**" | A red wipe, then the "thinking" cartoon face |
+| "what does this have to do with Islam?" | A famous movie still of a crowd staring, captioned "WELL…" |
+| "if you **translated** the lyrics" | A **real screen recording** of typing "google translate" into Google |
+| "But wait, there's **more**" | Reaction meme photos (thinking kid, shocked cat) |
+| "**liking, reposting, sharing**" | Like, repost and share icons popping in one per word |
+| "**spreading** mockery" | A flat "network of people" icon + the word "mockery!" in red |
+| "like **bruh**" | Facepalm meme + caption "bruh" |
+| "is **disbelief**" | The Arabic word كفر in black calligraphy |
+| "Surah **At-Tawbah**" | "TAWBA" in big green letters |
+| "**now that you know**" | "THAT YOU KNOW.." sticker, then a cat meme captioned "you know :)" |
+| "**Assalamu alaikum**" | A cut-out meme of a man waving, with a white sticker border |
+
+### 5.2 Types of images (the mix is what makes it feel real)
+
+1. **Real photos:** stock photos, news photos, objects (the fan), people.
+2. **Screenshots and screen recordings:** Google, YouTube, TikTok, Google Translate, typed live with the cursor.
+3. **Memes and reaction images:** well-known reaction photos, cartoon faces, movie stills, captioned in meme style.
+4. **3D emoji** (laughing, thinking, pointing).
+5. **Flat icons** (like, share, repost, network, warning).
+6. **Logos** (YouTube, Instagram, TikTok, Islamic calligraphy).
+7. **Cut-outs:** PNGs with the background removed, sometimes with a white sticker border.
+8. **Text-only beats:** when no image fits, a short line of text alone on white.
+
+Rules for us:
+- **Never a drawn mock-up when a real image exists.** Real UI = a real screenshot or screen recording. A "hacker" = a real stock photo.
+- Look for the **pun or the most literal picture** of the word.
+- Mixed styles are fine and intended (a photo, then an emoji, then a screenshot).
+- **Hadi is the narrator character**, like the cartoon in B and the pictogram in A. He appears at the start, at reactions and at the end, not in every shot.
+- Where an image comes from matters: prefer free-licence sources (Pexels, Unsplash, Wikimedia Commons, Microsoft Fluent 3D emoji, Google Noto emoji, Flaticon with credit). Memes and screenshots are used as commentary. Never use imagery that mocks Islam, and blur any offensive content.
+
+### 5.3 How images are placed
+
+- Plain **white** background (`#FFFFFF`), nothing else. (This replaces the paper colour in §2.)
+- One image at a time, usually **centred**, about 35–65% of the frame width.
+- Photos and screenshots: plain rectangle, optionally a thin dark border or a soft drop shadow. **No** heavy rounded "cards".
+- Cut-outs and emoji float directly on white.
+- Screenshots can fill the whole frame (screen-recording beats).
+- Key words sit **next to** the image or character, not over it.
+
+### 5.4 Keyframed motion (measured)
+
+| Move | Measured in the references | Our spec (30 fps) |
 |---|---|---|
-| 0.00 s | Hadi already on screen in a pose that matches the hook (`think`, `shock`, `phone`). No fade-in, no logo, no intro. | First word of the narration starts at frame 1 |
-| ~0.3 s | One sticker pops in with the key word of the hook (e.g. **AI VOICE?**) | soft pop |
-| ~1.0 s | **The hand-off:** Hadi points, whip, the thing we're talking about slides in big | whoosh |
-| ≤3.0 s | The hook question is fully spoken. The viewer knows the topic and why it matters. | — |
+| **Slide-in** | Image enters from the right edge and lands in ~8 frames at 30 fps. Big steps first, tiny steps at the end. **No overshoot, no bounce.** | Position keyframes: off-screen right → target over **0.25 s**, *ease-out (expo)*. |
+| **Settle drift** | After landing, the image keeps drifting a few pixels for another ~0.3 s | Continue 1–2% further over 0.3 s, linear |
+| **Slow zoom** | Everything that stays on screen keeps growing: ~2%/s (10% over 5 s on the phone shot, ~3%/s on the red ✕ shot) | Scale keyframes 100% → 104–110% over the shot's length, **linear** |
+| **Cut-in** | Icons (like, share, repost) appear **instantly** on the word, one per word | Hard cut on the word's timestamp, no animation |
+| **Quick pop** | Word stickers ("mockery!") scale up from small in ~0.1 s, no overshoot | Scale 30% → 100% in **3 frames**, ease-out |
+| **Stamp** | Big red ✕ starts larger than the screen and shrinks onto the subject in ~0.3 s | Scale 400% → 100% in 0.3 s, ease-in, then slow zoom continues |
+| **Punch-in** | Cut to a tighter crop of the same image (full-frame) for emphasis | Instant scale jump to 140–180% on a key word |
+| **Red wipe** | A solid red shape sweeps across the screen between ideas | Red rectangle or circle wipe, 0.3–0.4 s, at section changes |
+| **Fly-out** | An image exits sideways with motion blur | 0.15 s to off-screen left, motion blur |
+| **Beat pump (outro only)** | The end screen pulses every 0.4 s, alternating small and big, the GIF tilting a new angle each time | Scale 92% ↔ 108% and rotation ±6° every 0.4 s |
 
-Hook formula: **[the thing they've seen] + [the twist they didn't know]**, e.g. "Thousands of Islamic channels use AI voices now. But some of them are reciting the Quran wrong."
+What they *don't* do: springy bounces, wobble loops, glow, gradients, 3D camera moves, constant screen shake.
 
----
+### 5.5 Text on screen
 
-## 6. Pacing
-
-- **Something new on screen every 1.5–3 s** (a card, a sticker, a pose, a zoom). Never a static frame for more than 4 s.
-- A section is 15–45 s, and each new section starts with a hard change (new background card or Hadi re-entering).
-- Leave **0.3–0.5 s of air** after a big statement (no new element) so it lands.
-- Clips from other videos play in a card at 80–90% of the frame with their own audio. Narration pauses. Keep clips short (under 10 s), trimmed to the moment that matters, with a source label in the corner.
-
----
-
-## 7. Motion vocabulary
-
-Use only these moves, so every video feels the same family. All durations are at 30 fps.
-
-| Move | Spec | Used for |
+| Type | Look | When |
 |---|---|---|
-| **Whip-in** | Slide from off-screen right in 4 frames with horizontal motion blur, overshoot 4% past the target, settle back in 5 frames (ease-out) | New image/card, Hadi entering |
-| **Whip-out** | Reverse of whip-in, 3 frames, to the left | Clearing a card |
-| **Pop** | Scale 0 → 115% → 100% over 6 frames, slight 3° rotation that settles to 0 | Stickers, emoji, icons |
-| **Stamp** | Starts at 300% scale and 0% opacity, slams to 100% in 4 frames, then a 3-frame screen shake (±8 px) | ✕ / ✓ verdicts, "HARAM?" / "HALAL" labels |
-| **Push-in** | Slow 100% → 108% scale over the shot's lifetime, linear | Every card on screen longer than 2 s |
-| **Cascade** | Each new card whips in on top of the last, older cards shift left 20% and shrink to 85% | Showing "many examples" |
-| **Wobble** | Card tilted ±3°, slowly rocking (sine, 2 s loop) | Memes and GIFs only |
-| **Highlighter** | A `gold` 35%-opacity bar sweeps left-to-right under a line in 8 frames | Key line in a screenshot or comment |
-| **Arrow** | Hand-drawn arrow draws itself in 6 frames between two things | "This means → that" |
-| **Censor bar** | Solid `warn` red bar, no text under it visible | Slurs, blasphemy, profanity: **always** |
+| **Keyword sticker** | Very bold rounded sans (e.g. *Poppins Black* / *Montserrat Black*), coloured fill (yellow, red, green, cyan), thick dark outline, soft drop shadow | 1–3 key words of the sentence |
+| **Plain line** | Small, casual handwritten-style font (e.g. *Comic Neue*), black, centred | When no image fits a sentence |
+| **Meme caption** | Bold white text with black outline, above the image | Reaction memes ("bruh") |
+| **Quote / translation** | Bold white-outlined text in quotes, a yellow ↓ arrow to the meaning | Showing what something really says |
+| **Ayah karaoke** | The whole ayah in bold outlined text; the phrase being read turns a colour (red / orange / green / yellow), reference ("9:65") underneath | Quran translations (with §9 rules) |
+| **Arabic word** | Large black Arabic calligraphy | Islamic terms (كفر, توبة) |
+| **Censor box** | Solid red rectangle | Offensive words: always |
 
-Screen shake is rare (max once per minute), so it stays special.
+### 5.6 The first 3 seconds and pacing
 
----
-
-## 8. Images and cards
-
-- Every still image sits on a **card**: 6 px `ink` border, 18 px rounded corners, soft shadow (0 12 px 30 px, 15%).
-- Screenshots (YouTube, comments, Google Translate, YouTube Studio) are shown as **real UI** in a card, with a `sky` cursor that clicks (click sound) when we "use" something.
-- Faces of real people being criticized can be shown when they're the subject, but **never mocked or meme-edited**. Use the ✕ stamp on a *claim*, not on a person's face.
-- Use our own icons in flat style (same outline weight as Hadi) instead of mixing many emoji styles. Allowed emoji set: ✅ ❌ ⚠️ 💡 🔥 📈. Keep it small and consistent.
-
----
+- Frame 1 = the narrator character or the subject, already on screen. No intro.
+- Hook question by ~10 s.
+- A new visual every **0.5–1 s** during narration. Hold an image longer (2–5 s) only for screenshots the viewer needs to read, or for clips with their own audio.
+- Clips from other videos play in a centred frame with their own audio while the narration pauses.
 
 ## 9. Quran and hadith (the respect rules)
 
