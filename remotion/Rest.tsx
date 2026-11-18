@@ -758,18 +758,12 @@ const Closing: React.FC = () => {
 
 const EndScreen: React.FC<{from: number; to: number}> = ({from, to}) => {
   const vt = useVT();
-  const beat = Math.floor((vt - from) / 0.5);
   const pump = 1 + 0.06 * Math.max(0, 1 - ((vt - from) % 0.5) / 0.25);
   return (
     <Scene from={from} to={to + 1} zoom={0} fadeIn={0.4} fadeOut={0}>
-      <In at={from} kind="slide" x={120} y={170}><Hadi pose="wave" /></In>
-      <In at={from + 0.3} kind="pop" x={1050} y={190} center><div style={{transform: `scale(${pump})`}}><div style={{background: RED, color: '#fff', fontFamily: POP, fontWeight: 900, fontSize: 70, borderRadius: 18, padding: '22px 70px'}}>SUBSCRIBE</div></div></In>
-      <In at={from + 0.6} kind="rise" x={1050} y={330} center><div style={{display: 'flex', gap: 14, alignItems: 'baseline'}}><Label text="GOAL:" size={56} /><Sticker text="1,000 subscribers" color={GOLD} size={64} /></div></In>
-      {[0, 1].map((i) => (
-        <In key={i} at={from + 0.9 + i * 0.3} kind="slide" x={640 + i * 640} y={480}>
-          <div style={{width: 580, height: 326, borderRadius: 18, border: '6px dashed #bbb', display: 'flex', alignItems: 'center', justifyContent: 'center', transform: `rotate(${beat % 2 === i ? -1.5 : 1.5}deg)`}}><Label text="Watch next ▶" size={50} color="#999" /></div>
-        </In>
-      ))}
+      <In at={from} kind="slide" x={170} y={170}><Hadi pose="wave" /></In>
+      <In at={from + 0.3} kind="pop" x={1180} y={420} center><div style={{transform: `scale(${pump})`}}><div style={{background: RED, color: '#fff', fontFamily: POP, fontWeight: 900, fontSize: 96, borderRadius: 22, padding: '28px 90px'}}>SUBSCRIBE</div></div></In>
+      <In at={from + 0.6} kind="rise" x={1180} y={620} w={1100} center><div style={{display: 'flex', gap: 18, alignItems: 'baseline', justifyContent: 'center'}}><Label text="GOAL:" size={68} /><Sticker text="1,000 subscribers" color={GOLD} size={80} /></div></In>
     </Scene>
   );
 };
