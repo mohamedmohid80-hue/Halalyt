@@ -1,7 +1,7 @@
 # What Makes a YouTube Video Haram?
 
 **Target length:** ~8 min (≈1,170 words of voiceover + ~40 s of recitation + pauses)
-**Voice:** "Hadi" (ElevenLabs v3). Tags in `[brackets]` are v3 emotion tags: paste them as written.
+**Voice:** "Hadi" (ElevenLabs). No emotion tags: paste the text exactly as written.
 **How to use:** generate each `VOICEOVER` block separately in ElevenLabs. Everything else (ON SCREEN, SFX) is for the edit.
 
 ---
@@ -38,7 +38,7 @@ Pick a recitation from a reciter or channel that allows reuse, or ask for permis
 
 **VOICEOVER**
 ```
-[curious] Be honest. When was the last time you uploaded a video... and actually stopped to ask, is this halal?
+Be honest. When was the last time you uploaded a video... and actually stopped to ask, is this halal?
 
 Most of us check the title. The thumbnail. The views.
 
@@ -66,7 +66,7 @@ You've seen these titles. "You won't BELIEVE what happened." "He did THIS in the
 
 Or worse, the whole story is made up.
 
-[serious] The Prophet, sallallahu alayhi wa sallam, said: "Woe to the one who speaks and lies to make people laugh. Woe to him, woe to him."
+The Prophet, sallallahu alayhi wa sallam, said: "Woe to the one who speaks and lies to make people laugh. Woe to him, woe to him."
 
 And he also said: "Whoever cheats is not one of us."
 
@@ -90,14 +90,14 @@ This one is more common than you'd think. Memes about salah. Skits that make fun
 
 And people say, "Relax, it's just a joke."
 
-[serious] But that's exactly the excuse Allah mentions in the Quran.
+But that's exactly the excuse Allah mentions in the Quran.
 ```
 
 > 🔊 **RECITATION R1: Surah At-Tawbah 9:65–66** (play here, ~20 s)
 
 **VOICEOVER (part B)**
 ```
-[serious] "If you ask them, they will surely say, we were only joking and playing around. Say: was it Allah, His verses and His Messenger that you were mocking? Make no excuse. You have disbelieved after your belief."
+"If you ask them, they will surely say, we were only joking and playing around. Say: was it Allah, His verses and His Messenger that you were mocking? Make no excuse. You have disbelieved after your belief."
 
 That's Surah At-Tawbah, verses sixty-five and sixty-six.
 
@@ -119,7 +119,7 @@ You've probably seen this one. An emotional video. Sad background. And a "hadith
 
 It gets shared thousands of times, because it sounds beautiful.
 
-[serious] But the Prophet, sallallahu alayhi wa sallam, said: "Whoever lies about me on purpose, let him take his seat in the Fire." That's in Sahih al-Bukhari.
+But the Prophet, sallallahu alayhi wa sallam, said: "Whoever lies about me on purpose, let him take his seat in the Fire." That's in Sahih al-Bukhari.
 
 So before you put any hadith in a video, check it. Where is it from? Is it authentic? Put the source on the screen. And if you can't find it... don't post it.
 ```
@@ -137,16 +137,16 @@ Number four. Backbiting and humiliating people.
 
 Drama channels. Exposing videos. Roasts. Reaction videos where the whole point is to make someone look stupid.
 
-[surprised] These get views. A LOT of views.
+These get views. A LOT of views.
 
-[serious] But Allah says in the Quran.
+But Allah says in the Quran.
 ```
 
 > 🔊 **RECITATION R2: Surah Al-Hujurat 49:12** (play only the part about spying and backbiting, ~15–20 s)
 
 **VOICEOVER (part B)**
 ```
-[serious] "And do not spy, and do not backbite one another. Would any of you like to eat the flesh of his dead brother? You would hate it."
+"And do not spy, and do not backbite one another. Would any of you like to eat the flesh of his dead brother? You would hate it."
 
 That's Surah Al-Hujurat, verse twelve.
 
@@ -172,7 +172,7 @@ And it includes sponsors. Betting apps. Gambling sites. Loans built on interest.
 
 Some of these sponsors pay really well. And that's exactly the test.
 
-[serious] Allah warns that those who love to see indecency spread among the believers will have a painful punishment, in this life and the next. That's Surah An-Nur, verse nineteen.
+Allah warns that those who love to see indecency spread among the believers will have a painful punishment, in this life and the next. That's Surah An-Nur, verse nineteen.
 
 So here's a simple rule. If you wouldn't want your parents to see your thumbnail... it probably shouldn't be your thumbnail. And if a sponsor is selling something haram, the money isn't worth it.
 ```
@@ -206,15 +206,15 @@ So ask for permission. Credit the source. Or make your own.
 
 **VOICEOVER**
 ```
-[surprised] But wait. There's one thing that makes all of this even more serious.
+But wait. There's one thing that makes all of this even more serious.
 
 On YouTube... your video doesn't stop when you stop.
 
-[serious] The Prophet, sallallahu alayhi wa sallam, said: "Whoever starts a bad practice in Islam carries its burden, and the burden of everyone who acts on it after him, without their burden being reduced at all." That's in Sahih Muslim.
+The Prophet, sallallahu alayhi wa sallam, said: "Whoever starts a bad practice in Islam carries its burden, and the burden of everyone who acts on it after him, without their burden being reduced at all." That's in Sahih Muslim.
 
 Now imagine a video with a fake hadith... that gets a million views. Or a joke about the deen that people keep sharing for years. You might have forgotten that video. But it's still being watched.
 
-[warmly] And here's the beautiful part. The same hadith also says: "Whoever starts a good practice in Islam gets its reward, and the reward of everyone who acts on it after him."
+And here's the beautiful part. The same hadith also says: "Whoever starts a good practice in Islam gets its reward, and the reward of everyone who acts on it after him."
 
 So the exact same algorithm that can multiply your sins... can multiply your good deeds. Every person who learns something true from your video. Every person who shares it. That's reward that keeps coming.
 ```
@@ -260,7 +260,7 @@ So before you upload, ask yourself... why am I posting this?
 
 **VOICEOVER**
 ```
-[warmly] Now, if you're watching this and thinking, "Wait... I've done some of these." Don't panic.
+Now, if you're watching this and thinking, "Wait... I've done some of these." Don't panic.
 
 Allah says in the Quran: "There is no blame on you for the mistakes you made, but only for what your hearts intended." That's Surah Al-Ahzab, verse five.
 
@@ -277,7 +277,7 @@ So go back. Fix the titles. Take down what needs to come down. And start fresh.
 
 **VOICEOVER**
 ```
-[warmly] May Allah make our videos a source of good for us, and not against us. May He forgive our mistakes, purify our intentions, and accept everything we do for His sake. Ameen.
+May Allah make our videos a source of good for us, and not against us. May He forgive our mistakes, purify our intentions, and accept everything we do for His sake. Ameen.
 ```
 
 ---

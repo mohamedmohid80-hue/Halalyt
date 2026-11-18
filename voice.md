@@ -120,12 +120,7 @@ Generate 3 previews, pick the closest one and save it as **"Hadi"**. If it still
 
 - Break every point into its own paragraph. Generate **one section at a time** (hook, each point, ending) so you can redo just one part.
 - Use `...` or a line break for a short pause before a reveal.
-- With v3, steer the emotion per line with tags, about one every 2–4 sentences:
-  - `[curious]` on hook questions: `[curious] But what if I told you... that video could actually be haram?`
-  - `[surprised]` on reveals: `[surprised] Millions of views.`
-  - `[serious]` on warnings and evidence: `[serious] Allah says in Surah At-Tawbah...`
-  - `[warmly]` for the mercy part and the dua.
-  - `[chuckles]`, at most once per video, on a light joke.
+- **No emotion tags** (like `[serious]`) in scripts. The voice carries the delivery on its own; punctuation and short sentences shape it.
 - Write the words you want stressed in CAPS sparingly ("this is WAY more common"). v3 stresses them.
 - Write ﷺ out in full as **"sallallahu alayhi wa sallam"** (the voice can't read the symbol).
 - Spell Islamic terms the way they should sound if it mispronounces them: *Insha'Allah, Assalamu alaikum, Subhan'Allah, ayah, hadith (ha-deeth), deen*. Add a pronunciation dictionary for repeat offenders.
