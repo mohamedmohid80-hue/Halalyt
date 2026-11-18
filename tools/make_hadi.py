@@ -1,7 +1,8 @@
 """Generate the channel character "Hadi" as SVG poses.
 
-Hadi is deliberately faceless: no eyes, nose or mouth. He shows emotion only
-through pose, head tilt, props and a symbol bubble. Run:
+Hadi is a young Muslim creator: white kufi, green hoodie, headphones round
+his neck. He is deliberately faceless (no eyes, nose or mouth) and shows
+emotion through pose, head tilt, props and a symbol bubble.
 
     python3 tools/make_hadi.py
 
@@ -13,121 +14,161 @@ OUT = Path(__file__).resolve().parent.parent / "brand" / "hadi"
 
 INK = "#17201B"
 SKIN = "#D9A57B"
-THOBE = "#FFFFFF"
-KUFI = "#1E7B4F"
+GREEN = "#1E7B4F"
+GREEN_DARK = "#145C3A"
+PANTS = "#2B3440"
+WHITE = "#FFFFFF"
 GOLD = "#E8A92E"
 RED = "#E5484D"
-STROKE = 7
+LINE = 7
 
-SHOULDER_L = (150, 228)
-SHOULDER_R = (250, 228)
+NECK = (200, 194)
+SHOULDER_L = (152, 238)
+SHOULDER_R = (248, 238)
+ARM_DOWN_L = ((132, 312), (136, 384))
+ARM_DOWN_R = ((268, 312), (264, 384))
 
-# Each pose: left arm (elbow, hand), right arm (elbow, hand), head tilt in
-# degrees, optional bubble symbol, optional extra drawing (props, motion lines).
+# Each pose: left arm (elbow, hand), right arm (elbow, hand), head tilt,
+# optional bubble and optional extra drawing.
 POSES = {
-    "neutral": dict(l=((128, 300), (134, 372)), r=((272, 300), (266, 372))),
-    "point": dict(l=((128, 300), (134, 372)), r=((318, 232), (372, 222)), extra="point"),
-    "think": dict(l=((128, 300), (134, 372)), r=((292, 292), (232, 206)), tilt=6, bubble="?"),
-    "shock": dict(l=((104, 196), (98, 124)), r=((296, 196), (302, 124)), bubble="!", bubble_color=RED),
-    "facepalm": dict(l=((128, 300), (134, 372)), r=((290, 270), (214, 142)), tilt=-10),
-    "thumbsup": dict(l=((128, 300), (134, 372)), r=((304, 292), (322, 232)), extra="thumb"),
-    "phone": dict(l=((140, 316), (184, 292)), r=((260, 316), (216, 292)), tilt=-8, extra="phone"),
-    "wave": dict(l=((128, 300), (134, 372)), r=((310, 200), (324, 126)), extra="wave"),
-    "idea": dict(l=((128, 300), (134, 372)), r=((300, 210), (300, 140)), bubble="lamp", bubble_color=GOLD),
+    "neutral": dict(l=ARM_DOWN_L, r=ARM_DOWN_R),
+    "point": dict(l=ARM_DOWN_L, r=((318, 244), (372, 234)), extra="point"),
+    "think": dict(l=ARM_DOWN_L, r=((300, 322), (230, 206)), tilt=6, bubble="?"),
+    "shock": dict(l=((108, 200), (94, 136)), r=((292, 200), (306, 136)), bubble="!", bubble_color=RED),
+    "facepalm": dict(l=ARM_DOWN_L, r=((292, 292), (214, 128)), tilt=-9),
+    "thumbsup": dict(l=ARM_DOWN_L, r=((306, 304), (326, 240)), extra="thumb"),
+    "phone": dict(l=((150, 334), (186, 302)), r=((250, 334), (214, 302)), tilt=-8, extra="phone"),
+    "wave": dict(l=ARM_DOWN_L, r=((316, 198), (330, 124)), extra="wave"),
+    "idea": dict(l=ARM_DOWN_L, r=((306, 216), (306, 146)), bubble="lamp", bubble_color=GOLD),
 }
 
 
-def arm(elbow, hand, shoulder):
-    pts = f"M{shoulder[0]},{shoulder[1]} L{elbow[0]},{elbow[1]} L{hand[0]},{hand[1]}"
+def limb(points, fill, width):
+    d = "M" + " L".join(f"{x},{y}" for x, y in points)
     return (
-        f'<path d="{pts}" fill="none" stroke="{INK}" stroke-width="34" stroke-linecap="round" stroke-linejoin="round"/>'
-        f'<path d="{pts}" fill="none" stroke="{THOBE}" stroke-width="20" stroke-linecap="round" stroke-linejoin="round"/>'
+        f'<path d="{d}" fill="none" stroke="{INK}" stroke-width="{width + 2 * LINE}" stroke-linecap="round" stroke-linejoin="round"/>'
+        f'<path d="{d}" fill="none" stroke="{fill}" stroke-width="{width}" stroke-linecap="round" stroke-linejoin="round"/>'
     )
 
 
 def hand(p):
-    return f'<circle cx="{p[0]}" cy="{p[1]}" r="15" fill="{SKIN}" stroke="{INK}" stroke-width="{STROKE}"/>'
+    return f'<circle cx="{p[0]}" cy="{p[1]}" r="15" fill="{SKIN}" stroke="{INK}" stroke-width="{LINE}"/>'
+
+
+def legs():
+    return (
+        f'<ellipse cx="200" cy="572" rx="96" ry="12" fill="{INK}" opacity="0.12"/>'
+        + limb([(178, 410), (176, 538)], PANTS, 30)
+        + limb([(222, 410), (224, 538)], PANTS, 30)
+        + f'<path d="M140,560 C140,536 196,534 198,560 Z" fill="{WHITE}" stroke="{INK}" stroke-width="{LINE}" stroke-linejoin="round"/>'
+        + f'<path d="M202,560 C204,534 260,536 260,560 Z" fill="{WHITE}" stroke="{INK}" stroke-width="{LINE}" stroke-linejoin="round"/>'
+        + f'<line x1="140" y1="560" x2="198" y2="560" stroke="{GREEN}" stroke-width="5" stroke-linecap="round"/>'
+        + f'<line x1="202" y1="560" x2="260" y2="560" stroke="{GREEN}" stroke-width="5" stroke-linecap="round"/>'
+    )
+
+
+def torso():
+    return (
+        # hoodie
+        f'<path d="M146,224 C146,206 166,198 200,198 C234,198 254,206 254,224 L266,408 C266,420 258,424 246,424 '
+        f'L154,424 C142,424 134,420 134,408 Z" fill="{GREEN}" stroke="{INK}" stroke-width="{LINE}" stroke-linejoin="round"/>'
+        # ribbed hem
+        f'<path d="M136,404 L264,404" stroke="{GREEN_DARK}" stroke-width="5"/>'
+        # front pocket
+        f'<path d="M160,346 L240,346 L234,384 L166,384 Z" fill="{GREEN_DARK}" stroke="{INK}" stroke-width="5" stroke-linejoin="round"/>'
+        # drawstrings
+        f'<path d="M188,214 L184,268" stroke="{WHITE}" stroke-width="5" stroke-linecap="round"/>'
+        f'<path d="M212,214 L216,268" stroke="{WHITE}" stroke-width="5" stroke-linecap="round"/>'
+        f'<circle cx="184" cy="270" r="4" fill="{WHITE}"/><circle cx="216" cy="270" r="4" fill="{WHITE}"/>'
+        # hood resting behind the neck
+        f'<path d="M140,212 C154,180 246,180 260,212 C236,198 164,198 140,212 Z" fill="{GREEN_DARK}" '
+        f'stroke="{INK}" stroke-width="{LINE}" stroke-linejoin="round"/>'
+        # headphones round the neck
+        f'<path d="M154,218 C164,246 236,246 246,218" fill="none" stroke="{INK}" stroke-width="9" stroke-linecap="round"/>'
+        f'<rect x="136" y="202" width="28" height="38" rx="10" fill="{PANTS}" stroke="{INK}" stroke-width="5"/>'
+        f'<rect x="236" y="202" width="28" height="38" rx="10" fill="{PANTS}" stroke="{INK}" stroke-width="5"/>'
+    )
 
 
 def head(tilt):
-    # Faceless head with a kufi. Rotates around the neck.
-    return f"""
-  <g transform="rotate({tilt} 200 196)">
-    <circle cx="200" cy="128" r="64" fill="{SKIN}" stroke="{INK}" stroke-width="{STROKE}"/>
-    <path d="M134,116 C136,58 264,58 266,116 Z" fill="{KUFI}" stroke="{INK}" stroke-width="{STROKE}" stroke-linejoin="round"/>
-    <path d="M140,104 C160,96 240,96 260,104" fill="none" stroke="{GOLD}" stroke-width="6" stroke-linecap="round"/>
-  </g>"""
-
-
-def body():
-    return f"""
-  <ellipse cx="200" cy="462" rx="96" ry="12" fill="{INK}" opacity="0.12"/>
-  <ellipse cx="172" cy="450" rx="22" ry="11" fill="{INK}"/>
-  <ellipse cx="228" cy="450" rx="22" ry="11" fill="{INK}"/>
-  <path d="M178,190 C150,196 140,210 138,236 L122,432 C122,442 130,446 140,446 L260,446 C270,446 278,442 278,432 L262,236 C260,210 250,196 222,190 Z"
-        fill="{THOBE}" stroke="{INK}" stroke-width="{STROKE}" stroke-linejoin="round"/>
-  <path d="M186,198 L200,226 L214,198" fill="none" stroke="{INK}" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
-  <line x1="200" y1="226" x2="200" y2="262" stroke="{INK}" stroke-width="4" stroke-linecap="round"/>"""
+    dots = "".join(
+        f'<circle cx="{x}" cy="{84 if i % 2 else 72}" r="3.5" fill="{GREEN}"/>'
+        for i, x in enumerate(range(150, 256, 15))
+    )
+    return (
+        f'<g transform="rotate({tilt} {NECK[0]} {NECK[1]})">'
+        f'<circle cx="200" cy="122" r="70" fill="{SKIN}" stroke="{INK}" stroke-width="{LINE}"/>'
+        f'<path d="M131,108 C133,40 267,40 269,108 Z" fill="{WHITE}" stroke="{INK}" stroke-width="{LINE}" stroke-linejoin="round"/>'
+        f"{dots}</g>"
+    )
 
 
 def bubble(symbol, color):
     base = (
-        f'<path d="M318,96 L300,122 L334,104 Z" fill="#FFFFFF" stroke="{INK}" stroke-width="{STROKE}" stroke-linejoin="round"/>'
-        f'<circle cx="340" cy="66" r="44" fill="#FFFFFF" stroke="{INK}" stroke-width="{STROKE}"/>'
+        f'<path d="M318,104 L298,128 L334,110 Z" fill="{WHITE}" stroke="{INK}" stroke-width="{LINE}" stroke-linejoin="round"/>'
+        f'<circle cx="342" cy="66" r="44" fill="{WHITE}" stroke="{INK}" stroke-width="{LINE}"/>'
     )
     if symbol == "lamp":
         glyph = (
-            f'<circle cx="340" cy="58" r="18" fill="{color}" stroke="{INK}" stroke-width="5"/>'
-            f'<rect x="331" y="74" width="18" height="12" rx="3" fill="{INK}"/>'
+            f'<circle cx="342" cy="58" r="18" fill="{color}" stroke="{INK}" stroke-width="5"/>'
+            f'<rect x="333" y="74" width="18" height="12" rx="3" fill="{INK}"/>'
         )
     else:
         glyph = (
-            f'<text x="340" y="88" text-anchor="middle" font-family="DejaVu Sans, Arial, sans-serif" '
+            f'<text x="342" y="88" text-anchor="middle" font-family="DejaVu Sans, Arial, sans-serif" '
             f'font-weight="bold" font-size="60" fill="{color}" stroke="{INK}" stroke-width="3">{symbol}</text>'
         )
     return base + glyph
 
 
 def extra(kind, pose):
+    hx, hy = pose["r"][1]
     if kind == "point":
-        hx, hy = pose["r"][1]
-        return f'<line x1="{hx}" y1="{hy}" x2="{hx + 26}" y2="{hy - 2}" stroke="{INK}" stroke-width="9" stroke-linecap="round"/>'
+        return f'<line x1="{hx}" y1="{hy}" x2="{hx + 28}" y2="{hy - 3}" stroke="{INK}" stroke-width="9" stroke-linecap="round"/>'
     if kind == "thumb":
-        hx, hy = pose["r"][1]
         return f'<line x1="{hx}" y1="{hy - 8}" x2="{hx}" y2="{hy - 34}" stroke="{INK}" stroke-width="10" stroke-linecap="round"/>'
-    if kind == "phone":
-        return (
-            f'<rect x="178" y="250" width="44" height="72" rx="8" fill="{INK}"/>'
-            f'<rect x="184" y="258" width="32" height="54" rx="4" fill="{GOLD}" opacity="0.9"/>'
-        )
     if kind == "wave":
         return "".join(
-            f'<path d="M{350 + i * 12},{100 + i * 14} q10,10 0,22" fill="none" stroke="{INK}" stroke-width="5" stroke-linecap="round"/>'
+            f'<path d="M{356 + i * 13},{100 + i * 15} q11,11 0,24" fill="none" stroke="{INK}" stroke-width="5" stroke-linecap="round"/>'
             for i in range(2)
         )
     return ""
 
 
+PHONE = (
+    f'<rect x="178" y="262" width="44" height="74" rx="8" fill="{INK}"/>'
+    f'<rect x="184" y="270" width="32" height="56" rx="4" fill="{GOLD}" opacity="0.9"/>'
+)
+
+
 def svg(name, pose):
     l_el, l_hand = pose["l"]
     r_el, r_hand = pose["r"]
-    parts = [body(), head(pose.get("tilt", 0)), arm(l_el, l_hand, SHOULDER_L), arm(r_el, r_hand, SHOULDER_R)]
+    parts = [
+        legs(),
+        torso(),
+        head(pose.get("tilt", 0)),
+        limb([SHOULDER_L, l_el, l_hand], GREEN, 26),
+        limb([SHOULDER_R, r_el, r_hand], GREEN, 26),
+    ]
     if pose.get("extra") == "phone":
-        parts.append(extra("phone", pose))
+        parts.append(PHONE)
     parts += [hand(l_hand), hand(r_hand)]
-    if pose.get("extra") and pose["extra"] != "phone":
+    if pose.get("extra") in ("point", "thumb", "wave"):
         parts.append(extra(pose["extra"], pose))
     if pose.get("bubble"):
-        parts.append(bubble(pose["bubble"], pose.get("bubble_color", KUFI)))
+        parts.append(bubble(pose["bubble"], pose.get("bubble_color", GREEN)))
     inner = "\n  ".join(parts)
     return (
-        f'<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 480" width="400" height="480">\n'
+        f'<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 420 600" width="420" height="600">\n'
         f"  <title>Hadi - {name}</title>\n  {inner}\n</svg>\n"
     )
 
 
 if __name__ == "__main__":
     OUT.mkdir(parents=True, exist_ok=True)
+    for old in OUT.glob("hadi-*.svg"):
+        old.unlink()
     for name, pose in POSES.items():
         (OUT / f"hadi-{name}.svg").write_text(svg(name, pose))
     print(f"Wrote {len(POSES)} poses to {OUT}")
