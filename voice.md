@@ -67,35 +67,52 @@ Writing rules: max ~18 words per sentence, about 160–170 words per minute of v
 
 ### What the references sound like (measured)
 
-| | A | B |
-|---|---|---|
-| Voice | Young adult male, low-mid pitch (~120 Hz) | Young adult male, low-mid pitch (~126 Hz) |
-| Pace while speaking | ~175 words/min | ~160 words/min |
-| Pauses | Many short pauses (~0.6 s) between phrases | Fewer, shorter (~0.4 s) |
-| Feel | Calm, measured, sincere | Calm, conversational, slightly playful |
+Both narrators sound like the same type of voice (B credits A as its inspiration).
 
-Our target: **a young adult male voice with presence: firm and clear, with a bit of emotion (not soft, not dramatic), ~160–170 words/min, pauses ~0.5 s between thoughts.**
+| Measurement | A | B | What it means |
+|---|---|---|---|
+| Pitch (median) | 119 Hz | 125 Hz | Young adult male, light baritone: low-mid, **not deep or booming** |
+| Pitch movement (std) | 4.7 semitones | 4.9 semitones | **Very lively intonation.** A flat narrator moves ~2 st. These voices rise and fall a lot. |
+| Pitch range (5–95%) | 14 st | 15 st | Big rises on questions, clear drops at sentence ends |
+| "R" sounds (F3 in words like *her, heart, never*) | ~2,350 Hz low point | ~2,760 Hz low point | **No R-colouring → non-rhotic accent, most likely British.** (American voices drop to ~1,700 Hz.) This is an estimate from acoustics, not a certainty. |
+| Brightness (spectral centroid) | 1,240 Hz | 1,440 Hz | Clear and present, neither bassy nor airy |
+| Voicing clarity | 0.72 | 0.60 (music under it) | Clean, not breathy or whispery |
+| Pace while talking | ~165–175 wpm | ~160 wpm | Brisk conversational |
+| Pauses | short (~0.4–0.6 s) | short | Pauses at commas and before reveals, never long dramatic gaps |
 
-### ElevenLabs Voice Design prompt (v2: firmer, with some emotion)
+**In plain words:** a young British guy in his twenties, light-baritone, talking to you like he's explaining something on a call: animated, rising on questions, stressing key words, sincere. Not a deep "movie trailer" voice, not a soft meditation voice, not hype.
+
+**Why my earlier prompts missed:**
+- v1 said *calm, warm, smooth, relaxed* → it flattened the intonation (the refs are very lively).
+- v2 said *solid full chest voice, firm, confident* → it made the voice deeper and harder (the refs are light baritone and friendly).
+- Both said *neutral international accent* → the refs are most likely British.
+
+### ElevenLabs Voice Design prompt (v3: matched to the references)
 
 Paste into **Voices → Create a voice → Voice Design → Prompt**:
 
-> A confident young adult male YouTube narrator in his mid-twenties with a neutral international English accent. Mid-low pitch with a solid, full chest voice and clear, crisp articulation. Engaged and direct, like he is telling a friend something he genuinely cares about. Moderate emotion: noticeable curiosity on questions, a hint of disbelief on surprising facts, firm seriousness on warnings, and warmth at the end. Lively, varied intonation with natural emphasis on key words, never flat, never monotone, never whispery or soft, but never shouting or theatrical. Medium-brisk pace with short punchy pauses before reveals. Close-mic studio quality, dry and crisp, no reverb, no background noise.
+> Young British man in his early twenties, natural Southern English accent, narrating a YouTube commentary video. Light baritone voice, mid-low pitch but not deep, clear and present, not breathy. Conversational and casual, like explaining something to a friend on a call. Very lively, natural intonation: rises on questions, drops firmly at the end of statements, gently stresses key words. Sincere and engaged with a little emotion, not hyped, not dramatic, not sleepy. Brisk natural pace with short pauses at commas. Clean close-mic recording, dry, no reverb, no background noise.
 
-**Preview text** (it carries the range we want, so you can judge each preview):
+**Preview text** (written in the same rhythm as the references):
 
-> Be honest. You've probably uploaded a video without thinking twice about it. But what if I told you... that video could actually be haram? And most creators have no idea. Let me explain. Number one. Lying for views. And trust me, this one is way more common than you think.
+> A lot of you have probably seen this video by now. But what if I told you that it's actually mocking Islam? Now, I know what you're thinking. It's just a joke, right? Well, not exactly. Let me explain.
 
-Generate 3 previews, pick the one closest to the target, and save it as **"Hadi"**.
+Generate 3 previews, pick the closest one and save it as **"Hadi"**. If it still sounds off, change only one thing at a time:
+- Too deep → change *light baritone, mid-low pitch* to *mid pitch*.
+- Too flat → add *animated* before *conversational*.
+- Too posh → change *Southern English* to *London*.
+- Wrong accent entirely → regenerate. Voice Design varies a lot between previews.
+
+**Don't clone the reference narrators' voices** (Instant Voice Clone from their videos). Their voice belongs to them. Designing a similar *type* of voice is fine.
 
 ### Recommended generation settings
 
 | Setting | Value | Why |
 |---|---|---|
 | Model | **Eleven v3** (or Multilingual v2 if v3 sounds unstable) | Best expressiveness and handles Arabic terms |
-| Stability | 35–45% (v3: "Natural") | Lower = more emotion; below 30% gets unpredictable |
+| Stability | 40–50% (v3: "Natural") | Keeps the lively intonation without drifting |
 | Similarity | 75–80% | Stays on the designed voice |
-| Style exaggeration | 20–30% | Adds expression without going theatrical |
+| Style exaggeration | 10–20% | A little emotion, no theatre |
 | Speaker boost | On | Clarity |
 | Speed | 1.0–1.05 | Lands around 160–170 words/min |
 
