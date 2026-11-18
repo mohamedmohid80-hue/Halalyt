@@ -74,17 +74,17 @@ Writing rules: max ~18 words per sentence, about 160–170 words per minute of v
 | Pauses | Many short pauses (~0.6 s) between phrases | Fewer, shorter (~0.4 s) |
 | Feel | Calm, measured, sincere | Calm, conversational, slightly playful |
 
-Our target: **a young adult male voice, calm and warm, ~160–170 words/min, pauses ~0.5 s between thoughts, conversational but sincere.**
+Our target: **a young adult male voice with presence: firm and clear, with a bit of emotion (not soft, not dramatic), ~160–170 words/min, pauses ~0.5 s between thoughts.**
 
-### ElevenLabs Voice Design prompt
+### ElevenLabs Voice Design prompt (v2: firmer, with some emotion)
 
 Paste into **Voices → Create a voice → Voice Design → Prompt**:
 
-> A calm, warm young adult male narrator in his mid-twenties with a neutral, slightly British-international English accent. Low-mid pitch, smooth and clear, with a friendly, sincere tone, like a thoughtful older brother explaining something important to a friend. Conversational and relaxed, never salesy, never shouting, never overly dramatic. Medium pace with natural short pauses between thoughts. Confident and trustworthy, gently serious on important points, lightly playful on casual lines. Close-mic studio quality, dry and crisp, no reverb, no background noise.
+> A confident young adult male YouTube narrator in his mid-twenties with a neutral international English accent. Mid-low pitch with a solid, full chest voice and clear, crisp articulation. Engaged and direct, like he is telling a friend something he genuinely cares about. Moderate emotion: noticeable curiosity on questions, a hint of disbelief on surprising facts, firm seriousness on warnings, and warmth at the end. Lively, varied intonation with natural emphasis on key words, never flat, never monotone, never whispery or soft, but never shouting or theatrical. Medium-brisk pace with short punchy pauses before reveals. Close-mic studio quality, dry and crisp, no reverb, no background noise.
 
-**Preview text** (paste into the text box so the previews show how it handles our kind of script):
+**Preview text** (it carries the range we want, so you can judge each preview):
 
-> A lot of you have probably uploaded a video without thinking twice. But what if I told you that some videos could actually be haram, and most creators don't even realise it? Let me explain. Number one. Lying for views.
+> Be honest. You've probably uploaded a video without thinking twice about it. But what if I told you... that video could actually be haram? And most creators have no idea. Let me explain. Number one. Lying for views. And trust me, this one is way more common than you think.
 
 Generate 3 previews, pick the one closest to the target, and save it as **"Hadi"**.
 
@@ -93,16 +93,23 @@ Generate 3 previews, pick the one closest to the target, and save it as **"Hadi"
 | Setting | Value | Why |
 |---|---|---|
 | Model | **Eleven v3** (or Multilingual v2 if v3 sounds unstable) | Best expressiveness and handles Arabic terms |
-| Stability | 45–55% | Natural variation without drifting |
+| Stability | 35–45% (v3: "Natural") | Lower = more emotion; below 30% gets unpredictable |
 | Similarity | 75–80% | Stays on the designed voice |
-| Style exaggeration | 0–15% | Keeps it calm, not theatrical |
+| Style exaggeration | 20–30% | Adds expression without going theatrical |
 | Speaker boost | On | Clarity |
 | Speed | 1.0–1.05 | Lands around 160–170 words/min |
 
 ### Script formatting tips for ElevenLabs
 
 - Break every point into its own paragraph. Generate **one section at a time** (hook, each point, ending) so you can redo just one part.
-- Use `...` or a line break for a short pause. With v3 you can add tags such as `[pause]`, `[serious]`, `[softly]`, `[warmly]`, sparingly.
+- Use `...` or a line break for a short pause before a reveal.
+- With v3, steer the emotion per line with tags, about one every 2–4 sentences:
+  - `[curious]` on hook questions: `[curious] But what if I told you... that video could actually be haram?`
+  - `[surprised]` on reveals: `[surprised] Millions of views.`
+  - `[serious]` on warnings and evidence: `[serious] Allah says in Surah At-Tawbah...`
+  - `[warmly]` for the mercy part and the dua.
+  - `[chuckles]`, at most once per video, on a light joke.
+- Write the words you want stressed in CAPS sparingly ("this is WAY more common"). v3 stresses them.
 - Write ﷺ out in full as **"sallallahu alayhi wa sallam"** (the voice can't read the symbol).
 - Spell Islamic terms the way they should sound if it mispronounces them: *Insha'Allah, Assalamu alaikum, Subhan'Allah, ayah, hadith (ha-deeth), deen*. Add a pronunciation dictionary for repeat offenders.
 - **Never have the AI voice recite the Quran in Arabic.** Read the English translation only, and use a real reciter's recording (with permission) for any Arabic recitation. That's our channel rule (see `style.md` §9).
