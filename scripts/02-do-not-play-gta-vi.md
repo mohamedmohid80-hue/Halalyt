@@ -31,15 +31,15 @@
 ## 1. HOOK
 
 ```
-It's finally here. After more than ten years of waiting, GTA 6 has launched, and the whole internet is going crazy.
+Many of you already know that GTA 6 just came out, and people are going crazy over it.
 
-People are staying up all night. Taking days off work. Skipping school. Spending hours, even days, inside one game.
+Millions of people waited years for this game. And a lot of them are Muslims.
 
-And honestly, a lot of Muslims are doing the exact same thing.
+But what if I told you that most Muslims buying this game have no idea what they're actually letting into their homes?
 
-But before you press start, there's something you need to hear. Because what's inside this game... isn't just a game.
+Now, you might be thinking, it's just a game. What does this have to do with Islam?
 
-Let me explain.
+Well, a lot more than you think. Let me explain.
 ```
 
 ---
