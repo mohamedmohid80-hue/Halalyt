@@ -151,3 +151,13 @@ v4 gave too much drama on words like "disgusting" and "crazy". This version asks
 If staying on v3: choose "Robust" (most stable) instead of "Natural" or "Creative".
 
 **Script tips:** ellipses (…), question-heavy phrasing and strong adjectives pull the voice into drama. Use full stops instead of "…", and keep loaded words plain.
+
+### v6: no London accent
+
+**A: neutral American**
+> Young man in his mid-twenties with a neutral, general American accent, calmly explaining an Islamic topic on an educational YouTube channel. Warm, smooth mid-low voice, clear and present. Calm, steady and matter-of-fact, like a friend who knows the topic well explaining it plainly. Even energy from start to finish, natural conversational intonation with only subtle variation. Does not dramatize or over-emphasize words, no suspense voice, no excitement, never theatrical. Moderate, unhurried pace. Clean close-mic recording, dry, no reverb, no background noise.
+
+**B: neutral international (no strong regional accent)**
+> Young man in his mid-twenties speaking clear, neutral international English with no strong regional accent, calmly explaining an Islamic topic on an educational YouTube channel. Warm, smooth mid-low voice, clear and present. Calm, steady and matter-of-fact, like a friend who knows the topic well explaining it plainly. Even energy from start to finish, natural conversational intonation with only subtle variation. Does not dramatize or over-emphasize words, no suspense voice, no excitement, never theatrical. Moderate, unhurried pace. Clean close-mic recording, dry, no reverb, no background noise.
+
+Settings as v5: Multilingual v2 · Stability 65–75% · Style 0% · Similarity 75–80% · Speaker boost on · Speed 1.0
