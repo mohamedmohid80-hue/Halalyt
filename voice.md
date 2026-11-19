@@ -197,3 +197,11 @@ Measured on narration-only audio (Reference A is clean; B has music underneath, 
 
 Settings: Multilingual v2 · Stability 50–55% · Similarity 75% · Style 0% · Speaker boost off · Speed 1.05
 Script tip: short sentences and frequent full stops recreate the "short phrases + pauses" rhythm.
+
+### v9: final (natural flow)
+
+v8's "quick, short phrases with pauses" made the voice break at commas and leave long AI-sounding gaps. This version describes smooth, connected speech instead.
+
+> A young British man in his twenties with a light, natural British accent and an average, mid-low male voice with a slightly textured, real-sounding tone. He speaks in a natural, flowing, conversational way, connecting his words smoothly and moving through commas without stopping, only pausing briefly at the end of sentences. Calm, sincere and confident, like a thoughtful young Muslim explaining something important to his viewers. Natural, moderate intonation with gentle emphasis, steady energy and no drama. Clear, dry, close recording with no reverb or background noise.
+
+Settings: Multilingual v2 · Stability 55% · Similarity 75% · Style 0% · Speaker boost on · Speed 1.05 · Voice Design guidance scale ~40%
