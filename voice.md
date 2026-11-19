@@ -161,3 +161,10 @@ If staying on v3: choose "Robust" (most stable) instead of "Natural" or "Creativ
 > Young man in his mid-twenties speaking clear, neutral international English with no strong regional accent, calmly explaining an Islamic topic on an educational YouTube channel. Warm, smooth mid-low voice, clear and present. Calm, steady and matter-of-fact, like a friend who knows the topic well explaining it plainly. Even energy from start to finish, natural conversational intonation with only subtle variation. Does not dramatize or over-emphasize words, no suspense voice, no excitement, never theatrical. Moderate, unhurried pace. Clean close-mic recording, dry, no reverb, no background noise.
 
 Settings as v5: Multilingual v2 · Stability 65–75% · Style 0% · Similarity 75–80% · Speaker boost on · Speed 1.0
+
+### v7: not an announcer (everyday YouTuber talking normally)
+
+> An ordinary young guy in his early-to-mid twenties talking to the camera on his own small YouTube channel, explaining something about Islam to his viewers. Natural, everyday speaking voice, mid pitch, not deep, not smooth, not polished. Sounds like a real person, not a voice actor, not a narrator, not a radio or TV announcer. Casual and relaxed but sincere, like talking to a friend on a voice call. Plain, conversational delivery with normal small pauses, no projection, no dramatic emphasis, no performance. Calm and genuine. Recorded on a decent USB microphone in a quiet room, dry and clear.
+
+Settings: Multilingual v2 · Stability 50–60% · Similarity 75% · Style 0% · Speaker boost off · Speed 1.0–1.05
+(Speaker boost off and slightly lower stability make it sound less "produced".)
