@@ -126,3 +126,17 @@ Generate 3 previews, pick the closest one and save it as **"Hadi"**. If it still
 - Spell Islamic terms the way they should sound if it mispronounces them: *Insha'Allah, Assalamu alaikum, Subhan'Allah, ayah, hadith (ha-deeth), deen*. Add a pronunciation dictionary for repeat offenders.
 - **Never have the AI voice recite the Quran in Arabic.** Read the English translation only, and use a real reciter's recording (with permission) for any Arabic recitation. That's our channel rule (see `style.md` §9).
 - Export as **WAV 44.1 kHz**. faster-whisper then generates word timestamps for captions and animation sync.
+
+---
+
+## 4. Voice Design prompt v4: "serious reminder" narrator (similar type, not a copy)
+
+Same family as the references (young British male, light baritone, lively but grounded), shifted so it's its own voice: a few years older, slightly warmer and lower, with more weight for serious topics.
+
+> Young British man in his mid-to-late twenties with a natural, neutral London accent, narrating a serious Islamic reminder video on YouTube. Warm light-baritone voice, a little lower and calmer than a typical commentary YouTuber, clear and present, not breathy and not booming. Speaks like an older brother warning a friend about something that genuinely matters: sincere, grounded and slightly grave, with controlled emotion. Natural intonation that rises on questions and drops firmly on key statements, with real emphasis on important words. Never hyped, never cheerful, never dramatic or theatrical. Measured, steady pace with short deliberate pauses before reveals. Clean close-mic recording, dry, no reverb, no background noise.
+
+**Preview text:**
+
+> Many of you probably know that GTA 6 just got released. The game is honestly disgusting, but people are going crazy over it. Many Muslims think it's just a normal game... until they open it and see the truth.
+
+**Settings:** Eleven v3 · Stability 45–55% · Similarity 75–80% · Style 5–15% · Speaker boost on · Speed 0.95–1.0
