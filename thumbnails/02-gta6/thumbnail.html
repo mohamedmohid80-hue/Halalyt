@@ -1,0 +1,28 @@
+<!doctype html><html><head><meta charset="utf-8">
+<link href="https://fonts.googleapis.com/css2?family=Anton&display=swap" rel="stylesheet">
+<style>
+html,body{margin:0;width:1280px;height:720px;overflow:hidden;background:#111}
+.bg{position:absolute;inset:-40px;background:url(poster.jpg) center/cover;filter:blur(10px) brightness(.38) saturate(1.2)}
+.vig{position:absolute;inset:0;background:radial-gradient(ellipse at 60% 55%,rgba(0,0,0,0) 30%,rgba(0,0,0,.65) 100%)}
+.photo{position:absolute;left:46px;top:300px;width:600px;transform:rotate(-5deg);border:12px solid #fff;box-shadow:0 20px 40px rgba(0,0,0,.6)}
+.photo img{display:block;width:100%}
+.ring{position:absolute;left:285px;top:300px;width:210px;height:330px;border:12px solid #F21B1B;border-radius:50%;transform:rotate(-5deg);box-shadow:0 0 18px rgba(242,27,27,.6)}
+.halo{position:absolute;left:640px;top:40px;width:680px;height:680px;border-radius:50%;background:radial-gradient(circle,rgba(242,27,27,.45),rgba(242,27,27,0) 62%)}
+.hadi{position:absolute;right:40px;bottom:-160px;height:840px;filter:drop-shadow(0 0 0 #fff) drop-shadow(5px 0 0 #fff) drop-shadow(-5px 0 0 #fff) drop-shadow(0 5px 0 #fff) drop-shadow(0 -5px 0 #fff) drop-shadow(0 18px 30px rgba(0,0,0,.7))}
+.box{position:absolute;left:40px;top:30px;background:#E31B1B;padding:4px 28px 10px;transform:rotate(-2deg);box-shadow:0 10px 24px rgba(0,0,0,.5)}
+.box span{font:110px Anton;color:#fff;letter-spacing:1px;line-height:1}
+.big{position:absolute;left:44px;top:150px;font:200px Anton;color:#FFD400;line-height:1;-webkit-text-stroke:12px #111;paint-order:stroke fill;text-shadow:0 12px 26px rgba(0,0,0,.7);letter-spacing:2px}
+</style></head><body>
+<div class="bg"></div><div class="vig"></div>
+<div class="photo"><img src="poster.jpg"></div>
+<div class="ring"></div>
+<svg width="1280" height="720" style="position:absolute;inset:0">
+  <defs><marker id="h" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="3.2" markerHeight="3.2" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#F21B1B" stroke="#fff" stroke-width="1"/></marker></defs>
+  <path d="M700,560 Q620,640 520,560" fill="none" stroke="#fff" stroke-width="26" stroke-linecap="round"/>
+  <path d="M700,560 Q620,640 520,560" fill="none" stroke="#F21B1B" stroke-width="16" stroke-linecap="round" marker-end="url(#h)"/>
+</svg>
+<div class="halo"></div>
+<img class="hadi" src="../../brand/hadi/hadi-shock.svg">
+<div class="box"><span>DON'T PLAY</span></div>
+<div class="big">GTA VI</div>
+</body></html>
