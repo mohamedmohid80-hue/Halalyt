@@ -140,3 +140,14 @@ Same family as the references (young British male, light baritone, lively but gr
 > Many of you probably know that GTA 6 just got released. The game is honestly disgusting, but people are going crazy over it. Many Muslims think it's just a normal game... until they open it and see the truth.
 
 **Settings:** Eleven v3 · Stability 45–55% · Similarity 75–80% · Style 5–15% · Speaker boost on · Speed 0.95–1.0
+
+### v5: calm educational (no emotional rollercoaster)
+
+v4 gave too much drama on words like "disgusting" and "crazy". This version asks for even, matter-of-fact delivery and pairs it with higher stability.
+
+> Young British man in his mid-to-late twenties with a natural, neutral London accent, calmly explaining an Islamic topic on an educational YouTube channel. Warm light-baritone voice, clear and present. Calm, steady and matter-of-fact, like a knowledgeable teacher explaining something important to a student. Even, consistent energy from start to finish. Natural conversational intonation with gentle, subtle variation only. Does not dramatize or over-emphasize individual words, no exaggerated expressions, no suspense voice, no excitement, no sadness, never theatrical. Sincere and serious through calmness, not through emotion. Moderate, unhurried pace. Clean close-mic recording, dry, no reverb, no background noise.
+
+**Settings:** **Eleven Multilingual v2** (steadier than v3) · Stability 65–75% · Similarity 75–80% · **Style 0%** · Speaker boost on · Speed 1.0
+If staying on v3: choose "Robust" (most stable) instead of "Natural" or "Creative".
+
+**Script tips:** ellipses (…), question-heavy phrasing and strong adjectives pull the voice into drama. Use full stops instead of "…", and keep loaded words plain.
