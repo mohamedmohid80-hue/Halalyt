@@ -31,15 +31,9 @@
 ## 1. HOOK
 
 ```
-Many of you already know that GTA 6 just came out, and people are going crazy over it.
+Many of you probably know that GTA 6 just got released. The game is honestly disgusting, but people are going crazy over it.
 
-Millions of people waited years for this game. And a lot of them are Muslims.
-
-But what if I told you that most Muslims buying this game have no idea what they're actually letting into their homes?
-
-Now, you might be thinking, it's just a game. What does this have to do with Islam?
-
-Well, a lot more than you think. Let me explain.
+Many Muslims think it's just a normal game, until they open it and see the truth.
 ```
 
 ---
