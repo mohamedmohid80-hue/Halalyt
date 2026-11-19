@@ -205,3 +205,9 @@ v8's "quick, short phrases with pauses" made the voice break at commas and leave
 > A young British man in his twenties with a light, natural British accent and an average, mid-low male voice with a slightly textured, real-sounding tone. He speaks in a natural, flowing, conversational way, connecting his words smoothly and moving through commas without stopping, only pausing briefly at the end of sentences. Calm, sincere and confident, like a thoughtful young Muslim explaining something important to his viewers. Natural, moderate intonation with gentle emphasis, steady energy and no drama. Clear, dry, close recording with no reverb or background noise.
 
 Settings: Multilingual v2 · Stability 55% · Similarity 75% · Style 0% · Speaker boost on · Speed 1.05 · Voice Design guidance scale ~40%
+
+### v10: light Arab accent
+
+> A young Arab man in his twenties speaking fluent, clear English with a light, natural Arabic accent, the kind of soft accent of someone who grew up speaking Arabic and English. Average, mid-low male voice with a slightly textured, real-sounding tone. He pronounces Arabic and Islamic words like Allah, Quran, deen, hadith and sallallahu alayhi wa sallam with natural, correct Arabic pronunciation. He speaks in a natural, flowing, conversational way, connecting his words smoothly and moving through commas without stopping, only pausing briefly at the end of sentences. Calm, sincere and confident, like a thoughtful young Muslim explaining something important to his viewers. Natural, moderate intonation with gentle emphasis, steady energy and no drama. Clear, dry, close recording with no reverb or background noise.
+
+Settings: Multilingual v2 · Stability 55% · Similarity 75% · Style 0% · Speaker boost on · Speed 1.0–1.05 · Voice Design guidance scale ~40–45%
