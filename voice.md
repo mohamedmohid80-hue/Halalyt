@@ -211,3 +211,32 @@ Settings: Multilingual v2 · Stability 55% · Similarity 75% · Style 0% · Spea
 > A young Arab man in his twenties speaking fluent, clear English with a light, natural Arabic accent, the kind of soft accent of someone who grew up speaking Arabic and English. Average, mid-low male voice with a slightly textured, real-sounding tone. He pronounces Arabic and Islamic words like Allah, Quran, deen, hadith and sallallahu alayhi wa sallam with natural, correct Arabic pronunciation. He speaks in a natural, flowing, conversational way, connecting his words smoothly and moving through commas without stopping, only pausing briefly at the end of sentences. Calm, sincere and confident, like a thoughtful young Muslim explaining something important to his viewers. Natural, moderate intonation with gentle emphasis, steady energy and no drama. Clear, dry, close recording with no reverb or background noise.
 
 Settings: Multilingual v2 · Stability 55% · Similarity 75% · Style 0% · Speaker boost on · Speed 1.0–1.05 · Voice Design guidance scale ~40–45%
+
+---
+
+## 6. Analysis of "How to Protect Yourself From Jinn and Evil in Islam" (the voice you liked) and matched prompt (v11)
+
+Measured on 3 minutes of narration with Praat. There's a background bed under the voice, so texture numbers (breathiness, roughness) aren't reliable; pitch, intonation, pace and pauses are.
+
+| Measure | Value | What it means |
+|---|---|---|
+| Median pitch | 117 Hz | Mid-low adult male, not deep |
+| Pitch range (10–90%) | 89–171 Hz | Wide, expressive range |
+| Pitch movement | 4.4 semitones | Lively storytelling intonation |
+| Statement endings | −2.3 st | **Natural, gentle fall** at the end of sentences (not a big announcer drop, not flat) |
+| Question endings | +4.4 st | **Clear rising questions** ("But what makes this verse so special?") |
+| Voice size (formants) | ~16 cm | Average-sized male voice |
+| **Pace** | **~195 words/min** | **Fast and flowing** |
+| **Pauses** | **~0.2 s at commas and full stops**, 11/min | **Almost continuous speech**: barely stops, no long gaps |
+| Loudness range | 10 dB | Even, controlled volume |
+| Accent (R sounds) | strong R-colouring | **American accent** |
+| Arabic words | anglicised ("Bilal" → "Bailal", "Ruqyah" → "Rukia") | An English-speaking voice reading Islamic terms |
+
+**In plain words:** a young American man with an average, mid-low voice, telling a story fast and smoothly, with almost no pauses, lively but controlled intonation, gentle falls at sentence ends and clearly rising questions. Engaging and warm, like a confident YouTube storyteller, not a slow dramatic narrator.
+
+### v11 prompt
+
+> A young American man in his mid-twenties with a clear, average mid-low voice, telling an Islamic story on a popular YouTube channel. Confident, warm and engaging storytelling delivery with lively, natural intonation: gentle falls at the end of sentences and clearly rising questions. He speaks fast and smoothly, around 190 words per minute, flowing from one sentence to the next with only very short pauses and never stopping at commas. Sincere and respectful when mentioning Allah and the Prophet, never dramatic, never theatrical, never slow. Even, controlled volume. Clear, crisp, dry recording, no reverb.
+
+Settings: Multilingual v2 (or v3 "Natural") · Stability 45–50% · Similarity 75% · Style 5–10% · Speaker boost on · Speed 1.1 · Voice Design guidance scale ~40%
+Pronunciation tip: add a pronunciation dictionary (or spell words out in the script) for Bilal, Ruqyah, Ayat al-Kursi, so it says them correctly instead of the anglicised versions in the sample.
