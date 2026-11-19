@@ -1,6 +1,6 @@
 # Do Not Play GTA VI if You Are a Muslim
 
-**Target length:** ~7–8 min (≈1,250 words of voiceover + recitations)
+**Target length:** ~7 min (≈925 words of voiceover + 3 recitations + pauses)
 **Voice:** "Hadi" (ElevenLabs). No emotion tags: paste each box exactly as written, one section at a time.
 
 ---
