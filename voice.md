@@ -168,3 +168,32 @@ Settings as v5: Multilingual v2 · Stability 65–75% · Style 0% · Similarity 
 
 Settings: Multilingual v2 · Stability 50–60% · Similarity 75% · Style 0% · Speaker boost off · Speed 1.0–1.05
 (Speaker boost off and slightly lower stability make it sound less "produced".)
+
+---
+
+## 5. Deep analysis of the reference narrators (Praat) and the matching prompt (v8)
+
+Measured on narration-only audio (Reference A is clean; B has music underneath, so its texture numbers are less reliable).
+
+| Measure | A | B | What it means |
+|---|---|---|---|
+| Median pitch | 118 Hz | 118 Hz | Mid-low male, **not deep** |
+| Pitch range (10–90%) | 104–169 Hz | 81–169 Hz | Moderate range |
+| Pitch movement | 3.6 semitones | 4.7 semitones | Lively but controlled, not sing-song |
+| **Pitch change at the end of statements** | **+0.0 st (level)** | −4.8 st | **A keeps sentence endings level**: no big announcer "drop" |
+| Voice texture (HNR) | 16 dB | (music) | Slightly textured, a little rough. Not a smooth, polished voice |
+| Jitter / shimmer | 2.3% / 7.8% | (music) | Natural, slightly raspy, light vocal fry |
+| Vocal-tract size (from formants) | ~16 cm | ~17 cm | **Average-sized** male voice, not a big chesty voice |
+| Loudness range | 12 dB | 7 dB | Fairly even volume, no shouting or whispering |
+| Speed while talking | ~7 syllables/s | ~6 syllables/s | **Quick** within phrases |
+| Pauses | 20/min, ~0.6 s | 10/min, ~0.4 s | **Short phrases separated by frequent short pauses** |
+| Breaths | Audible in most pauses | n/a | Sounds like a real person recording, not studio-cleaned |
+
+**Why it doesn't sound like an announcer:** an announcer has a deep, smooth, resonant voice, big pitch drops at the end of every sentence and long dramatic pauses. These narrators are the opposite: an average-sized, slightly rough voice, level sentence endings, quick short phrases and natural breaths.
+
+### v8 prompt (matched to the measurements)
+
+> A young man in his twenties with an average, everyday male voice, mid-low pitch, not deep. His voice has a slightly rough, natural texture with a hint of vocal fry, not smooth or polished. He talks in quick, short phrases with brief natural pauses and audible breaths between them, keeping the end of his sentences fairly level instead of dropping dramatically. Calm, sincere and matter-of-fact, explaining an Islamic topic to his viewers like a normal person talking, not a narrator, voice actor or announcer. Even volume, moderate pitch movement, no dramatic emphasis. Recorded at home on a decent microphone, dry, with no reverb.
+
+Settings: Multilingual v2 · Stability 50–55% · Similarity 75% · Style 0% · Speaker boost off · Speed 1.05
+Script tip: short sentences and frequent full stops recreate the "short phrases + pauses" rhythm.
