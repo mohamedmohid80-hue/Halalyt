@@ -1,32 +1,25 @@
 <!doctype html><html><head><meta charset="utf-8">
-<link href="https://fonts.googleapis.com/css2?family=Anton&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@900&display=swap" rel="stylesheet">
 <style>
-html,body{margin:0;width:1280px;height:720px;overflow:hidden}
-body{background:linear-gradient(180deg,#5B2A86 0%,#B23A8F 45%,#F2766B 78%,#FFB36B 100%)}
-.sun{position:absolute;left:640px;top:520px;width:900px;height:900px;margin:-450px;border-radius:50%;background:radial-gradient(circle,rgba(255,214,140,.85) 0%,rgba(255,150,120,.35) 35%,rgba(255,120,140,0) 65%)}
-.palms{position:absolute;inset:0}
-.card{position:absolute;left:50%;top:245px;width:820px;transform:translateX(-50%) rotate(-3deg);border-radius:22px;overflow:hidden;box-shadow:0 30px 60px rgba(40,0,60,.55),0 0 0 8px rgba(255,255,255,.95)}
-.card img{display:block;width:100%;filter:saturate(1.15) contrast(1.05)}
-.ring{position:absolute;left:560px;top:250px;width:250px;height:460px;border:12px solid #FF2A2A;border-radius:50%;transform:rotate(-3deg);box-shadow:0 0 22px rgba(255,42,42,.7)}
-.title{position:absolute;left:0;right:0;top:22px;text-align:center;white-space:nowrap;font:168px Anton;line-height:1;color:#fff;letter-spacing:3px;text-shadow:0 10px 30px rgba(60,0,70,.55)}
-.title span{color:#FFE14D}
+html,body{margin:0;width:1280px;height:720px;overflow:hidden;background:#2a0505}
+/* one full-bleed image, graded serious: desaturated, red-tinted, crushed shadows */
+.bg{position:absolute;inset:-20px;background:url(poster.jpg) 45% center/cover;filter:grayscale(.75) contrast(1.25) brightness(.62) blur(1.2px)}
+.tint{position:absolute;inset:0;background:linear-gradient(180deg,rgba(120,0,0,.55),rgba(60,0,0,.35) 45%,rgba(25,0,0,.85));mix-blend-mode:multiply}
+.redglow{position:absolute;left:640px;top:380px;width:900px;height:900px;margin:-450px;border-radius:50%;background:radial-gradient(circle,rgba(255,40,40,.35),rgba(255,40,40,0) 60%)}
+.vig{position:absolute;inset:0;background:radial-gradient(ellipse at 50% 45%,rgba(0,0,0,0) 40%,rgba(0,0,0,.7) 100%)}
+/* the censored figure highlighted */
+.ring{position:absolute;left:485px;top:95px;width:300px;height:395px;border:13px solid #FF2020;border-radius:50%;box-shadow:0 0 30px rgba(255,32,32,.9),inset 0 0 30px rgba(255,32,32,.5)}
+/* warning tag */
+.tag{position:absolute;left:40px;top:36px;display:flex;align-items:center;gap:14px;background:#FFD400;color:#111;font:900 40px Inter;padding:10px 24px;border-radius:10px;transform:rotate(-2deg);box-shadow:0 8px 20px rgba(0,0,0,.5)}
+/* caption: serious white, red underline */
+.cap{position:absolute;left:0;right:0;bottom:58px;text-align:center;white-space:nowrap;font:150px Anton;line-height:1;color:#fff;letter-spacing:2px;text-shadow:0 0 3px #000,0 10px 30px rgba(0,0,0,.95)}
+.underline{position:absolute;left:170px;right:170px;bottom:40px;height:14px;background:#FF2020;box-shadow:0 0 18px rgba(255,32,32,.8)}
+.grain{position:absolute;inset:0;opacity:.18;mix-blend-mode:overlay}
 </style></head><body>
-<div class="sun"></div>
-<svg class="palms" width="1280" height="720" viewBox="0 0 1280 720">
-  <g fill="#3A1452" opacity=".55">
-    <path d="M70,720 C80,560 95,470 120,380 C130,470 125,600 118,720 Z"/>
-    <path d="M120,385 C60,350 10,360 -20,395 C40,370 90,375 120,392 Z"/>
-    <path d="M120,385 C150,330 210,315 260,330 C200,335 160,355 124,392 Z"/>
-    <path d="M120,385 C90,320 40,290 0,295 C60,310 95,345 118,392 Z"/>
-    <path d="M120,385 C170,370 230,385 270,425 C220,400 170,392 124,394 Z"/>
-    <path d="M1190,720 C1182,580 1170,480 1150,400 C1138,490 1145,610 1152,720 Z"/>
-    <path d="M1150,405 C1210,370 1260,380 1300,415 C1240,392 1190,395 1150,412 Z"/>
-    <path d="M1150,405 C1120,350 1060,335 1010,350 C1070,355 1110,375 1146,412 Z"/>
-    <path d="M1150,405 C1180,340 1230,310 1270,315 C1210,330 1175,365 1152,412 Z"/>
-    <path d="M1150,405 C1100,390 1040,405 1000,445 C1050,420 1100,412 1146,414 Z"/>
-  </g>
-</svg>
-<div class="card"><img src="poster.jpg"></div>
+<div class="bg"></div><div class="tint"></div><div class="redglow"></div><div class="vig"></div>
 <div class="ring"></div>
-<div class="title">DON'T PLAY <span>GTA VI</span></div>
+<div class="tag">⚠ MUSLIMS, WATCH THIS</div>
+<div class="cap">DON'T PLAY GTA VI</div>
+<div class="underline"></div>
+<svg class="grain" width="1280" height="720"><filter id="n"><feTurbulence type="fractalNoise" baseFrequency=".85" numOctaves="2" stitchTiles="stitch"/></filter><rect width="1280" height="720" filter="url(#n)"/></svg>
 </body></html>
