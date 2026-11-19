@@ -99,7 +99,7 @@ Allah didn't just say don't do it. He said, avoid it. Stay away from it.
 
 And Allah describes the true believers as those who do not witness falsehood. That's in Surah Al-Furqan, verse seventy-two.
 
-So how can we stay away from something... that we spend our free time playing?
+So how can we stay away from something that we spend our free time playing?
 ```
 
 ---
