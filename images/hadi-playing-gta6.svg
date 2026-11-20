@@ -22,13 +22,13 @@
  <path d="M840,800 Q960,740 1080,800 Q1060,860 960,868 Q860,860 840,800 Z" fill="#145C3A"/>
  <path d="M872,940 L1048,940" stroke="#145C3A" stroke-width="7" fill="none"/>
  <!-- head -->
- <circle cx="960" cy="715" r="82" fill="#D9A57B"/>
- <path d="M880,705 C882,620 1038,620 1040,705 Z" fill="#FFFFFF"/>
- <path d="M886,742 Q960,770 1034,742 L1030,770 Q960,792 890,770 Z" fill="#2B2420" stroke-width="5"/>
+ <ellipse cx="878" cy="728" rx="14" ry="22" fill="#D9A57B"/>
+ <ellipse cx="1042" cy="728" rx="14" ry="22" fill="#D9A57B"/>
+ <circle cx="960" cy="712" r="84" fill="#D9A57B"/>
+ <path d="M876,700 C878,612 1042,612 1044,700 Q960,716 876,700 Z" fill="#FFFFFF"/>
 </g>
 <g fill="#1E7B4F"><circle cx="905" cy="672" r="4.5"/><circle cx="930" cy="660" r="4.5"/><circle cx="960" cy="655" r="4.5"/><circle cx="990" cy="660" r="4.5"/><circle cx="1015" cy="672" r="4.5"/><circle cx="918" cy="690" r="4.5"/><circle cx="945" cy="682" r="4.5"/><circle cx="975" cy="682" r="4.5"/><circle cx="1002" cy="690" r="4.5"/></g>
 <!-- screen light rim on Hadi -->
-<path d="M886,668 C900,640 1020,640 1034,668" fill="none" stroke="#E7B8FF" stroke-width="5" opacity=".7"/>
 </g>
 <g transform="translate(0,95)"><!-- couch back -->
 <path d="M300,1080 L300,830 Q300,770 360,770 L1560,770 Q1620,770 1620,830 L1620,1080 Z" fill="url(#couch)" stroke="#17201B" stroke-width="8"/>
