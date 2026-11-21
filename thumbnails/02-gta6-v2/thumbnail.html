@@ -1,0 +1,48 @@
+<!doctype html><html><head><meta charset="utf-8">
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@900&display=swap" rel="stylesheet">
+<style>
+html,body{margin:0;width:1280px;height:720px;overflow:hidden;background:#000}
+.l{position:absolute;inset:0;clip-path:polygon(0 0,58% 0,44% 100%,0 100%);background:url(poster.jpg) 20% center/cover;filter:saturate(1.7) contrast(1.1) brightness(.8) blur(1.5px)}
+.r{position:absolute;inset:0;clip-path:polygon(58% 0,100% 0,100% 100%,44% 100%);background:url(mosque.jpg) 30% center/cover;filter:brightness(.62) saturate(1) sepia(.2)}
+.tintL{position:absolute;inset:0;clip-path:polygon(0 0,58% 0,44% 100%,0 100%);background:linear-gradient(180deg,rgba(90,20,120,.15),rgba(10,0,20,.6))}
+.seam{position:absolute;inset:0}
+.vig{position:absolute;inset:0;background:radial-gradient(ellipse at 62% 52%,rgba(0,0,0,0) 30%,rgba(0,0,0,.75) 100%)}
+.glow{position:absolute;left:880px;top:380px;width:760px;height:760px;margin:-380px;border-radius:50%;background:radial-gradient(circle,rgba(255,90,180,.55),rgba(166,77,255,.25) 35%,rgba(0,0,0,0) 62%)}
+/* hero case */
+.case{position:absolute;left:705px;top:95px;width:360px;height:470px;transform:perspective(1200px) rotateY(-16deg) rotateZ(4deg);border-radius:18px;overflow:hidden;
+  background:linear-gradient(180deg,#3A1460,#B23A8F 58%,#FF8A6B);border:8px solid #0b0b0b;box-shadow:-24px 30px 60px rgba(0,0,0,.8),0 0 60px rgba(255,90,180,.45)}
+.case .band{height:66px;background:#0B5FD7;font:900 40px Inter;color:#fff;padding:12px 22px;box-sizing:border-box}
+.case .gta{position:absolute;left:0;right:0;top:92px;text-align:center;font:110px Anton;color:#fff;-webkit-text-stroke:5px #000;paint-order:stroke fill;line-height:1}
+.case .vi{position:absolute;left:0;right:0;top:196px;text-align:center;font:150px Anton;line-height:1;background:linear-gradient(180deg,#FFD36E,#FF6FA0 55%,#A64DFF);-webkit-background-clip:text;background-clip:text;color:transparent;filter:drop-shadow(0 0 2px #000) drop-shadow(0 6px 10px rgba(0,0,0,.6))}
+.case .shine{position:absolute;inset:0;background:linear-gradient(115deg,rgba(255,255,255,.28) 0%,rgba(255,255,255,0) 35%)}
+/* stamp */
+.stamp{position:absolute;left:600px;top:372px;transform:rotate(-12deg) scale(.86);filter:drop-shadow(0 6px 14px rgba(0,0,0,.55))}
+/* text */
+.t1{position:absolute;left:48px;top:120px;font:96px Anton;color:#fff;line-height:1.02;letter-spacing:1px;text-shadow:0 0 3px #000,0 10px 26px rgba(0,0,0,.95)}
+.t1 b{display:block;font-weight:400;color:#FFD400}
+.under{position:absolute;left:52px;top:342px;width:430px;height:12px;background:#E31B1B;box-shadow:0 0 16px rgba(227,27,27,.8)}
+.chip{position:absolute;left:52px;top:395px;display:flex;gap:12px}
+.chip span{font:900 28px Inter;color:#fff;background:rgba(0,0,0,.6);border:3px solid rgba(255,255,255,.85);border-radius:999px;padding:8px 18px}
+.r18{position:absolute;left:1120px;top:40px;width:120px;background:#fff;border:5px solid #000;border-radius:10px;overflow:hidden;text-align:center;transform:rotate(6deg);box-shadow:0 10px 20px rgba(0,0,0,.7)}
+.r18 div{background:#E31B1B;font:84px Anton;color:#fff;line-height:1.05}
+.grain{position:absolute;inset:0;opacity:.16;mix-blend-mode:overlay}
+</style></head><body>
+<div class="l"></div><div class="tintL"></div><div class="r"></div>
+<svg class="seam" width="1280" height="720"><defs><filter id="tear"><feTurbulence type="fractalNoise" baseFrequency=".05" numOctaves="3" seed="4"/><feDisplacementMap in="SourceGraphic" scale="18"/></filter></defs>
+<path d="M742,0 L563,720" stroke="#fff" stroke-width="9" filter="url(#tear)"/></svg>
+<div class="vig"></div>
+<div class="glow"></div>
+<div class="case"><div class="band">PS5</div><div class="gta">GTA</div><div class="vi">VI</div><div class="shine"></div></div>
+<svg class="stamp" width="620" height="260" viewBox="0 0 620 260">
+ <defs><filter id="rough"><feTurbulence type="fractalNoise" baseFrequency=".9" numOctaves="2" seed="7" result="n"/><feColorMatrix in="n" type="matrix" values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 -0.9 1.18" result="m"/><feComposite in="SourceGraphic" in2="m" operator="in" result="c"/><feTurbulence type="fractalNoise" baseFrequency=".04" numOctaves="2" seed="2" result="w"/><feDisplacementMap in="c" in2="w" scale="3"/></filter></defs>
+ <g filter="url(#rough)">
+  <rect x="14" y="14" width="592" height="232" rx="22" fill="none" stroke="#FF2A2A" stroke-width="16"/>
+  <rect x="34" y="34" width="552" height="192" rx="12" fill="none" stroke="#FF2A2A" stroke-width="6"/>
+  <text x="310" y="196" text-anchor="middle" font-family="Anton" font-size="182" fill="#FF2A2A" stroke="#7a0000" stroke-width="2" letter-spacing="10">HARAM</text>
+ </g>
+</svg>
+<div class="t1">IT'S NOT<b>JUST A GAME</b></div>
+<div class="under"></div>
+<div class="r18"><div>18+</div></div>
+<svg class="grain" width="1280" height="720"><filter id="n"><feTurbulence type="fractalNoise" baseFrequency=".85" numOctaves="2" stitchTiles="stitch"/></filter><rect width="1280" height="720" filter="url(#n)"/></svg>
+</body></html>
