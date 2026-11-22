@@ -1,6 +1,6 @@
 # Why You Should Stop Sharing These "Share This Quran" Posts
 
-**Target length:** ~7 min (≈1,050 words of voiceover + 2 recitations)
+**Target length:** ~6 min (≈770 words of voiceover + 2 recitations + pauses)
 **Voice:** "Hadi" (ElevenLabs). No emotion tags: paste each box exactly as written, one section at a time.
 
 ---
