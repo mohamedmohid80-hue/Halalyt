@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Share This Quran Intro Board</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@700;900&family=Nunito:wght@700;800;900&family=Patrick+Hand&family=Amiri:wght@700&display=swap" rel="stylesheet">
+<style>
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{background:#E6E6E6;font-family:Nunito,sans-serif;color:#151515;padding:28px}
+  h1{font:900 38px Poppins;margin-bottom:4px}
+  .sub{font:700 16px Nunito;opacity:.75;margin-bottom:20px;max-width:1950px;line-height:1.4}
+  .grid{display:grid;grid-template-columns:repeat(4,480px);gap:20px}
+  .panel{background:#fff;border-radius:12px;overflow:hidden;box-shadow:0 3px 12px rgba(0,0,0,.08)}
+  .frame{width:480px;height:270px;position:relative;overflow:hidden;background:#fff;border-bottom:1px solid #eee}
+  .scene{width:1920px;height:1080px;transform:scale(.25);transform-origin:0 0;position:absolute;top:0;left:0;background:#fff;overflow:hidden}
+  .meta{padding:10px 14px 14px;font-size:14px;line-height:1.35}
+  .t{font:900 17px Poppins;color:#C0392B}
+  .vo{font-weight:900;margin:3px 0 6px}
+  .row{display:flex;gap:6px;margin-top:2px}
+  .k{font-weight:900;min-width:52px;opacity:.5;font-size:12px;text-transform:uppercase;padding-top:1px}
+  .new{display:inline-block;background:#1E7B4F;color:#fff;font:900 11px Nunito;border-radius:6px;padding:1px 6px;margin-left:6px;vertical-align:middle}
+  .a{position:absolute}
+  .shot{position:absolute;border-radius:16px;box-shadow:0 18px 40px rgba(0,0,0,.28);overflow:hidden}
+  .hand{position:absolute;font-family:"Patrick Hand",cursive;text-transform:uppercase;letter-spacing:1px;color:#151515;white-space:nowrap}
+  .lower{position:absolute;left:60px;bottom:70px;background:#fff;border:6px solid #151515;padding:10px 34px;font:900 64px Poppins;color:#E31B1B;letter-spacing:1px}
+</style>
+</head>
+<body>
+<h1>"Share This Quran" · Intro Scene Board (v3 style)</h1>
+<div class="sub">0:00–0:35 (times estimated until the voiceover is recorded). <b>What's new vs before</b> (green tags): real screenshots of actual "Don't skip / Allah's message" posts, a real phone at night, the real Quran; key lines typed word by word with the next word fading in from grey and key words in red; red arrows that draw to short labels; Hadi "acting" the turns; calmer holds (~2 s) on the evidence, faster (~1 s) on the list of examples; a red lower-third to open the first point.</div>
+<div class="grid" id="grid"></div>
+<script>
+const A='assets/';
+const H=p=>`../../brand/hadi/hadi-${p}.svg`;
+const shot=(src,x,y,w,rot=0,extra='')=>`<div class="shot" style="left:${x}px;top:${y}px;width:${w}px;transform:rotate(${rot}deg);${extra}"><img src="${A}${src}" style="width:100%;display:block"></div>`;
+const hadi=(p,x,h=820)=>`<img class="a" src="${H(p)}" style="left:${x}px;bottom:40px;height:${h}px">`;
+// word-by-word line: words before `upto` are solid, the next one is grey (mid-reveal), key words red
+const words=(txt,x,y,size,upto,keys=[],w=1700)=>{const ws=txt.split(' ');return `<div class="hand" style="left:${x}px;top:${y}px;font-size:${size}px;width:${w}px;white-space:normal;line-height:1.3">`+ws.map((t,i)=>`<span style="color:${i<upto?(keys.some(k=>t.toLowerCase().includes(k))?'#E31B1B':'#151515'):(i==upto?'#bbb':'transparent')}">${t}</span>`).join(' ')+'</div>';};
+const arrow=(x1,y1,x2,y2)=>`<svg class="a" style="left:0;top:0" width="1920" height="1080"><defs><marker id="m" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="5" markerHeight="5" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#D21E1E"/></marker></defs><path d="M${x1},${y1} Q${(x1+x2)/2},${y1-40} ${x2},${y2}" fill="none" stroke="#D21E1E" stroke-width="8" stroke-linecap="round" marker-end="url(#m)"/></svg>`;
+const phone=(inner,x=730,y=30,w=460)=>`<div class="a" style="left:${x}px;top:${y}px;width:${w}px;height:${w*1.75}px;border-radius:70px;background:#0b0b0e;padding:24px;box-shadow:0 30px 60px rgba(0,0,0,.45)"><div style="width:100%;height:100%;border-radius:50px;overflow:hidden;position:relative;background:#000">${inner}</div></div>`;
+const F=[
+ {t:'0:00',vo:'Imagine you\'re scrolling late at night,',s:`<div class="a" style="inset:0;background:url(${A}phone-hand.jpg) center/cover;filter:brightness(.45) saturate(.7) hue-rotate(195deg)"></div><div class="a" style="inset:0;background:radial-gradient(ellipse at 52% 48%,rgba(80,120,255,.25),rgba(0,0,0,.65) 70%)"></div><div class="hand" style="right:80px;top:60px;font-size:90px;color:#fff">2:14 AM</div>`,
+  vis:'<span class="new">NEW</span> Real photo of a hand holding a phone, graded to night blue. "2:14 AM" handwritten in the corner.', mot:'Slow push-in toward the phone screen. Time types on.'},
+ {t:'0:02',vo:'…and a beautiful Quran recitation comes on your screen.',s:phone(`<img src="${A}yt-stop-scrolling.png" style="position:absolute;height:100%;left:50%;transform:translateX(-50%)">`),
+  vis:'<span class="new">NEW</span> Phone mock-up showing a REAL post of this type ("Stop scrolling… This video is not random").', mot:'Phone rises in, screen glows; soft audio wave pulses at the bottom.'},
+ {t:'0:05',vo:'Then you read the caption.',s:phone(`<img src="${A}yt-stop-scrolling.png" style="position:absolute;height:100%;left:50%;transform:translateX(-50%);filter:brightness(.5)"><div style="position:absolute;left:30px;right:30px;bottom:120px;background:rgba(0,0,0,.75);border-radius:20px;padding:24px;font:800 36px Nunito;color:#fff">caption…</div>`),
+  vis:'Same phone, screen dims, the caption box slides up from the bottom.', mot:'Camera tilts down to the caption.'},
+ {t:'0:07',vo:'"Share this with ten people and Allah will open a door for you tonight."',s:words('"Share this with ten people and Allah will open a door for you tonight."',110,380,92,11,['ten','people','tonight']),
+  vis:'<span class="new">NEW</span> The caption alone on white, typed word by word in sync, "ten people" and "tonight" in red.', mot:'Word-by-word reveal (next word fades in from grey). Hold ~1 s.'},
+ {t:'0:11',vo:'"If you scroll past this, Shaytan stopped you."',s:words('"If you scroll past this, Shaytan stopped you."',160,410,110,6,['shaytan','stopped']),
+  vis:'Second caption, same treatment, "Shaytan stopped" in red.', mot:'Word-by-word reveal.'},
+ {t:'0:14',vo:'So you share it.',s:hadi('phone',300)+`<div class="a" style="left:980px;top:420px;background:#FFD400;border:6px solid #151515;border-radius:24px;padding:24px 70px;font:900 90px Poppins">SHARE</div><img class="a" src="${A}cursor.svg" style="left:1300px;top:540px;width:90px">`,
+  vis:'Hadi on his phone; a big SHARE button gets tapped.', mot:'Cursor glides and taps on "share", button squashes, "+1" floats up.'},
+ {t:'0:16',vo:'Because who would scroll past the Quran?',s:shot('quran.jpg',560,180,800,0,'filter:drop-shadow(0 0 40px rgba(242,183,5,.6))'),
+  vis:'<span class="new">NEW</span> Real photo of an open mushaf with a soft gold glow.', mot:'Gentle fade in, slow zoom (calm hold ~2 s).'},
+ {t:'0:19',vo:'Millions of Muslims do the exact same thing every day.',s:shot('yt-allah-warning.png',90,120,520,-4)+shot('yt-letter.png',700,90,520,3)+shot('yt-last-advice.png',1300,140,520,-2)+shot('yt-warning-now.png',260,560,520,2)+shot('yt-message.png',900,600,520,-3)+`<div class="a" style="left:1450px;top:640px;background:#151515;color:#7CFF8A;font:900 70px Poppins;padding:10px 30px;border-radius:14px">1,000,000+</div>`,
+  vis:'<span class="new">NEW</span> A cascade of REAL thumbnails of these posts ("Allah\'s WARNING: Don\'t Skip", "A Letter From Allah", "Allah\'s Last Advice (Don\'t skip this)"…), plus a view counter.', mot:'Thumbnails cascade in fast (~0.3 s apart), counter rolls up.'},
+ {t:'0:22',vo:'But what if I told you that a lot of these posts aren\'t really about the Quran at all?',s:shot('meme-rollsafe.jpg',460,140,1000),
+  vis:'Roll Safe meme ("what if I told you"), a meme for a beat of relief.', mot:'Slide in, slow zoom.'},
+ {t:'0:27',vo:'Now, sharing the Quran is a beautiful thing. That\'s not the problem.',s:shot('quran.jpg',360,200,700)+`<div class="a" style="left:1180px;top:330px;width:300px;height:300px;border-radius:50%;background:#1FA34A;color:#fff;font:900 220px Poppins;display:flex;align-items:center;justify-content:center;box-shadow:0 0 50px rgba(31,163,74,.6)">✓</div>`,
+  vis:'The real Quran photo with a big green tick.', mot:'Tick stamps on "beautiful".'},
+ {t:'0:30',vo:'The problem is what they attach to it.',s:shot('yt-dont-skip.png',150,250,760)+arrow(930,360,1210,250)+arrow(930,470,1210,470)+arrow(930,580,1210,690)+`<div class="hand" style="left:1230px;top:205px;font-size:70px;color:#D21E1E">pressure</div><div class="hand" style="left:1230px;top:425px;font-size:70px;color:#D21E1E">threats</div><div class="hand" style="left:1230px;top:645px;font-size:70px;color:#D21E1E">fake promises</div>`,
+  vis:'<span class="new">NEW</span> A real "Don\'t Skip · Message From Allah" thumbnail, and red arrows draw to three labels: pressure, threats, fake promises.', mot:'Each arrow draws on (0.3 s) and its label types on, one after another.'},
+ {t:'0:33',vo:'So today, we\'re going to break down the three tricks these posts use on you, and what you should do instead.',s:hadi('point',120)+`<svg class="a" style="left:0;top:0" width="1920" height="1080"><line x1="760" y1="560" x2="1820" y2="560" stroke="#151515" stroke-width="8"/>${[0,1,2,3].map(i=>`<circle cx="${820+i*320}" cy="560" r="44" fill="${i<3?'#E31B1B':'#1FA34A'}"/><text x="${820+i*320}" y="580" text-anchor="middle" font-family="Poppins" font-weight="900" font-size="54" fill="#fff">${i<3?i+1:'✓'}</text>`).join('')}</svg><div class="hand" style="left:740px;top:640px;font-size:46px">guilt trip</div><div class="hand" style="left:1050px;top:640px;font-size:46px">fake promises</div><div class="hand" style="left:1390px;top:640px;font-size:46px">fear → money</div><div class="hand" style="left:1700px;top:640px;font-size:46px;color:#1FA34A">instead</div>`,
+  vis:'<span class="new">NEW</span> Roadmap: Hadi points at a timeline with 1, 2, 3 (red) and a green ✓, labelled guilt trip, fake promises, fear → money, instead.', mot:'Line draws left to right; each circle pops as it\'s mentioned.'},
+ {t:'0:38',vo:'Let me explain. / Number one. They guilt trip you.',s:hadi('think',1300)+`<div class="lower">#1 THEY GUILT TRIP YOU</div>`,
+  vis:'<span class="new">NEW</span> Red lower-third chapter title opens Point 1. Hadi in the thinking pose.', mot:'Lower-third slides in from the left.'},
+];
+document.getElementById('grid').innerHTML=F.map((f,i)=>`<div class="panel"><div class="frame"><div class="scene">${f.s}</div></div><div class="meta"><div class="t">${i+1} · ${f.t}</div><div class="vo">“${f.vo.replace(/^"|"$/g,"")}”</div><div class="row"><div class="k">Visual</div><div>${f.vis}</div></div><div class="row"><div class="k">Motion</div><div>${f.mot}</div></div></div></div>`).join('');
+</script>
+</body></html>

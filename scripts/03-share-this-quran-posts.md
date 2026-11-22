@@ -137,8 +137,6 @@ But now that you know, you know.
 ## 7. OUTRO
 
 ```
-If this video helped you, share it. Not because I told you to, but because someone in your family group chat needs to hear it.
-
 And subscribe. This channel is all about the things Muslims see online every day, that nobody talks about.
 
 Assalamu alaikum.
