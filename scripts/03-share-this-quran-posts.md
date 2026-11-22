@@ -1,26 +1,17 @@
 # Why You Should Stop Sharing These "Share This Quran" Posts
 
-**Target length:** ~6 min (≈770 words of voiceover + 2 recitations + pauses)
+**Target length:** ~6 min (voiceover only, no recitations)
 **Voice:** "Hadi" (ElevenLabs). No emotion tags: paste each box exactly as written, one section at a time.
 
 ---
 
-## Recitations
+## On-screen Quran (Arabic shown, no recitation audio)
 
-| # | Where | Ayah |
-|---|---|---|
-| R1 | Point 1 | **Surah An-Naml 27:65** |
-| R2 | Point 3 | **Surah Al-Baqarah 2:41** |
-
-## References (check each on quran.com / sunnah.com before publishing)
-
-| Quote | Source |
+| Where | Ayah |
 |---|---|
-| None in the heavens and the earth knows the unseen except Allah | Quran 27:65 |
-| …and that you say about Allah what you do not know | Quran 7:33 |
-| Do not say about what your tongues falsely describe, "This is halal and this is haram," to invent lies about Allah | Quran 16:116 |
-| Do not exchange My verses for a small price | Quran 2:41 |
-| The first people judged on the Day of Judgement include the one who recited the Quran so that people would say "he is a reciter" | Sahih Muslim 1905 |
+| Point 1 | Surah An-Naml 27:65 |
+| Point 2 | Surah Al-A'raf 7:33 and An-Nahl 16:116 |
+| Point 3 | Surah Al-Baqarah 2:41 |
 
 ---
 
@@ -58,12 +49,10 @@ But who gave them the right to say that? How do they know why you scrolled past?
 Allah says in the Quran.
 ```
 
-> 🔊 **RECITATION R1: Surah An-Naml 27:65**
+> 📖 ON SCREEN: Arabic of An-Naml 27:65 + reference
 
 ```
 "Say, none in the heavens and the earth knows the unseen except Allah."
-
-That's Surah An-Naml, verse sixty-five.
 
 Only Allah knows what's in your heart. Not a page with a million followers. Your love for Allah is not measured by a share button.
 ```
@@ -81,9 +70,9 @@ Number two. Fake promises.
 
 Where did they get that from? Not from the Quran. Not from the Prophet, sallallahu alayhi wa sallam.
 
-Allah lists the things He has forbidden, and among them is this: that you say about Allah what you do not know. That's in Surah Al-A'raf, verse thirty-three.
+Allah lists the things He has forbidden, and among them is this: that you say about Allah what you do not know.
 
-And in Surah An-Nahl, Allah warns against making up rules with your tongue and lying about Allah.
+And Allah warns against making up rules with your tongue and lying about Allah.
 
 Promising a reward that Allah never promised is not a small thing. It's speaking on Allah's behalf. And these pages do it every single day, with a time limit attached, so you don't stop to think.
 ```
@@ -106,14 +95,12 @@ Your fear of Allah, the most sacred feeling a Muslim has, turned into numbers on
 Allah says to the people who traded His words for worldly gain.
 ```
 
-> 🔊 **RECITATION R2: Surah Al-Baqarah 2:41**
+> 📖 ON SCREEN: Arabic of Al-Baqarah 2:41 + reference
 
 ```
 "And do not exchange My verses for a small price, and fear only Me."
 
-That's Surah Al-Baqarah, verse forty-one.
-
-And the Prophet, sallallahu alayhi wa sallam, told us that among the first people judged on the Day of Judgement is a man who recited the Quran. But he didn't do it for Allah. He did it so people would say, he's a reciter. That's in Sahih Muslim.
+And the Prophet, sallallahu alayhi wa sallam, told us that among the first people judged on the Day of Judgement is a man who recited the Quran. But he didn't do it for Allah. He did it so people would say, he's a reciter.
 
 If reciting the Quran for praise is that serious, what about using the Quran for views?
 
@@ -146,11 +133,9 @@ But now that you know, you know.
 
 ---
 
-## 7. DUA AND OUTRO
+## 7. OUTRO
 
 ```
-May Allah protect our love for Him from being used by anyone. May He make us people who share His words sincerely, and act on them. Ameen.
-
 If this video helped you, share it. Not because I told you to, but because someone in your family group chat needs to hear it.
 
 And subscribe. This channel is all about the things Muslims see online every day, that nobody talks about.
