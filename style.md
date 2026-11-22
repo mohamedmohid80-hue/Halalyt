@@ -196,6 +196,18 @@ The references show a picture of each word. We go one step further: **when the v
 
 Diagram style: white background, thick dark outlines (8 px), rounded nodes, Poppins Black labels, colour by meaning (red = wrong, green = right, gold = key number, grey = "what you expected"). Every part draws on in sync with its word (line draw 0.25 s, node pop 0.1 s), and the whole diagram keeps the slow zoom. Quran and hadith stay on clean cards with no diagrams (§9).
 
+### 5.8 v3 upgrade: real images + teaching clarity (from our GTA edit and the 400k "Is Art Haram?" video)
+
+Full analysis: `analysis/03-reference-videos-gta-and-art.md`. In short:
+- **Real images of the actual thing** (posts, posters, screenshots, products, places, blurred where needed). Illustrations and diagrams only for abstract ideas.
+- **Calligraphy seals** for the Prophet ﷺ, Sahaba and scholars when quoting them. **Book cover + reference + grade** on every hadith card.
+- **Word-by-word key sentences** (next word fading in from grey, key words in red or green) for the 3–5 most important lines.
+- **Arrows that draw on to 1–3 short labels** to show *why*.
+- **Hadi acts every turn of the argument** (explain/whiteboard, confused ?, raised finger "but…", shock, thumbs up).
+- **Two speeds:** ~1 s per visual in hooks and lists, ~2 s with more stillness for explanation and evidence.
+- **Red lower-third chapter title** at each section start.
+- **Script shape:** scenario or "many of you have seen" hook, then shock, then "before you panic", then roadmap, then points, then a practical checklist, then a short close.
+
 ## 9. Quran and hadith (the respect rules)
 
 These override every other rule.
