@@ -18,17 +18,18 @@
 ## 1. HOOK
 
 ```
-Many of you have seen these posts. A verse from the Quran, a beautiful recitation, and then the caption.
+Imagine you're scrolling late at night, and a beautiful Quran recitation comes on your screen. Then you read the caption.
 
 "Share this with ten people and Allah will open a door for you tonight."
 "If you scroll past this, Shaytan stopped you."
-"Don't skip. Allah sent this to you for a reason."
 
-And millions of Muslims share them. Because who would scroll past the Quran?
+So you share it. Because who would scroll past the Quran?
 
-But what if I told you that a lot of these posts aren't really about the Quran at all?
+Millions of Muslims do the exact same thing every day. But what if I told you that a lot of these posts aren't really about the Quran at all?
 
-Now, sharing the Quran is a beautiful thing. That's not the problem. The problem is what they attach to it. Let me explain.
+Now, sharing the Quran is a beautiful thing. That's not the problem. The problem is what they attach to it.
+
+So today, we're going to break down the three tricks these posts use on you, and what you should do instead. Let me explain.
 ```
 
 ---
