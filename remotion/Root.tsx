@@ -4,6 +4,7 @@ import {Hook, HOOK_DURATION_S, HOOK_FPS} from './Hook';
 import {Point1, P1_DURATION_S, P1_FPS} from './Point1';
 import {Rest, REST_DURATION_S, REST_FPS} from './Rest';
 import {Episode, EPISODE_DURATION_S} from './Episode';
+import {Ep03, EP03_DURATION_S, EP03_FPS} from './Ep03';
 
 export const Root: React.FC = () => (
   <>
@@ -25,5 +26,6 @@ export const Root: React.FC = () => (
     />
     <Composition id="Ep01-Rest" component={Rest} durationInFrames={Math.round(REST_DURATION_S * REST_FPS)} fps={REST_FPS} width={1920} height={1080} />
     <Composition id="Ep01-Full" component={Episode} durationInFrames={Math.round(EPISODE_DURATION_S * 30)} fps={30} width={1920} height={1080} />
+    <Composition id="Ep03-ShareQuran" component={Ep03} durationInFrames={Math.round(EP03_DURATION_S * EP03_FPS)} fps={EP03_FPS} width={1920} height={1080} />
   </>
 );
