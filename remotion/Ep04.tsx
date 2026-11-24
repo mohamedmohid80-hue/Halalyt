@@ -19,6 +19,17 @@ const Bg: React.FC<{name: string; dim?: number}> = ({name, dim = 0}) => (
   </AbsoluteFill>
 );
 const Icon: React.FC<{n: string; w: number}> = ({n, w}) => <Img src={f(`icons/${n}.png`)} style={{width: w, display: 'block'}} />;
+/** Small real photo in a rounded white-bordered card, optionally with a dark time badge. */
+const Photo: React.FC<{src: string; w: number; h: number; pos?: string; badge?: string; badgeColor?: string; bright?: number}> = ({src, w, h, pos = 'center', badge, badgeColor = '#fff', bright}) => (
+  <div style={{position: 'relative', width: w, height: h, borderRadius: 18, overflow: 'hidden', border: '6px solid #fff', boxShadow: '0 12px 28px rgba(0,0,0,.28)'}}>
+    <Img src={f(`photos/${src}.jpg`)} style={{width: '100%', height: '100%', objectFit: 'cover', objectPosition: pos, display: 'block', filter: bright ? `brightness(${bright}) contrast(1.1)` : undefined}} />
+    {badge && <div style={{position: 'absolute', left: 10, top: 10, background: 'rgba(0,0,0,.75)', color: badgeColor, fontFamily: POP, fontWeight: 900, fontSize: 30, padding: '2px 14px', borderRadius: 10}}>{badge}</div>}
+  </div>
+);
+/** A black silhouette person (any rig pose), like the reference videos' "a person" figures. */
+const Sil: React.FC<{pose: string; h: number; flip?: boolean}> = ({pose, h, flip}) => (
+  <Img src={f(`hadi/${pose}.svg`)} style={{height: h, display: 'block', filter: 'brightness(0)', opacity: 0.88, transform: flip ? 'scaleX(-1)' : undefined}} />
+);
 const Hadi: React.FC<{pose: string; h: number; flip?: boolean}> = ({pose, h, flip}) => (
   <Img src={f(`hadi/${pose}.svg`)} style={{height: h, display: 'block', transform: flip ? 'scaleX(-1)' : undefined, filter: 'drop-shadow(0 14px 16px rgba(0,0,0,.3))'}} />
 );
@@ -112,7 +123,7 @@ const Audit: React.FC = () => {
           if (r.width >= 1900 && r.height >= 1000) continue;
           const src = el.querySelector('img')?.getAttribute('src') ?? '';
           const name = svg ? 'arrow' : src ? src.split('/').pop() : (el.textContent ?? '').slice(0, 30);
-          const kind = svg ? 'arrow' : src.includes('/hadi/') ? 'hadi' : src ? 'icon' : 'text';
+          const kind = svg ? 'arrow' : src.includes('/hadi/') ? 'hadi' : src.includes('/photos/') ? 'photo' : src ? 'icon' : 'text';
           items.push({name, kind, x: Math.round(r.x), y: Math.round(r.y), w: Math.round(r.width), h: Math.round(r.height)});
         }
       });
@@ -123,11 +134,13 @@ const Audit: React.FC = () => {
         rg.selectNodeContents(el);
         const t = rg.getBoundingClientRect(), b = el.getBoundingClientRect();
         const round = getComputedStyle(el).borderRadius.includes('50%');
+        const fsz = Math.max(...[el, ...Array.from(el.querySelectorAll('*'))].map((x) => parseFloat(getComputedStyle(x).fontSize) || 0));
+        const v = Math.max(2, fsz * 0.15);
         const spill = round
           ? t.width > b.width * 0.82 || t.height > b.height * 0.95 // text must sit inside the oval, not just the box
-          : t.left < b.left - 2 || t.right > b.right + 2 || t.top < b.top - 2 || t.bottom > b.bottom + 2;
+          : t.left < b.left - 2 || t.right > b.right + 2 || t.top < b.top - v || t.bottom > b.bottom + v; // a font's ascent/descent may exceed a tight line-height without any visible spill
         if (spill)
-          items.push({name: el.textContent.slice(0, 30), kind: 'spill', x: 0, y: 0, w: 0, h: 0});
+          items.push({name: el.textContent.slice(0, 30), kind: 'spill', x: Math.round(t.left - b.left), y: Math.round(t.top - b.top), w: Math.round(t.width - b.width), h: Math.round(t.height - b.height)});
       });
       console.log(`AUDIT ${frame} ${JSON.stringify(items)}`);
       continueRender(id);
@@ -149,12 +162,11 @@ export const Ep04: React.FC<{audit?: boolean}> = ({audit}) => {
       </Shot>
 
       {/* 2 · station, no Hadi, "later" thoughts pop */}
-      <Shot from={5.2} to={11} zoom={0.12} panX={120} ox={960} oy={540} over={<Cap text="Millions of Muslims" at={5.3} dur={0.8} />}>
+      <Shot from={5.2} to={11} zoom={0.12} panX={120} ox={960} oy={540} over={<><Cap text="Millions of Muslims" at={5.3} dur={0.8} to={9.8} /><Cap text="I'll pray when I get home." at={9.8} dur={0.7} /></>}>
         <Bg name="station" />
         <In at={6.0} kind="pop" x={1380} y={340}><Cloud text={"after\nwork"} w={320} h={190} size={40} /></In>
         <In at={7.0} kind="pop" x={820} y={260}><Cloud text={"I'll pray\nlater"} w={330} h={200} size={40} /></In>
         <In at={8.6} kind="pop" x={330} y={300}><Cloud text={"I'll pray\nat home"} w={400} h={240} /></In>
-        <In at={9.8} kind="pop" x={420} y={640}><Icon n="house" w={170} /></In>
       </Shot>
 
       {/* 3 · bedroom at night, heavy-moment text */}
@@ -168,41 +180,47 @@ export const Ep04: React.FC<{audit?: boolean}> = ({audit}) => {
       <Shot from={14.2} to={22} shakeAt={18.9}>
         <In at={14.3} kind="pop" x={60} y={110}><Num n={1} /></In>
         <In at={14.3} kind="pop" x={130} y={106}><Yel t="Most Muslims think" /></In>
-        <In at={15.0} kind="pop" x={160} y={300}><Icon n="clock" w={200} /></In>
-        <In at={16.6} kind="pop" x={150} y={520}><Label t="pray it later" size={60} c={INK} /></In>
-        <Draw d="M380,400 C480,330 560,330 640,400" at={17.3} arrow />
-        <In at={17.3} kind="pop" x={485} y={245}><Num n={2} /></In>
-        <In at={17.8} kind="pop" x={660} y={320}><Icon n="check" w={180} /></In>
-        <In at={18.0} kind="pop" x={600} y={540}><PillB t="counts the same" c={GRN} /></In>
-        <In at={18.85} kind="stamp" x={1160} y={330} rot={-12}><div style={{fontFamily: POP, fontWeight: 900, fontSize: 58, color: RED, border: `8px solid ${RED}`, borderRadius: 16, padding: '4px 26px', background: 'rgba(255,255,255,.7)'}}>WRONG</div></In>
-        <In at={18.85} kind="pop" x={1080} y={250}><Num n={3} /></In>
-        <In at={19.2} kind="slide" x={1500} y={380}><Hadi pose="shrug" h={560} /></In>
-        <In at={20.2} kind="pop" x={1060} y={820}><Num n={4} /></In>
-        <In at={20.2} kind="fade" x={1130} y={810}><Label t="it changes everything" size={58} /></In>
+        <In at={15.0} kind="pop" x={120} y={220}><Sil pose="walk1" h={270} /></In>
+        <In at={15.15} kind="pop" x={275} y={220}><Sil pose="walk-phone" h={270} /></In>
+        <In at={15.3} kind="pop" x={430} y={220}><Sil pose="carry-bag" h={270} /></In>
+        <In at={15.45} kind="pop" x={585} y={220}><Sil pose="walk1" h={270} flip /></In>
+        <In at={15.9} kind="pop" x={850} y={330}><PillB t="completely fine ✓" c={GRN} /></In>
+        <In at={16.5} kind="pop" x={140} y={560}><Photo src="pray-rug" w={260} h={300} badge="6:30 PM" badgeColor="#FF6B6B" /></In>
+        <In at={16.7} kind="fade" x={150} y={875}><Label t="pray it later" size={56} /></In>
+        <Draw d="M440,700 C520,640 600,640 670,700" at={17.3} arrow />
+        <In at={17.3} kind="pop" x={525} y={575}><Num n={2} /></In>
+        <In at={17.8} kind="pop" x={700} y={570}><Photo src="pray-field" w={300} h={280} pos="center 60%" bright={1.6} badge="1:30 PM" badgeColor="#7CFFB0" /></In>
+        <In at={18.0} kind="pop" x={700} y={880}><PillB t="counts the same" c={GRN} /></In>
+        <In at={18.85} kind="stamp" x={1110} y={660} rot={-12}><div style={{fontFamily: POP, fontWeight: 900, fontSize: 70, color: RED, border: `9px solid ${RED}`, borderRadius: 16, padding: '4px 30px', background: 'rgba(255,255,255,.8)'}}>WRONG</div></In>
+        <In at={18.85} kind="pop" x={1080} y={570}><Num n={3} /></In>
+        <In at={19.2} kind="slide" x={1500} y={330}><Hadi pose="shrug" h={540} /></In>
+        <In at={20.2} kind="pop" x={1040} y={472}><Num n={4} /></In>
+        <In at={20.2} kind="fade" x={1105} y={462}><Label t="it changes everything" size={52} /></In>
       </Shot>
 
       {/* 5 · whiteboard B: authority + roadmap, slow zoom out as it fills */}
       <Shot from={22} to={34} zoom={-0.05} ox={960} oy={540}>
-        <In at={22.2} kind="slideL" x={130} y={590}><Hadi pose="point-left" h={440} flip /></In>
+        <In at={22.2} kind="slideL" x={130} y={600}><Hadi pose="point-left" h={430} flip /></In>
         <In at={22.4} kind="pop" x={60} y={92}><Num n={1} /></In>
         <In at={22.4} kind="pop" x={130} y={86}><Yel t={<>The Prophet <span style={{fontFamily: AMIRI, fontWeight: 400}}>ﷺ</span></>} /></In>
+        <In at={23.0} kind="pop" x={1120} y={50}><Photo src="nabawi" w={300} h={180} pos="center 70%" /></In>
         <In at={23.6} kind="fade" x={600} y={92}><Label t="spoke about this directly" size={56} /></In>
-        <In at={25.4} kind="pop" x={60} y={250}><Num n={2} /></In>
-        <In at={25.4} kind="pop" x={130} y={250}><Icon n="books" w={180} /></In>
-        <In at={25.6} kind="fade" x={90} y={445}><Label t="Sahih Bukhari" size={50} /></In>
-        <In at={26.4} kind="pop" x={430} y={260}><Icon n="book" w={160} /></In>
-        <In at={26.6} kind="fade" x={400} y={445}><Label t="Sahih Muslim" size={50} /></In>
-        <Draw d="M700,380 C780,320 850,320 910,370" at={27.4} arrow />
-        <In at={27.6} kind="pop" x={1000} y={230}><Yel t="In the next few minutes" size={46} /></In>
-        <In at={28.6} kind="pop" x={950} y={340}><Num n={3} /></In>
-        <In at={28.6} kind="pop" x={1020} y={340}><Icon n="scroll" w={150} /></In>
-        <In at={28.8} kind="fade" x={975} y={510}><Label t="what Islam says" size={46} c={INK} /></In>
-        <In at={30.2} kind="pop" x={1300} y={340}><Num n={4} /></In>
-        <In at={30.2} kind="pop" x={1370} y={340}><Icon n="shield" w={150} /></In>
-        <In at={30.4} kind="fade" x={1320} y={510}><Label t="the 1 exception" size={46} c={INK} /></In>
-        <In at={31.8} kind="pop" x={1600} y={340}><Num n={5} /></In>
-        <In at={31.8} kind="pop" x={1670} y={340}><Icon n="check" w={150} /></In>
-        <In at={32.0} kind="fade" x={1680} y={510}><Label t="4 fixes" size={46} c={GRN} /></In>
+        <In at={25.4} kind="pop" x={60} y={262}><Num n={2} /></In>
+        <In at={25.4} kind="pop" x={130} y={260}><Photo src="books-shelf" w={220} h={200} /></In>
+        <In at={25.6} kind="fade" x={135} y={475}><Label t="Sahih Bukhari" size={48} /></In>
+        <In at={26.4} kind="pop" x={390} y={260}><Photo src="books-shelf2" w={200} h={200} pos="center 30%" /></In>
+        <In at={26.6} kind="fade" x={385} y={475}><Label t="Sahih Muslim" size={48} /></In>
+        <Draw d="M630,380 C720,320 830,320 920,400" at={27.4} arrow />
+        <In at={27.6} kind="pop" x={1000} y={290}><Yel t="In the next few minutes" size={46} /></In>
+        <In at={28.6} kind="pop" x={950} y={402}><Num n={3} /></In>
+        <In at={28.6} kind="pop" x={1020} y={395}><Photo src="quran-ms" w={190} h={200} /></In>
+        <In at={28.8} kind="fade" x={990} y={610}><Label t="what Islam says" size={46} c={INK} /></In>
+        <In at={30.2} kind="pop" x={1280} y={402}><Num n={4} /></In>
+        <In at={30.2} kind="pop" x={1320} y={380}><Sil pose="raise-hand" h={230} /></In>
+        <In at={30.4} kind="fade" x={1300} y={610}><Label t="the 1 exception" size={46} c={INK} /></In>
+        <In at={31.8} kind="pop" x={1580} y={402}><Num n={5} /></In>
+        <In at={31.8} kind="pop" x={1650} y={385}><div style={{fontFamily: POP, fontWeight: 900, fontSize: 130, color: RED, lineHeight: 1.25}}>x4</div></In>
+        <In at={32.0} kind="fade" x={1640} y={610}><Label t="simple fixes" size={46} c={GRN} /></In>
       </Shot>
 
       <TempSubs />
