@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><title>Delaying Salah Intro Board</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@700;900&family=Nunito:wght@700;800;900&family=Patrick+Hand&family=Amiri:wght@700&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:#E6E6E6;font-family:Nunito,sans-serif;color:#151515;padding:28px}
+h1{font:900 38px Poppins;margin-bottom:4px}
+.sub{font:700 16px Nunito;opacity:.78;margin-bottom:20px;max-width:1950px;line-height:1.45}
+.grid{display:grid;grid-template-columns:repeat(4,480px);gap:20px}
+.panel{background:#fff;border-radius:12px;overflow:hidden;box-shadow:0 3px 12px rgba(0,0,0,.08)}
+.frame{width:480px;height:270px;position:relative;overflow:hidden;border-bottom:1px solid #eee}
+.scene{width:1920px;height:1080px;transform:scale(.25);transform-origin:0 0;position:absolute;top:0;left:0;overflow:hidden;background:#fff}
+.meta{padding:10px 14px 14px;font-size:14px;line-height:1.35}
+.t{font:900 17px Poppins;color:#C0392B}
+.tag{display:inline-block;font:900 11px Nunito;border-radius:6px;padding:2px 7px;margin-left:8px;vertical-align:middle;color:#fff}
+.wb{background:#2F80ED}.an{background:#E8590C}
+.vo{font-weight:900;margin:3px 0 6px}
+.row{display:flex;gap:6px;margin-top:2px}
+.k{font-weight:900;min-width:58px;opacity:.5;font-size:12px;text-transform:uppercase;padding-top:1px}
+.a{position:absolute}
+.hand{position:absolute;font-family:"Patrick Hand",cursive;text-transform:uppercase;letter-spacing:1px;color:#151515;white-space:nowrap}
+</style></head><body>
+<h1>Delaying Salah · Intro Scene Board (mixed style)</h1>
+<div class="sub">The new idea: we <b>alternate</b> between <span class="tag an">ANIMATED SCENE</span> (Hadi inside a real place: classroom, office, the bus home, his room) for the story beats, and <span class="tag wb">WHITEBOARD</span> (the clean white explainer style) for the rules, evidence and diagrams. Every scene has a <b>camera move</b> and <b>sound effects</b>, and Hadi is animated (idle bounce, gestures, walking), so something is always happening. The voiceover below is a draft for the intro; I'll write the full script once you approve the direction.</div>
+<div class="grid" id="grid"></div>
+<script>
+const INK='#17201B';
+const hadi=(p,x,y,h=760,flip=false,extra='')=>`<img class="a" src="hadi-${p}.svg" style="left:${x}px;top:${y}px;height:${h}px;${flip?'transform:scaleX(-1);':''}${extra}">`;
+const clock=(x,y,s,h,m,col='#151515')=>{const ha=(h%12+m/60)*30-90,ma=m*6-90,r=a=>a*Math.PI/180;return `<svg class="a" style="left:${x}px;top:${y}px" width="${s}" height="${s}" viewBox="0 0 100 100"><circle cx="50" cy="50" r="45" fill="#fff" stroke="${INK}" stroke-width="6"/>${[...Array(12)].map((_,i)=>`<line x1="${50+38*Math.cos(r(i*30))}" y1="${50+38*Math.sin(r(i*30))}" x2="${50+43*Math.cos(r(i*30))}" y2="${50+43*Math.sin(r(i*30))}" stroke="${INK}" stroke-width="3"/>`).join('')}<line x1="50" y1="50" x2="${50+22*Math.cos(r(ha))}" y2="${50+22*Math.sin(r(ha))}" stroke="${INK}" stroke-width="7" stroke-linecap="round"/><line x1="50" y1="50" x2="${50+34*Math.cos(r(ma))}" y2="${50+34*Math.sin(r(ma))}" stroke="${col}" stroke-width="5" stroke-linecap="round"/><circle cx="50" cy="50" r="5" fill="${INK}"/></svg>`;};
+// ---- animated environments ----
+const classroom=()=>`<div class="a" style="inset:0;background:linear-gradient(#F3E7CF,#EADBBE)"></div>
+<div class="a" style="left:0;right:0;top:760px;bottom:0;background:#B98A5B"></div>
+<div class="a" style="left:240px;top:120px;width:1100px;height:440px;background:#2F5D46;border:22px solid #8A5A34;border-radius:8px"></div>
+<div class="hand" style="left:320px;top:200px;font-size:70px;color:#EAF2EA;text-transform:none">Maths · Lesson 4</div>
+<div class="hand" style="left:320px;top:300px;font-size:64px;color:#EAF2EA;text-transform:none">2x + 5 = 17</div>
+<div class="a" style="left:1450px;top:150px;width:330px;height:420px;background:#9FD3F2;border:16px solid #fff;box-shadow:0 0 0 6px ${INK}"></div>
+${clock(1560,600,150,13,30)}
+${[0,1,2].map(i=>`<div class="a" style="left:${120+i*560}px;top:790px;width:430px;height:60px;background:#7A5634;border:6px solid ${INK};border-radius:6px"></div>`).join('')}`;
+const office=()=>`<div class="a" style="inset:0;background:linear-gradient(#DCE6F0,#C9D6E3)"></div>
+<div class="a" style="left:1180px;top:90px;width:620px;height:520px;background:linear-gradient(#7BB6E8,#CFE8F7);border:18px solid #fff;box-shadow:0 0 0 6px ${INK}"></div>
+${[0,1,2,3].map(i=>`<div class="a" style="left:${1220+i*140}px;top:${330+(i%2)*60}px;width:110px;height:${280-(i%2)*60}px;background:#8FA3B8"></div>`).join('')}
+<div class="a" style="left:0;right:0;top:740px;bottom:0;background:#8E9AAA"></div>
+<div class="a" style="left:300px;top:690px;width:1000px;height:50px;background:#E7E2D8;border:6px solid ${INK}"></div>
+<div class="a" style="left:640px;top:420px;width:380px;height:250px;background:#1B1F2A;border:10px solid ${INK};border-radius:12px"></div>
+<div class="hand" style="left:690px;top:470px;font-size:44px;color:#7CC4FF;text-transform:none">Meeting · 1:30 – 3:00</div>
+${clock(170,120,170,15,10)}`;
+const streetSunset=()=>`<div class="a" style="inset:0;background:linear-gradient(#3A2A6A,#C8547A 55%,#F2A65A)"></div>
+<div class="a" style="left:1300px;top:420px;width:260px;height:260px;border-radius:50%;background:#FFD27A;opacity:.9"></div>
+${[0,1,2,3,4,5,6].map(i=>`<div class="a" style="left:${i*290-40}px;top:${380+(i%3)*70}px;width:250px;height:${700-(i%3)*70}px;background:#2A1E44"></div>`).join('')}
+<div class="a" style="left:0;right:0;top:820px;bottom:0;background:#1A1430"></div>
+<div class="a" style="left:0;right:0;top:900px;height:14px;background:#F2C94C;opacity:.5"></div>`;
+const bedroom=()=>`<div class="a" style="inset:0;background:#2B3656"></div>
+<div class="a" style="left:180px;top:140px;width:420px;height:330px;background:#121834;border:18px solid #E8E2D4"></div>
+<div class="a" style="left:470px;top:190px;width:60px;height:60px;border-radius:50%;box-shadow:-16px 10px 0 0 #FFF3D6"></div>
+<div class="a" style="left:0;right:0;top:800px;bottom:0;background:#5C4636"></div>
+<div class="a" style="left:1100px;top:780px;width:560px;height:150px;background:linear-gradient(90deg,#1E7B4F,#2E9A62);border:6px solid ${INK};border-radius:10px;transform:skewX(-20deg)"></div>`;
+// ---- whiteboard bits ----
+const words=(txt,x,y,size,upto,keys=[],w=1700,align='left')=>{const ws=txt.split(' ');return `<div class="hand" style="left:${x}px;top:${y}px;font-size:${size}px;width:${w}px;white-space:normal;line-height:1.3;text-align:${align}">`+ws.map((t,i)=>`<span style="color:${i<upto?(keys.some(k=>t.toLowerCase().includes(k))?'#E31B1B':'#151515'):(i==upto?'#bbb':'transparent')}">${t}</span>`).join(' ')+'</div>';};
+const board=()=>`<div class="a" style="left:520px;top:110px;width:1300px;height:760px;border:14px solid #C9CDD2;border-radius:10px;background:#fff;box-shadow:0 10px 30px rgba(0,0,0,.08)"></div><div class="a" style="left:900px;top:870px;width:540px;height:22px;background:#C9CDD2;border-radius:6px"></div>`;
+const timeline=(dhuhrEnd)=>{const segs=[['FAJR',0,10,'#5B7BC0'],['',10,24,'#eee'],['DHUHR',24,40,'#1FA34A'],['ASR',40,58,'#F2B705'],['MAGHRIB',58,66,'#E8590C'],['ISHA',66,100,'#3A2A6A']];
+ return `<svg class="a" style="left:60px;top:330px;transform:scale(1.1);transform-origin:0 0" width="1640" height="420">${segs.map(([n,a,b,c])=>`<rect x="${a*16}" y="40" width="${(b-a)*16-6}" height="90" rx="12" fill="${c}"/><text x="${(a+b)/2*16}" y="100" text-anchor="middle" font-family="Poppins" font-weight="900" font-size="34" fill="#fff">${n}</text>`).join('')}
+ <text x="${24*16}" y="190" font-family="Patrick Hand" font-size="40" fill="#151515">1:30 pm</text><text x="${58*16}" y="190" font-family="Patrick Hand" font-size="40" fill="#151515">sunset</text>
+ ${dhuhrEnd?`<path d="M${30*16},150 C${40*16},300 ${62*16},300 ${70*16},170" fill="none" stroke="#E31B1B" stroke-width="8" stroke-dasharray="18 12"/><text x="${66*16}" y="330" font-family="Patrick Hand" font-size="54" fill="#E31B1B">home 6:30 pm</text><line x1="${26*16}" y1="30" x2="${38*16}" y2="140" stroke="#E31B1B" stroke-width="12"/><line x1="${38*16}" y1="30" x2="${26*16}" y2="140" stroke="#E31B1B" stroke-width="12"/>`:''}</svg>`;};
+const F=[
+ {tag:'an',t:'0:00',vo:"It's 1:30. Dhuhr just came in.",s:classroom()+hadi('neutral',820,320,620),
+  vis:'Classroom (chalkboard, window, desks). The wall clock reads 1:30. Hadi sits among the desks.',mot:'Cold open: fast push-in from wide to the clock. A soft adhan notification "ding" on his phone.',sfx:'phone ping · room tone (pens, chatter)'},
+ {tag:'an',t:'0:03',vo:"But you're stuck in class.",s:classroom()+hadi('facepalm',820,320,620)+`<div class="hand" style="left:260px;top:600px;font-size:60px;color:#fff;text-shadow:0 3px 8px #000">teacher: "no one leaves"</div>`,
+  vis:'Same room, Hadi facepalms. Small caption gag from the teacher.',mot:'Quick punch-in on Hadi (110% → 125%) on "stuck".',sfx:'sigh / soft thud'},
+ {tag:'an',t:'0:06',vo:'Or maybe you\'re at work, in a meeting that won\'t end.',s:office()+hadi('phone',320,330,560),
+  vis:'Office with a city window. The monitor shows "Meeting · 1:30 – 3:00", the wall clock reads 3:10.',mot:'Whip pan left → right from the classroom into the office (a match cut on the clock).',sfx:'whoosh · keyboard clicks'},
+ {tag:'an',t:'0:09',vo:'So you tell yourself: "I\'ll just pray when I get home."',s:office()+hadi('think',320,330,560)+`<div class="a" style="left:820px;top:180px;width:420px;height:240px;border-radius:50%;background:#fff;box-shadow:0 8px 18px rgba(0,0,0,.2)"></div><div class="hand" style="left:860px;top:250px;font-size:56px">"I'll pray<br>at home"</div>`,
+  vis:'Hadi thinking; a thought bubble pops up with "I\'ll pray at home".',mot:'Bubble pops with a squash-and-stretch; Hadi\'s head tilts.',sfx:'bubble pop'},
+ {tag:'an',t:'0:13',vo:'But by the time you get home…',s:streetSunset()+hadi('phone',700,330,560)+clock(1500,120,190,18,30,'#E31B1B'),
+  vis:'Hadi walking home on the street at sunset, buildings in silhouette. A clock spins fast to 6:30.',mot:'Side-scrolling walk cycle with parallax (buildings slower than the road). Clock hands spin.',sfx:'footsteps · clock ticking speeds up'},
+ {tag:'wb',t:'0:16',vo:'…Dhuhr is gone. And Asr is almost gone.',s:timeline(true)+words('the time is gone',140,170,90,4,['gone']),
+  vis:'WHITEBOARD: a day timeline of the five prayer windows (Fajr, Dhuhr, Asr, Maghrib, Isha). A red dashed arrow jumps from 1:30 to "home 6:30 pm", and a red ✕ is drawn over Dhuhr.',mot:'Timeline draws left to right; the arrow draws on "home"; the ✕ is stamped on "gone".',sfx:'marker squeak · stamp thud'},
+ {tag:'wb',t:'0:20',vo:'So is this actually allowed? Or is it a sin?',s:hadi('think',140,300,640)+`<div class="a" style="left:820px;top:280px;padding:30px 60px;border:8px solid #1FA34A;border-radius:24px;font:900 90px Poppins;color:#1FA34A">ALLOWED?</div><div class="a" style="left:880px;top:560px;padding:30px 60px;border:8px solid #E31B1B;border-radius:24px;font:900 90px Poppins;color:#E31B1B">SIN?</div>`,
+  vis:'WHITEBOARD: Hadi thinking on the left, with two choices popping in on the right: ALLOWED? (green) and SIN? (red).',mot:'Each box pops on its word; a slight camera shake on "sin".',sfx:'pop · pop · low hit'},
+ {tag:'an',t:'0:24',vo:'Millions of Muslims do this every single day.',s:`<div class="a" style="inset:0;background:linear-gradient(#DCE6F0,#B8C6D6)"></div>`+[0,1,2,3,4,5,6,7].map(i=>hadi(['phone','neutral','think'][i%3],60+i*230,360+(i%2)*40,520)).join('')+`<div class="a" style="left:1450px;top:80px;background:#151515;color:#7CFF8A;font:900 80px Poppins;padding:10px 30px;border-radius:14px">1,000,000+</div>`,
+  vis:'A crowd of Hadis (students, workers, all on their phones) filling a busy street or station. A counter rolls up.',mot:'Slow dolly out revealing more and more of them.',sfx:'crowd murmur · counter ticks'},
+ {tag:'wb',t:'0:27',vo:'So let\'s break down what Islam actually says, when it\'s okay, and what you can do at school or work.',s:board()+hadi('point',60,300,700)+`<svg class="a" style="left:0;top:0" width="1920" height="1080"><line x1="640" y1="500" x2="1700" y2="500" stroke="#151515" stroke-width="8"/>${[0,1,2].map(i=>`<circle cx="${760+i*420}" cy="500" r="46" fill="${['#E31B1B','#F2B705','#1FA34A'][i]}"/><text x="${760+i*420}" y="520" text-anchor="middle" font-family="Poppins" font-weight="900" font-size="54" fill="#fff">${i+1}</text>`).join('')}</svg><div class="hand" style="left:640px;top:580px;font-size:50px">what islam says</div><div class="hand" style="left:1080px;top:580px;font-size:50px">when it's okay</div><div class="hand" style="left:1480px;top:580px;font-size:50px;color:#1FA34A">what to do</div>`,
+  vis:'WHITEBOARD (a literal board with a frame): Hadi points at a 3-step roadmap: what Islam says → when it\'s okay → what to do.',mot:'The camera pushes into the board; the line draws; each circle pops as it\'s said.',sfx:'marker draw · pop ×3'},
+ {tag:'an',t:'0:33',vo:'(Point 1 begins)',s:bedroom()+hadi('thumbsup',760,300,620)+`<div class="a" style="left:60px;top:880px;background:#fff;border:6px solid #151515;padding:10px 34px;font:900 60px Poppins;color:#E31B1B">#1 WHAT ISLAM SAYS</div>`,
+  vis:'Transition back to a scene (Hadi\'s room at night with a prayer mat) with the red lower-third for Point 1.',mot:'Red wipe transition; the lower-third slides in.',sfx:'whoosh · soft riser'},
+];
+document.getElementById('grid').innerHTML=F.map((f,i)=>`<div class="panel"><div class="frame"><div class="scene">${f.s}</div></div><div class="meta"><div class="t">${i+1} · ${f.t}<span class="tag ${f.tag}">${f.tag=='an'?'ANIMATED SCENE':'WHITEBOARD'}</span></div><div class="vo">“${f.vo}”</div><div class="row"><div class="k">Visual</div><div>${f.vis}</div></div><div class="row"><div class="k">Camera</div><div>${f.mot}</div></div><div class="row"><div class="k">SFX</div><div>${f.sfx}</div></div></div></div>`).join('');
+</script></body></html>
