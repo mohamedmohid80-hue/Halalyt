@@ -1,39 +1,24 @@
 <!doctype html><html><head><meta charset="utf-8">
-<link href="https://fonts.googleapis.com/css2?family=Lilita+One&family=Patrick+Hand&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Kalam:wght@700&display=swap" rel="stylesheet">
 <style>
-html,body{margin:0;width:1280px;height:720px;overflow:hidden}
-.p{position:absolute;top:0;bottom:0;width:637px}
-.l{left:0;background:radial-gradient(ellipse at 50% 55%,#D8291F,#6E0E0A 90%)}
-.r{right:0;background:radial-gradient(ellipse at 50% 55%,#2E9A45,#0D4219 90%)}
-.div{position:absolute;left:637px;top:0;width:6px;height:720px;background:#111}
-.lab{position:absolute;top:24px;width:637px;text-align:center;font:104px 'Lilita One';color:#fff;-webkit-text-stroke:10px #111;paint-order:stroke fill;letter-spacing:2px;text-shadow:0 8px 18px rgba(0,0,0,.35)}
-.hadi{position:absolute;bottom:-150px;height:620px;filter:drop-shadow(6px 0 0 #fff) drop-shadow(-6px 0 0 #fff) drop-shadow(0 6px 0 #fff) drop-shadow(0 -6px 0 #fff) drop-shadow(0 16px 24px rgba(0,0,0,.45))}
-.cloud{position:absolute;width:210px;height:170px;background:#fff;border-radius:50%;box-shadow:inset 0 -8px 0 rgba(0,0,0,.08),0 8px 18px rgba(0,0,0,.25);display:flex;align-items:center;justify-content:center}
-.cloud:before,.cloud:after{content:"";position:absolute;background:#fff;border-radius:50%}
-.cloud:before{width:110px;height:110px;left:-30px;top:40px}
-.cloud:after{width:120px;height:120px;right:-34px;top:30px}
-.cloud img,.cloud svg{position:relative;z-index:2}
-.dot{position:absolute;background:#fff;border-radius:50%;box-shadow:0 4px 10px rgba(0,0,0,.2)}
-.note{position:absolute;font:52px 'Patrick Hand';color:#fff;text-shadow:0 3px 8px rgba(0,0,0,.45)}
+html,body{margin:0;width:1280px;height:720px;overflow:hidden;background:#fff}
+.hadi{position:absolute;left:70px;bottom:-190px;height:820px}
+.t{position:absolute;left:640px;font-family:Kalam;font-weight:700;line-height:1;color:#151515}
 </style></head><body>
-<div class="p l"></div><div class="p r"></div><div class="div"></div>
-<div class="lab" style="left:0">LATER...</div>
-<div class="lab" style="right:0">ON TIME</div>
-
-<!-- LEFT: Hadi on his phone, thinking "I'll pray at home", clock already late -->
-<img class="hadi" src="hadi-phone.svg" style="left:150px">
-<img src="sweat.png" style="position:absolute;left:400px;top:330px;width:46px;transform:rotate(15deg)">
-<div class="dot" style="left:420px;top:300px;width:26px;height:26px"></div>
-<div class="dot" style="left:448px;top:262px;width:38px;height:38px"></div>
-<div class="cloud" style="left:390px;top:150px;width:200px;height:150px">
-  <img src="house.png" style="width:86px;margin-right:6px">
-  <svg width="84" height="84" viewBox="0 0 100 100"><circle cx="50" cy="50" r="44" fill="#fff" stroke="#111" stroke-width="8"/><line x1="50" y1="50" x2="28" y2="62" stroke="#E0352B" stroke-width="8" stroke-linecap="round"/><line x1="50" y1="50" x2="50" y2="16" stroke="#111" stroke-width="7" stroke-linecap="round"/><circle cx="50" cy="50" r="5" fill="#111"/></svg>
-</div>
-<div class="note" style="left:40px;top:170px;transform:rotate(-6deg)">"I'll pray<br>at home"</div>
-
-<!-- RIGHT: Hadi happy, thinking of the masjid -->
-<img class="hadi" src="hadi-thumbsup.svg" style="left:760px">
-<div class="dot" style="left:1050px;top:300px;width:26px;height:26px"></div>
-<div class="dot" style="left:1078px;top:262px;width:38px;height:38px"></div>
-<div class="cloud" style="left:1030px;top:140px"><img src="mosque.png" style="width:120px"></div>
+<img class="hadi" src="hadi-phone.svg">
+<!-- clock floating near his head, running late -->
+<svg style="position:absolute;left:395px;top:70px" width="150" height="150" viewBox="0 0 100 100">
+  <circle cx="50" cy="50" r="44" fill="#fff" stroke="#151515" stroke-width="6"/>
+  <path d="M50,50 L50,6 A44,44 0 1,1 13,73 Z" fill="#E31B1B" opacity=".18"/>
+  <line x1="50" y1="50" x2="50" y2="16" stroke="#151515" stroke-width="6" stroke-linecap="round"/>
+  <line x1="50" y1="50" x2="24" y2="64" stroke="#E31B1B" stroke-width="6" stroke-linecap="round"/>
+  <circle cx="50" cy="50" r="5" fill="#151515"/>
+</svg>
+<div class="t" style="top:150px;font-size:96px">"I'll pray</div>
+<div class="t" style="top:255px;font-size:190px;color:#E31B1B">later..."</div>
+<div class="t" style="top:470px;font-size:64px;color:#555">is it a sin?</div>
+<svg style="position:absolute;left:0;top:0" width="1280" height="720">
+  <defs><marker id="h" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="5" markerHeight="5" orient="auto"><path d="M0,1 L9,5 L0,9" fill="none" stroke="#151515" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></marker></defs>
+  <path d="M760,600 C700,640 600,620 545,560" fill="none" stroke="#151515" stroke-width="9" stroke-linecap="round" marker-end="url(#h)"/>
+</svg>
 </body></html>
