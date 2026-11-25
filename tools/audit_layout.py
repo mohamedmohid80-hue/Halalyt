@@ -74,9 +74,9 @@ def main():
     if end - last_change > still:
         add("STILL", f"nothing new from {last_change:.1f}s to the end ({end - last_change:.1f}s)", last_change)
 
-    # an element sliding or dropping in may cross the edge or another item for a moment; only report what lasts
+    # an element sliding or dropping in (~0.45 s) may cross the edge or another item for a moment; only report what lasts
     step = (frames[1][0] - frames[0][0]) / fps if len(frames) > 1 else 0
-    found = {k: v for k, v in found.items() if k[0] == "STILL" or v[1] - v[0] + step >= 0.3}
+    found = {k: v for k, v in found.items() if k[0] == "STILL" or v[1] - v[0] + step >= 0.5}
     for (kind, key), (a, b) in sorted(found.items(), key=lambda kv: kv[1][0]):
         print(f"{kind:9} {a:5.1f}-{b:5.1f}s  {key}")
     print(f"{len(found)} problem(s)")

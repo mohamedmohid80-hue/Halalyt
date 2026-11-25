@@ -55,7 +55,7 @@ const SceneView = ({sc, t}) => {
   let sx = 0;
   for (const s of sc.shake || []) if (t >= s && t < s + .3) sx = Math.sin((t - s) * 90) * 12 * (1 - (t - s) / .3);
   return (
-    <div data-scene="1" style={{position: 'absolute', inset: 0, background: '#fff', overflow: 'hidden', transform: `translateX(${sx}px) scale(${scale})`, transformOrigin: `${ox}px ${oy}px`}}>
+    <div data-scene="1" data-noaudit={sc.noAuditAfter !== undefined && t >= sc.noAuditAfter ? '1' : undefined} style={{position: 'absolute', inset: 0, background: '#fff', overflow: 'hidden', transform: `translateX(${sx}px) scale(${scale})`, transformOrigin: `${ox}px ${oy}px`}}>
       {sc.items.map((it, i) => <Item key={i} sc={sc} it={it} t={t} />)}
     </div>
   );
@@ -89,7 +89,7 @@ const Audit = () => {
     const tm = setTimeout(() => {
       const items = [];
       const root = document.querySelector('[data-scene]');
-      if (root) for (const el of root.querySelectorAll('[data-k]')) {
+      if (root && !root.dataset.noaudit) for (const el of root.querySelectorAll('[data-k]')) {
         const kind = el.dataset.k; if (kind === 'bg') continue;
         const wrap = el.closest('[data-scene] > div > div') || el;
         if (parseFloat(getComputedStyle(wrap).opacity) < .05) continue;

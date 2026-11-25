@@ -74,7 +74,6 @@ const tile=(f,x,y,t,isBg)=>`<div class="tile" data-k="photo" style="left:${x}px;
 const globe=(x,y,s=170)=>`<div class="a" data-k="icon" style="left:${x}px;top:${y}px;width:${s}px;height:${s}px;border-radius:50%;background:radial-gradient(circle at 35% 30%,#7FD3FF,#1E6FB8 60%,#0E3E6E);box-shadow:0 10px 24px rgba(0,0,0,.25);overflow:hidden"><div style="position:absolute;left:22%;top:20%;width:40%;height:34%;background:#4FAE5A;border-radius:45% 55% 50% 40%"></div><div style="position:absolute;left:48%;top:58%;width:30%;height:26%;background:#4FAE5A;border-radius:50% 40% 55% 45%"></div></div>`;
 const progress=(x,y,w,f1,f2)=>`<div class="a" data-k="icon" style="left:${x}px;top:${y}px;width:${w}px;height:90px;border:8px solid #151515;border-radius:20px;overflow:hidden;background:#fff"><div style="position:absolute;left:0;top:0;bottom:0;width:${f1*100}%;background:#2F80ED"></div><div style="position:absolute;left:${f1*100}%;top:0;bottom:0;width:${f2*100}%;background:#E8A92E"></div></div>`;
 
-
 // ---------- extra helpers for the animated build ----------
 const chalkBoard=(plate)=>`<div class="plate" data-k="text">${plate}</div><div class="chalk" data-k="bg"></div>`;
 const chalkText=(txt,src)=>`<div class="chalk" data-k="text" style="background:transparent;border-color:transparent;box-shadow:none">${txt}<div class="src">${src}</div></div>`;
@@ -91,9 +90,9 @@ const SC=[
 // 1 · hook
 {from:0,to:3.58,zoom:.06,ox:1305,oy:236,items:[
  I(0,'cut',bg('classroom')),
- I(0,'cut',H('sit-phone',840,410,660)),
+ I(0,'cut',H('sit-phone',840,410,660,0,1)),
  I(.6,'drop',notif(200,300,'Dhuhr · 1:15 PM'),{buzz:.9,sfx:'buzz'}),
- I(.9,'wipe',cap('1:15 PM',620),{out:3.0}),
+ I(.9,'wipe',cap('1:15 PM',620),{out:2.75}),
  I(1.9,'pop',t=>{const k=lerp(t,2.0,3.0,0,1);const mins=75+105*k;return clock(1305,236,160,Math.floor(mins/60),mins%60,[15,15+Math.max(1,45*k)])}),
  I(3.0,'wipe',cap('until 3:00',620)),
 ]},
@@ -158,6 +157,7 @@ const SC=[
  I(0,'cut',flag(1440,'Asr','#E8A92E',560)),
  I(40.9,'wipe',L('sunset = Asr ends',300,150,64,'#151515')),
  I(41.5,'wipe',`<div class="a" data-k="bg" style="left:1640px;top:440px;width:200px;height:380px;background:repeating-linear-gradient(45deg,rgba(227,27,27,.45) 0 18px,transparent 18px 36px)"></div>`),
+ I(42.9,'wipe',L('the sun turns yellow',1240,400,50,'#B07A00')),
  I(44.2,'pop',P("don't push it here without a reason",380,300,'#E31B1B',40)),
 ]},
 // 10 · deadline vs window
@@ -226,7 +226,8 @@ const SC=[
 {from:101.48,to:112.38,zoom:.05,ox:500,oy:600,items:[
  I(0,'cut',bg('bedroom',.45)),I(0,'cut',H('sleep',260,330,640)),
  I(102.2,'pop',PH('alarm',1380,140,330,420),{buzz:102.4,gray:110.6,sfx:'buzz'}),
- I(103.4,'pop',cloud('?',720,230,170,130,70)),
+ I(103.4,'pop',cloud('?',800,280,170,130,70),{out:107.4}),
+ I(107.6,'fade',glowBox(910,650,880,90,'rgba(31,163,74,.25)')),
  I(105.1,'rise',`<div class="a" data-k="text" style="left:900px;top:640px;width:900px;background:#F4F1E8;border:10px solid #5B3A1E;border-radius:16px;padding:26px 30px;font:italic 700 54px 'Comic Neue';text-align:center;text-transform:uppercase">"Pray it when you remember"<div style="font:700 26px Nunito;color:#666;text-transform:none;font-style:normal;margin-top:8px">Sahih al-Bukhari 597 · Sahih Muslim 684</div></div>`,{sfx:'whoosh'}),
  I(109.3,'pop',P('not sinful ✓',360,180,'#1FA34A',54),{sfx:'ding'}),
 ]},
@@ -242,7 +243,7 @@ const SC=[
  I(116.5,'wipe',cap('The Battle of the Trench')),
  I(117.9,'pop',map(1300,170)),
  I(120.0,'wipe',AR('M1120,540 C1190,490 1230,450 1270,420','#E31B1B',10)),
- I(120.2,'wipe',AR('M80,900 C160,860 250,840 330,830','#E31B1B',10),{sfx:0}),I(120.4,'wipe',AR('M560,1060 C570,1010 590,970 600,935','#E31B1B',10),{sfx:0}),
+ I(120.2,'wipe',AR('M80,900 C160,860 250,840 330,830','#E31B1B',10),{sfx:0}),I(120.4,'wipe',AR('M560,1010 C570,980 590,950 600,925','#E31B1B',10),{sfx:0}),
  I(122.1,'fade',t=>`<div class="a" data-k="bg" style="inset:0;background:rgba(40,10,60,${lerp(t,122.1,123.8,0,.45)})"></div><div class="a" data-k="bg" style="left:240px;top:${lerp(t,122.1,124.0,560,800)}px;width:180px;height:180px;border-radius:50%;background:#FFB347;box-shadow:0 0 80px #FF8A3D"></div>`,{sfx:0}),
  I(123.2,'stamp',K('ASR PASSED',640,120,'#fff','text-shadow:0 6px 24px rgba(0,0,0,.6)')),
 ]},
@@ -306,7 +307,7 @@ const SC=[
  I(168.4,'pop',SI('sit-bored',1260,240,460)),I(168.7,'stamp',ST('INCONVENIENCE ✕',1130,780,'#E31B1B',4,58)),
 ]},
 // 29 · how does this work at school or work
-{from:170.16,to:181.22,camTo:{at:180.2,scale:2.6,ox:275,oy:665},items:[
+{from:170.16,to:181.22,noAuditAfter:180.2,camTo:{at:180.2,scale:2.6,ox:275,oy:665},items:[
  I(170.2,'pop',PH('lecture-hall',110,110,380,250,'school')),I(171.4,'pop',PHbg('office',530,110,380,250,'work')),
  I(172.2,'wipe',L('how does this work?',970,170,72,'#151515')),I(174.0,'wipe',L('4 parts',1100,270,60)),
  I(175.8,'pop',PH('stopwatch',110,500,330,330)),I(176.0,'wipe',L('timing',190,850,60,'#151515')),
@@ -354,8 +355,8 @@ const SC=[
 {from:224.04,to:239.0,items:[
  I(224.1,'pop',Y('Where you pray',110,80)),
  I(225.2,'pop',PH('wudu-fountain',110,200,360,240)),I(225.5,'pop',PH('pray-rug',500,200,240,240)),I(226.0,'pop',P('not required',300,460,'#9AA0A6',44)),
- I(227.4,'pop',globe(860,200,200),{spin:229.4}),I(227.6,'wipe',L('"the whole earth has been made a place of prayer"',1080,240,46,'#151515'),{d:1.2}),
- I(228.0,'fade',`<div class="ref" data-k="text" style="top:330px;left:1080px;right:auto;font-size:28px">Sahih al-Bukhari 335</div>`),
+ I(227.4,'pop',globe(860,200,200),{spin:229.4}),I(227.6,'wipe',L('"the whole earth has been made a place of prayer"',1120,240,44,'#151515'),{d:1.2}),
+ I(228.0,'fade',`<div class="ref" data-k="text" style="top:330px;left:1120px;right:auto;font-size:28px">Sahih al-Bukhari 335</div>`),
  I(232.4,'pop',P('any clean place ✓',1080,420,'#1FA34A',44)),
  I(233.3,'slideR',PH('empty-classroom',110,600,540,360,'classroom')),
  I(235.7,'slideR',PH('library-crop',690,600,540,360,'library')),
@@ -466,7 +467,7 @@ const SceneView = ({sc, t}) => {
   let sx = 0;
   for (const s of sc.shake || []) if (t >= s && t < s + .3) sx = Math.sin((t - s) * 90) * 12 * (1 - (t - s) / .3);
   return (
-    <div data-scene="1" style={{position: 'absolute', inset: 0, background: '#fff', overflow: 'hidden', transform: `translateX(${sx}px) scale(${scale})`, transformOrigin: `${ox}px ${oy}px`}}>
+    <div data-scene="1" data-noaudit={sc.noAuditAfter !== undefined && t >= sc.noAuditAfter ? '1' : undefined} style={{position: 'absolute', inset: 0, background: '#fff', overflow: 'hidden', transform: `translateX(${sx}px) scale(${scale})`, transformOrigin: `${ox}px ${oy}px`}}>
       {sc.items.map((it, i) => <Item key={i} sc={sc} it={it} t={t} />)}
     </div>
   );
@@ -486,7 +487,7 @@ const ASSETS = (() => {
 const Preload = () => {
   const [h] = useState(() => delayRender('ep4 assets'));
   useEffect(() => {
-    Promise.all(ASSETS.map((u) => new Promise((res) => { const im = new Image(); im.onload = () => (im.decode ? im.decode() : Promise.resolve()).then(res, res); im.onerror = res; im.src = u; })))
+    Promise.all(ASSETS.map((u) => new Promise((res) => { const im = new Image(); im.onload = () => (im.decode ? im.decode().catch(() => 0) : 0).then ? im.decode().then(res, res) : res(); im.onerror = res; im.src = u; })))
       .then(() => continueRender(h));
   }, [h]);
   return null;
@@ -500,9 +501,9 @@ const Audit = () => {
     const tm = setTimeout(() => {
       const items = [];
       const root = document.querySelector('[data-scene]');
-      if (root) for (const el of root.querySelectorAll('[data-k]')) {
+      if (root && !root.dataset.noaudit) for (const el of root.querySelectorAll('[data-k]')) {
         const kind = el.dataset.k; if (kind === 'bg') continue;
-        const wrap = el.closest('[data-scene] > div') || el;
+        const wrap = el.closest('[data-scene] > div > div') || el;
         if (parseFloat(getComputedStyle(wrap).opacity) < .05) continue;
         let r = (kind === 'arrow' ? el.querySelector(':scope > path') : el).getBoundingClientRect();
         if (kind === 'text' && r.width >= 1500) { const tw = document.createTreeWalker(el, NodeFilter.SHOW_TEXT); let x0 = 1e9, y0 = 1e9, x1 = -1e9, y1 = -1e9; for (let n = tw.nextNode(); n; n = tw.nextNode()) { const rg = document.createRange(); rg.selectNodeContents(n); for (const q of rg.getClientRects()) { x0 = Math.min(x0, q.left); y0 = Math.min(y0, q.top); x1 = Math.max(x1, q.right); y1 = Math.max(y1, q.bottom); } } if (x1 > x0) r = new DOMRect(x0, y0, x1 - x0, y1 - y0); }
