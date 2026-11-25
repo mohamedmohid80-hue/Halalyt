@@ -1,0 +1,26 @@
+# Photo credits (Openverse)
+
+- oath, kargil by nevil zaveri (thank you for 20+M views:) (BY 2.0) https://www.flickr.com/photos/43109416@N00/4853853524
+- اللـــــهم by Aih. (BY 2.0) https://www.flickr.com/photos/9483737@N05/3923085515
+- The Holly Coran القرآن الكريم #القران #القرآن #الكريم#رمضان #الاسلام#ليلة_القدر #ليلة #الطاعة#المسجد#مسجد #معتكف #islam #inside #masjid #mosque #iphone5 #instacool #instasfax #instatunis #instanice by D@LY3D (BY 2.0) https://www.flickr.com/photos/11912988@N02/9433662355
+- Islamic texts by UCL News (BY 2.0) https://www.flickr.com/photos/50620355@N07/8453286324
+- Koran, Illuminated incipit page with headpiece, Walters Manuscript W.556, fol. 4b by Walters Art Museum Illuminated Manuscripts (CC0 1.0) https://www.flickr.com/photos/39699193@N03/4690325429
+- arafat.jpg: "Pilgrims cover Arafat's roads, plains and mountain" by Al Jazeera English (BY-SA 2.0) https://www.flickr.com/photos/32834977@N03/4135889356
+- alarm.jpg: "Alarm Clock 1" by Alan Cleaver (BY 2.0) https://www.flickr.com/photos/11121568@N06/4293345631
+- compass.jpg: "Compass" by Matt Biddulph (BY-SA 2.0) https://www.flickr.com/photos/51035707449@N01/3087388964
+- empty-classroom.jpg: "Empty Classroom at Georgia Tech" by cfiesler (BY 2.0) https://www.flickr.com/photos/55370500@N08/15140531577
+- coins.jpg: "Fishpool gold coins" by Lawrence OP (BY 2.0) https://www.flickr.com/photos/35409814@N00/3487810383
+- library.jpg: "Library Reading Room" by Phil Roeder (BY 2.0) https://www.flickr.com/photos/88876166@N00/14700926341
+- office.jpg: "Office Desk Computer PC Laptop Setup" by anantal (BY 2.0) https://www.flickr.com/photos/33088287@N00/16916258456
+- rain.jpg: "Rain Umbrella Street Photography People Photography" by perriscope (BY-SA 2.0) https://www.flickr.com/photos/104368365@N05/20079350720
+- lunch-tray.jpg: "Shanghai German school lunch" by Micah Sittig (BY 2.0) https://www.flickr.com/photos/35468134321@N01/5624187820
+- stopwatch.jpg: "Stopwatch 2" by casey.marshall (BY 2.0) https://www.flickr.com/photos/25299470@N00/3642425935
+- suitcase.jpg: "Minha mala chegou depois 3 dias 😂😂😂👍 #mala #suitcase #travel #bagagem" by markhillary (BY 2.0) https://www.flickr.com/photos/56087830@N00/20623456844
+- sunset.jpg: "Rockaway Sunset Sky" by romainguy (CC0 1.0) https://www.flickr.com/photos/24046097@N00/6249263074
+- lecture-hall.jpg: "UCT New Science Lecture Theatre" by barbourians (BY-SA 2.0) https://www.flickr.com/photos/51607907@N03/6026082637
+- lecture-students.jpg: "lecture hall" by English106 (BY 2.0) https://www.flickr.com/photos/47381479@N04/4358500794
+- tap.jpg: "tap water" by gagilas (BY-SA 2.0) https://www.flickr.com/photos/11677434@N04/8408825333
+- wudu-fountain.jpg: "Ablutions Fountain or Wudu" by M1key.me (BY 2.0) http://www.flickr.com/photos/91418149@N03/18770048291
+- family.jpg: "Family Silhouette" by Weekend Wayfarers (BY 2.0) https://www.flickr.com/photos/135146612@N03/21242605585
+- phone-hand.jpg: "Uber app" by freestocks.org (CC0 1.0) https://www.flickr.com/photos/135396164@N05/23707913564
+- nabawi2.jpg: "Madinah Haram at sunset" by marviikad (BY-SA 2.0) https://www.flickr.com/photos/66543362@N00/2560580351

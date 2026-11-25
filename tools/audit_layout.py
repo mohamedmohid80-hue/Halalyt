@@ -57,10 +57,13 @@ def main():
         for i in range(len(bs)):
             for j in range(i + 1, len(bs)):
                 a, b = bs[i], bs[j]
+                # an item marked "over" may sit on a photo, drawing or arrow on purpose (never on text or a character)
+                if (a[0].get("over") and b[0]["kind"] in ("photo", "icon", "arrow")) or (b[0].get("over") and a[0]["kind"] in ("photo", "icon", "arrow")):
+                    continue
                 if inter(a[1], b[1]) > 0:
                     add("OVERLAP", f"{a[0]['name']!r} x {b[0]['name']!r}", t)
             e, (x0, y0, x1, y1) = bs[i]
-            if x0 < -4 or y0 < -4 or x1 > W + 4 or y1 > H + 4:
+            if not e.get("crop") and (x0 < -4 or y0 < -4 or x1 > W + 4 or y1 > H + 4):
                 add("OFF-FRAME", f"{e['name']!r}", t)
         sig = tuple(sorted(e["name"] for e in items))
         if sig != last_sig:
