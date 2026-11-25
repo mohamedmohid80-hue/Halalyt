@@ -271,3 +271,30 @@ If you use Eleven v3 instead: Stability "Natural", same prompt.
 - **Keep the question marks.** They give the rising questions ("So is it actually okay?").
 - **One word in CAPS per sentence at most** for the word to lean on ("it's a WINDOW", "you MISSED it"). Use it sparingly.
 - Generate the script in 3–4 big chunks rather than line by line, then pick the take with the most life in it.
+
+---
+
+## 8. The "Islamic explainer channel" voice: measured from the Barzakh and Every Religion videos (v13)
+
+| Measure | Barzakh | Every Religion | Ep 4 voice |
+|---|---|---|---|
+| Median pitch | 119 Hz | 118 Hz | 118 Hz |
+| Pitch range (10–90%) | 91–172 Hz | 90–174 Hz | 102–156 Hz |
+| Pitch movement | 4.3 st | 4.6 st | 3.0 st |
+| Pace | 188 wpm | 196 wpm | 186 wpm |
+| Pauses | ~0.3 s | ~0.25 s | ~0.55 s |
+| Accent | light American (R-colouring) | light American | lighter |
+| Background | soft bed under the voice | soft bed under the voice | none (dry) |
+
+**In plain words:** a mid-low, lightly American male voice with a **wide, moving melody** (big lifts on key words, clear drops at the end of a point), quick delivery and **short pauses**. Serious and confident, telling you something important, with punchy short sentences. Same voice size as ours; the difference is the melody, the rhythm and the confidence.
+
+### v13 prompt
+
+> A man in his late twenties to thirties with a mid-low, clear American voice, narrating an Islamic explainer video for a big YouTube channel. Confident, serious and engaging, like he is revealing something important the listener needs to know. His intonation has a wide, natural range: he lifts strongly on the key word of each sentence, lands firmly at the end of each point, and drops slightly lower for weighty lines. He speaks at a quick, steady pace, about 190 words per minute, with short sentences delivered crisply and only brief pauses between them. Warm and respectful when he mentions Allah and the Prophet, never preachy. Not a cartoon, not a movie-trailer voice, not overacted. Clean, close, studio-quality recording with no reverb.
+
+Settings: Multilingual v2 · Stability 35% · Similarity 75% · Style 20% · Speaker boost on · Speed 1.05 (Eleven v3: Stability "Natural")
+
+**Or pick a ready-made voice instead of designing one:** Voice Library → filters *Male · English · American · Narrative & Story*, search "documentary narrator" or "storyteller". Paste the test paragraph below into each, and keep the one that sounds like the Barzakh video.
+
+**Test paragraph (from our ep 4 script):**
+> Dhuhr comes in at 1:15, but you've got class until 3. So you tell yourself, I'll pray when I get home. Almost every Muslim at school or work has done this. So, is it actually okay? The short answer is, if you get home before Asr comes in, you're fine. But if you get home after Asr comes in, you didn't delay Dhuhr. You MISSED it.
