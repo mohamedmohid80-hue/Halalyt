@@ -151,7 +151,7 @@ const SC=[
  I(0,'cut',bg('bedroom',.45)),I(0,'cut',H('sleep',260,330,640)),
  I(102.2,'pop',PH('alarm',1380,140,330,420),{buzz:102.4,gray:110.6,sfx:'buzz'}),
  I(103.4,'pop',cloud('?',800,280,170,130,70),{out:107.4}),
- I(107.6,'fade',glowBox(910,650,880,90,'rgba(31,163,74,.25)')),
+ I(107.6,'fade',glowBox(910,650,880,90,'rgba(31,163,74,.25)').replace('data-k="icon"','data-k="bg"')),
  I(105.1,'rise',`<div class="a" data-k="text" style="left:900px;top:640px;width:900px;background:#F4F1E8;border:10px solid #5B3A1E;border-radius:16px;padding:26px 30px;font:italic 700 54px 'Comic Neue';text-align:center;text-transform:uppercase">"Pray it when you remember"<div style="font:700 26px Nunito;color:#666;text-transform:none;font-style:normal;margin-top:8px">Sahih al-Bukhari 597 · Sahih Muslim 684</div></div>`,{sfx:'whoosh'}),
  I(109.3,'pop',P('not sinful ✓',360,180,'#1FA34A',54),{sfx:'ding'}),
 ]},
@@ -261,6 +261,7 @@ const SC=[
  I(195.9,'pop',PH('stopwatch',1500,560,300,400)),
  I(196.0,'pop',t=>{const s=Math.round(lerp(t,196.0,197.6,0,300));return L(t<197.7?`${Math.floor(s/60)}:${String(s%60).padStart(2,'0')}`:'≈ 5 min',1100,640,90,'#151515')},{sfx:'tick'}),
  I(198.3,'wipe',L('&lt; a toilet break',1060,780,60)),
+ I(199.7,'pop',P('literally',1060,880,'#151515',36)),
 ]},
 // 33 · wudu
 {from:201.26,to:224.04,zoom:.03,items:[
@@ -281,7 +282,7 @@ const SC=[
  I(225.2,'pop',PH('wudu-fountain',110,200,360,240)),I(225.5,'pop',PH('pray-rug',500,200,240,240)),I(226.0,'pop',P('not required',300,460,'#9AA0A6',44)),
  I(227.4,'pop',globe(860,200,200),{spin:229.4}),I(227.6,'wipe',L('"the whole earth has been made a place of prayer"',1120,240,44,'#151515'),{d:1.2}),
  I(228.0,'fade',`<div class="ref" data-k="text" style="top:330px;left:1120px;right:auto;font-size:28px">Sahih al-Bukhari 335</div>`),
- I(232.4,'pop',P('any clean place ✓',1080,420,'#1FA34A',44)),
+ I(230.9,'pop',P('any clean place ✓',1080,420,'#1FA34A',44)),
  I(233.3,'slideR',PH('empty-classroom',110,600,540,360,'classroom')),
  I(235.7,'slideR',PH('library-crop',690,600,540,360,'library')),
  I(237.0,'slideR',PHbg('office',1270,600,540,360,'office')),
