@@ -9,7 +9,7 @@ become anchors of a piecewise-linear map, written to remotion/ep4/timemap.js.
 import difflib, json, re, subprocess, sys
 from pathlib import Path
 R = Path(__file__).resolve().parent.parent
-norm = lambda w: re.sub(r"[^a-z0-9]", "", w.lower()).replace("duhur", "dhuhr").replace("duhr", "dhuhr").replace("vuhr", "dhuhr")
+norm = lambda w: re.sub(r"[^a-z0-9]", "", w.lower()).replace("duhur", "dhuhr").replace("duhr", "dhuhr").replace("vuhr", "dhuhr").replace("luhr", "dhuhr")
 old = json.load(open(R / "audio/04-delaying-salah.words.json"))
 new, off, files = [], 0.0, []
 for p in sys.argv[1:]:

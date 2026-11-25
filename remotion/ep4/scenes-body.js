@@ -11,20 +11,15 @@ const I=(at,a,h,o={})=>({at,a,h,...o});
 // ---------- scenes (times are the voiceover's word timings) ----------
 // scene: {from,to,zoom,ox,oy,shake:[t],quiet,camTo:{at,scale,ox,oy}, items:[I(at,anim,html|fn(t),opts)]}
 const SC=[
-// 1 · hook
-{from:0,to:3.58,zoom:.06,ox:1305,oy:236,items:[
+// 1 · hook: one continuous shot. The camera eases toward the clock, then glides in on Hadi (no cut).
+{from:0,to:6.84,cam:[[0,1,960,540],[3.3,1.06,1000,500],[4.5,1.35,1010,560],[6.84,1.38,1005,565]],items:[
  I(0,'cut',bg('classroom')),
  I(0,'cut',H('sit-phone',840,410,660,0,1)),
- I(.6,'drop',notif(200,300,'Dhuhr · 1:15 PM'),{buzz:.9,sfx:'buzz'}),
+ I(.6,'drop',notif(200,300,'Dhuhr · 1:15 PM'),{buzz:.9,sfx:'buzz',out:3.35}),
  I(.9,'wipe',cap('1:15 PM',620),{out:2.75}),
- I(1.9,'pop',t=>{const k=lerp(t,2.0,3.0,0,1);const mins=75+105*k;return clock(1305,236,160,Math.floor(mins/60),mins%60,[15,15+Math.max(1,45*k)])}),
- I(3.0,'wipe',cap('until 3:00',620)),
-]},
-// 2
-{from:3.58,to:6.84,zoom:.03,ox:900,oy:500,shake:[6.1],items:[
- I(0,'cut',bg('classroom',0,'70% 40%')),
- I(0,'cut',H('sit-phone',760,250,980,0,1)),
- I(5.0,'pop',cloud("I'll pray<br>when I get home",160,180,520,300,48)),
+ I(1.9,'pop',t=>{const k=lerp(t,2.0,3.0,0,1);const mins=75+105*k;return clock(1305,236,160,Math.floor(mins/60),mins%60,[15,15+Math.max(1,45*k)])},{out:3.35}),
+ I(3.0,'wipe',cap('until 3:00',620),{out:3.35}),
+ I(5.0,'pop',cloud("I'll pray<br>when I get home",360,190,520,300,48)),
 ]},
 // 3
 {from:6.84,to:9.78,items:[

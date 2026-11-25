@@ -59,10 +59,18 @@ const SceneView = ({sc, t}) => {
   const kk = k * k * (3 - 2 * k);
   let scale = 1 + (sc.zoom || 0) * kk, ox = sc.ox ?? 960, oy = sc.oy ?? 540;
   if (sc.camTo && t >= sc.camTo.at) { const q = Math.min(1, (t - sc.camTo.at) / (sc.to - sc.camTo.at)); scale = scale + (sc.camTo.scale - scale) * q * q; ox = sc.camTo.ox; oy = sc.camTo.oy; }
+  // keyframed camera [t, scale, centreX, centreY], smoothly eased between keys (used for continuous moves with no cut)
+  let camT;
+  if (sc.cam) {
+    const K = sc.cam; let i = 0; while (i < K.length - 2 && t > K[i + 1][0]) i++;
+    const [a, b] = [K[i], K[i + 1]]; const u0 = Math.max(0, Math.min(1, (t - a[0]) / (b[0] - a[0]))); const u = u0 * u0 * (3 - 2 * u0);
+    const cs = a[1] + (b[1] - a[1]) * u, cx = a[2] + (b[2] - a[2]) * u, cy = a[3] + (b[3] - a[3]) * u;
+    camT = `translate(${960 - cx * cs}px, ${540 - cy * cs}px) scale(${cs})`;
+  }
   let sx = 0;
   for (const s of sc.shake || []) if (t >= s && t < s + .3) sx = Math.sin((t - s) * 90) * 12 * (1 - (t - s) / .3);
   return (
-    <div data-scene="1" data-noaudit={sc.noAuditAfter !== undefined && t >= sc.noAuditAfter ? '1' : undefined} style={{position: 'absolute', inset: 0, background: '#fff', overflow: 'hidden', transform: `translateX(${sx}px) scale(${scale})`, transformOrigin: `${ox}px ${oy}px`}}>
+    <div data-scene="1" data-noaudit={sc.noAuditAfter !== undefined && t >= sc.noAuditAfter ? '1' : undefined} style={{position: 'absolute', inset: 0, background: '#fff', overflow: 'hidden', transform: camT ? `translateX(${sx}px) ${camT}` : `translateX(${sx}px) scale(${scale})`, transformOrigin: camT ? '0 0' : `${ox}px ${oy}px`}}>
       {sc.items.map((it, i) => <Item key={i} sc={sc} it={it} t={t} />)}
     </div>
   );
