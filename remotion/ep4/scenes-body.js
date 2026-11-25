@@ -69,7 +69,7 @@ const SC=[
 {from:30.38,to:40.08,items:[
  I(0,'cut',t=>{const x=t<35.3?lerp(t,30.6,35.3,300,960):lerp(t,37.0,39.4,960,1250);return sky(x,sunPath(x))}),
  I(30.6,'pop',P('start',140,880,'#151515',40),{out:33.2}),I(30.9,'pop',P('end',1640,880,'#151515',40),{out:33.2}),
- I(35.3,'wipe',L('highest point',1060,200,54,'#151515')),
+ I(35.3,'wipe',L('highest point',1060,200,54,'#151515'),{out:37.0}),
  I(36.0,'drop',flag(980,'Dhuhr starts','#1FA34A',440),{sfx:'thud'}),
  I(37.6,'drop',flag(1440,'Asr comes in','#E8A92E',560),{sfx:'thud'}),
  I(38.4,'wipe',`<div class="a" data-k="icon" style="left:990px;top:760px;width:440px;height:16px;background:#1FA34A;border-radius:8px"></div>`),
@@ -222,8 +222,8 @@ const SC=[
 // 27 · Hanafi
 {from:161.34,to:165.86,zoom:.04,items:[
  I(161.4,'pop',Y('Hanafi scholars',110,110,56)),I(161.8,'pop',P('stricter',640,118,'#E31B1B',48)),
- I(163.4,'rise',PH('arafat-top',460,330,1000,300,'Mount Arafat · Hajj','#fff','center 40%'),{sfx:'whoosh'}),
- I(164.6,'wipe',L('only during Hajj',760,860,70)),
+ I(163.4,'stamp',K('ONLY DURING',400,120,'#151515')),
+ I(164.4,'stamp',K('HAJJ',560,200,'#C98A12')),
 ]},
 // 28 · hardship vs inconvenience
 {from:165.86,to:170.16,items:[
