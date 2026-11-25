@@ -10,6 +10,6 @@ helpers = (helpers.replace("url(bg-", "url(${A}bg-").replace("url(photos/", "url
            .replace("'bg-'+f+'.png':'photos/'+f+'.jpg'", "A+'bg-'+f+'.png':A+'photos/'+f+'.jpg'"))
 css = board[board.index("/* scene elements"):board.index("</style>")].replace("`", "\\`")
 head = (R / "remotion/ep4/header.tsx").read_text()
-out = head.replace("/*CSS*/", css) + helpers + (R / "remotion/ep4/scenes-body.js").read_text() + (R / "remotion/ep4/engine.js").read_text()
+out = head.replace("/*CSS*/", css) + helpers + (R / "remotion/ep4/scenes-body.js").read_text() + (R / "remotion/ep4/timemap.js").read_text() + (R / "remotion/ep4/engine.js").read_text()
 (R / "remotion/Ep04Full.tsx").write_text(out)
 print("wrote remotion/Ep04Full.tsx")

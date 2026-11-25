@@ -1,9 +1,16 @@
 // ---------- engine ----------
 export const EP04F_FPS = 30;
-export const EP04F_DURATION_S = 290.6;
+export const EP04F_DURATION_S = Math.round((VO_TOTAL + 0.8) * 10) / 10;
 
-const SFX_VOL = {pop: .22, thud: .32, whoosh: .22, tick: .3, buzz: .35, ding: .22, marker: .2};
-const DEFAULT_SFX = {pop: 'pop', stamp: 'thud', slideL: 'whoosh', slideR: 'whoosh', drop: 'whoosh'};
+// Sound effects are kept for a few real moments only (stamps, the phone/alarm buzz, a handful of
+// whooshes and dings), never closer than SFX_GAP seconds apart, and quiet under the voice.
+const SFX_VOL = {thud: .10, whoosh: .06, tick: .07, buzz: .12, ding: .06};
+const DEFAULT_SFX = {stamp: 'thud'};
+const SFX_GAP = 4;
+// time map: the scenes are written on the original voiceover's clock; TMAP maps it onto the new recording
+const pw = (x, pairs, i, j) => { for (let k = 1; k < pairs.length; k++) if (x <= pairs[k][i]) { const [a, b] = [pairs[k - 1], pairs[k]]; return a[j] + (b[j] - a[j]) * (x - a[i]) / (b[i] - a[i]); } const a = pairs[pairs.length - 1]; return a[j] + (x - a[i]); };
+const toOld = (t) => pw(t, TMAP, 1, 0);
+const toNew = (t) => pw(t, TMAP, 0, 1);
 const absAt = (sc, it) => (it.at === 0 ? sc.from : it.at);
 const htmlAt = (it, t) => (typeof it.h === 'function' ? it.h(t) : it.h);
 const num = (re, s, d) => { const m = re.exec(s); return m ? parseFloat(m[1]) : d; };
@@ -111,20 +118,22 @@ const Audit = () => {
 export const Ep04Full = ({audit}: {audit?: boolean}) => {
   const frame = useCurrentFrame();
   const {fps} = useVideoConfig();
-  const t = frame / fps;
+  const t = toOld(frame / fps);
   const sc = SC.find((s) => t >= s.from && t < s.to) || SC[SC.length - 1];
   const sfx = [];
   for (const s of SC) for (const it of s.items) {
     if (s.quiet || it.sfx === 0) continue;
     const name = it.sfx || DEFAULT_SFX[it.a];
-    if (name) sfx.push([Math.max(0, Math.round(absAt(s, it) * fps)), name]);
+    if (name && SFX_VOL[name] !== undefined) sfx.push([Math.max(0, Math.round(toNew(absAt(s, it)) * fps)), name]);
   }
+  sfx.sort((a, b) => a[0] - b[0]);
+  for (let i = sfx.length - 1, last = 1e9; i >= 0; i--) { if (last - sfx[i][0] < SFX_GAP * fps) sfx.splice(i, 1); else last = sfx[i][0]; }
   return (
     <AbsoluteFill style={{background: '#fff'}}>
       <style>{CSS}</style>
       <Preload />
       <SceneView sc={sc} t={t} />
-      <Audio src={staticFile('ep4v/vo.mp3')} />
+      {VO_PARTS.map(([f, off], i) => <Sequence key={'vo' + i} from={Math.round(off * fps)}><Audio src={staticFile(`ep4v/${f}`)} /></Sequence>)}
       {sfx.map(([f, n], i) => <Sequence key={i} from={f} durationInFrames={Math.round(fps * 1.1)}><Audio src={staticFile(`ep4v/sfx/${n}.wav`)} volume={SFX_VOL[n]} /></Sequence>)}
       {audit && <Audit />}
     </AbsoluteFill>
