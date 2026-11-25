@@ -240,3 +240,34 @@ Measured on 3 minutes of narration with Praat. There's a background bed under th
 
 Settings: Multilingual v2 (or v3 "Natural") · Stability 45–50% · Similarity 75% · Style 5–10% · Speaker boost on · Speed 1.1 · Voice Design guidance scale ~40%
 Pronunciation tip: add a pronunciation dictionary (or spell words out in the script) for Bilal, Ruqyah, Ayat al-Kursi, so it says them correctly instead of the anglicised versions in the sample.
+
+---
+
+## 7. Why the episode 4 voice sounded dry, and the "good teacher" prompt (v12)
+
+Measured on `audio/04-delaying-salah.mp3` with Praat, compared with the jinn-video narrator you liked (section 6):
+
+| Measure | Ep 4 voice | Jinn video | What it means |
+|---|---|---|---|
+| Pitch movement | 3.0 semitones | 4.4 semitones | Ep 4 is **flatter**: the melody barely moves, so nothing stands out |
+| Pauses | 24 per minute, ~0.55 s each | 11 per minute, ~0.2 s | Ep 4 **stops and starts**: long gaps after almost every phrase kill the flow |
+| Sentence endings | −1.8 st | −2.3 st | Similar, both gentle |
+| Pace | 186 words/min | ~195 words/min | Similar |
+| Median pitch | 118 Hz | 117 Hz | Same voice size |
+
+**In plain words:** the voice itself is fine. It sounds dry because the melody is flat and it pauses for half a second after nearly every phrase. A good teacher keeps talking through the commas, lifts their voice on the word that matters, and asks questions like they actually want you to think about the answer.
+
+### v12 prompt: good explainer / teacher
+
+> A young man in his twenties with a clear, warm, mid-low voice, explaining an Islamic topic like a good teacher talking to one student he cares about. He sounds interested in what he is saying, with a slight smile in his voice. His intonation moves naturally: he lifts his voice on the key word of each sentence, slows down a touch on the important fact, and asks questions with a genuine rise, as if he wants you to think about the answer. He keeps the flow going, linking his sentences smoothly with only short pauses at full stops and no stopping at commas. Engaged and friendly but never theatrical, never dramatic, never like an announcer or a voice actor. Respectful and calm when he mentions Allah and the Prophet. Even volume, clear, close and dry recording with no reverb.
+
+Settings: Multilingual v2 · Stability 35–40% (lower = more natural variation; v2 at 50%+ is what made it flat) · Similarity 75% · Style 15–20% · Speaker boost on · Speed 1.05 · Voice Design guidance scale ~40%
+If you use Eleven v3 instead: Stability "Natural", same prompt.
+
+### Script formatting that fixes the stop-start rhythm
+
+- **Don't put every sentence on its own line.** ElevenLabs adds a pause at each line break. Keep a whole thought in one paragraph and start a new paragraph only when the topic changes.
+- **Use commas instead of full stops** inside a thought ("Every prayer has a start time, and it has an end time"). Full stops make a pause; commas keep it moving.
+- **Keep the question marks.** They give the rising questions ("So is it actually okay?").
+- **One word in CAPS per sentence at most** for the word to lean on ("it's a WINDOW", "you MISSED it"). Use it sparingly.
+- Generate the script in 3–4 big chunks rather than line by line, then pick the take with the most life in it.
