@@ -47,7 +47,7 @@ h1{font:900 38px Poppins;margin-bottom:6px}
 </style></head><body>
 <h1>Delaying Salah · Scene Board v4 (timed to your voiceover)</h1>
 <div class="sub">Built from your recording (4:50). The timestamps are your actual words, so this is the edit you approve. Every scene lists its <b>beats</b>: a beat is a cut, a punch-in, a new photo, a pop-up or a word slamming in. The voice is calm, so the visuals carry the pace: a new beat about every 1.5–2 s and no shot held longer than about 3 s.<br>
-<span class="tag sc">SCENE</span> illustrated scene + overlays &nbsp; <span class="tag wb">WHITEBOARD</span> builds item by item with photos, silhouettes, arrows, labels &nbsp; <span class="tag ev">EVIDENCE</span> Quran / hadith card with the reference on screen &nbsp; <span class="tag kt">KINETIC</span> big words slamming in &nbsp; </div>
+<span class="tag sc">SCENE</span> illustrated scene + overlays &nbsp; <span class="tag wb">WHITEBOARD</span> builds item by item with photos, Hadi, arrows, labels &nbsp; <span class="tag ev">EVIDENCE</span> Quran / hadith card with the reference on screen &nbsp; <span class="tag kt">KINETIC</span> big words slamming in &nbsp; </div>
 <div class="stats" id="stats"></div>
 <div id="board"></div>
 <script>
@@ -58,7 +58,7 @@ const bgPhoto=(f,dim=.45,pos='center')=>`<div class="a" data-k="bg" style="inset
 const trench=(dark=0)=>`<div class="a" data-k="bg" style="inset:0;background:url(bg-trench.png) 0% 100%/185% auto no-repeat"></div>${dark?`<div class="a" data-k="bg" style="inset:0;background:linear-gradient(180deg,rgba(40,10,60,${dark}),rgba(0,0,0,${dark+.15}))"></div>`:''}`;
 const cap=(t,cx=960)=>`<div class="cap" data-k="text" style="left:${cx-900}px;right:auto;width:1800px">${t}</div>`;
 const H=(p,x,y,h=600,flip=0,crop=0)=>`<img class="a" data-k="hadi" ${crop?'data-crop="1"':''} src="hadi/${p}.svg" style="left:${x}px;top:${y}px;height:${h}px;filter:drop-shadow(0 14px 16px rgba(0,0,0,.3));${flip?'transform:scaleX(-1)':''}">`;
-const SI=(p,x,y,h=300,flip=0,c='')=>`<img class="a" data-k="hadi" src="hadi/${p}.svg" style="left:${x}px;top:${y}px;height:${h}px;filter:brightness(0)${c};opacity:.88;${flip?'transform:scaleX(-1)':''}">`;
+const SI=(p,x,y,h=300,flip=0)=>H(p,x,y,h,flip); // was a black silhouette; now Hadi in the same spot
 const PH=(f,x,y,w,h,badge='',bc='#fff',pos='center')=>`<div class="photo" data-k="photo" style="left:${x}px;top:${y}px;width:${w}px;height:${h}px;background-image:url(photos/${f}.jpg);background-position:${pos}">${badge?`<div class="badge" style="color:${bc}">${badge}</div>`:''}</div>`;
 const PHbg=(f,x,y,w,h,label='',pos='center')=>`<div class="photo" data-k="photo" style="left:${x}px;top:${y}px;width:${w}px;height:${h}px;background-image:url(bg-${f}.png);background-position:${pos}">${label?`<div class="badge" style="color:#fff">${label}</div>`:''}</div>`;
 const L=(t,x,y,size=64,c='#E31B1B')=>`<div class="lbl" data-k="text" style="left:${x}px;top:${y}px;font-size:${size}px;color:${c}">${t}</div>`;
@@ -102,16 +102,16 @@ const S=[
  [[3.6,'Hard punch-in on Hadi (zoomed classroom, Hadi big in frame).'],[5.0,'Thought cloud pops, words appear one by one with the voice.'],[6.1,'Hadi flips the phone face down: tiny shake.']],
  'Punch-in cut, then drift left 2%.','pop · phone thud'],
 ['HOOK','sc',6.84,9.5,"Almost every Muslim at school or work has done this.",
- PH('lecture-students',40,150,600,780,'school')+PH('lecture-hall',660,150,600,780,'university')+PH('office',1280,150,600,780,'work')+cloud('later',140,600,300,160,44,1)+cloud('later',760,600,300,160,44,1)+cloud('later',1380,600,300,160,44,1),
+ PHbg('classroom',40,150,600,780,'school')+PH('lecture-hall',660,150,600,780,'university')+PH('office',1280,150,600,780,'work')+cloud('later',140,600,300,160,44,1)+cloud('later',760,600,300,160,44,1)+cloud('later',1380,600,300,160,44,1),
  [[6.8,'3-panel split. Panel 1 (students) slams down.'],[7.6,'Panel 2 (lecture hall) slams down.'],[8.4,'Panel 3 (office) slams down.'],[9.0,'A "LATER" thought bubble pops on all three at once.']],
  'Each panel drops with a small bounce.','slam ×3 · pop'],
 ['HOOK','kt',9.78,11.4,"So, is it actually okay?",
  K('IS IT',230,170)+K('ACTUALLY',420,170,'#E31B1B')+K('OKAY?',610,170)+SI('shrug-plain',1480,520,440),
- [[9.8,'White screen. "IS IT" slams.'],[10.2,'"ACTUALLY" slams in red.'],[10.7,'"OKAY?" slams + silhouette shrugs in from the right.']],
+ [[9.8,'White screen. "IS IT" slams.'],[10.2,'"ACTUALLY" slams in red.'],[10.7,'"OKAY?" slams + Hadi shrugs in from the right.']],
  'Each word lands with a 3% scale bump.','hit ×3'],
 ['HOOK','wb',12.04,21.0,"The short answer is, if you get home before Asr comes in, you're fine. If you get home after Asr comes in, you didn't delay Dhuhr. You missed it.",
  Y('The short answer',110,90)+bar(110,420,1700,[['DHUHR',0,55,'#1FA34A'],['ASR',55,100,'#E8A92E']],0,100,130)+`<div class="a" data-k="icon" data-over="1" style="left:1040px;top:380px;width:10px;height:210px;background:#151515"></div>`+L('Asr comes in',940,600,50,'#151515')+SI('walk1',1300,140,270)+P('home',1500,110,'#151515',36)+ST('MISSED',1180,700,'#E31B1B',-8,90)+P("you're fine ✓",230,620,'#1FA34A',48),
- [[12.0,'Yellow box "The short answer".'],[13.4,'Timeline bar draws left to right: DHUHR (green) then ASR (yellow), with an "Asr comes in" line.'],[14.4,'Silhouette walks in with a "home" tag and stops before the line.'],[15.2,'Green "you\'re fine ✓" pops.'],[16.7,'The walker slides past the line. Everything after the line flashes red.'],[18.8,'The word "DELAYED" writes on, then gets struck through.'],[20.3,'"MISSED" stamp slams + screen shake + red edge flash.']],
+ [[12.0,'Yellow box "The short answer".'],[13.4,'Timeline bar draws left to right: DHUHR (green) then ASR (yellow), with an "Asr comes in" line.'],[14.4,'Hadi walks in with a "home" tag and stops before the line.'],[15.2,'Green "you\'re fine ✓" pops.'],[16.7,'The walker slides past the line. Everything after the line flashes red.'],[18.8,'The word "DELAYED" writes on, then gets struck through.'],[20.3,'"MISSED" stamp slams + screen shake + red edge flash.']],
  'Static; one shake on the stamp.','marker · whoosh · stamp thud'],
 ['HOOK','wb',21.46,27.1,"Here's why. What counts as a real excuse and what you can actually do about it at school or at work.",
  PH('quran-ms',90,250,500,500)+PH('alarm',710,250,500,500)+PH('lecture-hall',1330,250,240,240)+PHbg('office',1580,250,240,240)+PH('empty-classroom',1330,510,490,240)+N(1,60,190)+N(2,680,190)+N(3,1300,190)+L('why',260,780,72)+L('real excuses',820,780,72)+L('what to do',1440,780,72),
@@ -131,7 +131,7 @@ const S=[
  [[40.1,'Sun slides down toward the horizon; sky grades orange.'],[40.9,'"sunset = Asr ends" writes on.'],[41.5,'Red hatched zone draws over the last part before sunset.'],[43.3,'Sun turns deep yellow.'],[44.2,'Red pill "don\'t push it here without a reason".']],
  'Continuous with the last shot (same sky).','swish · marker'],
 ['PRAYER TIMES','kt',46.02,52.62,"So, Dhuhr isn't a deadline at the end of the day. It's a window, and that window is shorter than what most people think.",
- K('DEADLINE',120,150,'#999','text-decoration:line-through;text-decoration-color:#E31B1B;text-decoration-thickness:16px')+bar(160,520,1600,[['6 AM',6,9,'#cfcfcf'],['',9,12,'#e3e3e3'],['DHUHR',12,15,'#1FA34A'],['ASR',15,18,'#E8A92E'],['9 PM',18,21,'#3A2A6A']],6,21,120)+`<div class="a" data-k="icon" data-over="1" style="left:770px;top:480px;width:340px;height:200px;border:14px solid #151515;border-radius:12px"></div>`+K('IT\'S A WINDOW',300,110,'#1FA34A')+L('shorter than most people think',560,740,64),
+ K('DEADLINE',120,150,'#999','text-decoration:line-through;text-decoration-color:#E31B1B;text-decoration-thickness:16px')+bar(160,520,1600,[['6 AM',6,9,'#cfcfcf'],['',9,12,'#e3e3e3'],['DHUHR',12,15,'#1FA34A'],['ASR',15,18,'#E8A92E'],['9 PM',18,21,'#3A2A6A']],6,21,120)+`<div class="a" data-k="icon" data-over="1" style="left:782px;top:502px;width:350px;height:156px;border:14px solid #151515;border-radius:20px"></div>`+K('IT\'S A WINDOW',300,110,'#1FA34A')+L('shorter than most people think',560,740,64),
  [[46.0,'"DEADLINE" slams.'],[47.6,'A red line strikes through it.'],[49.0,'"IT\'S A WINDOW" slams in green; a day bar slides up underneath.'],[49.6,'A thick window frame drops onto the Dhuhr block.'],[50.2,'The frame squeezes narrower (both sides pinch in).'],[51.4,'"shorter than most people think" writes on.']],
  'Snap zoom onto the window frame at 49.6.','slam · strike · thunk · squeeze'],
 
@@ -144,12 +144,12 @@ const S=[
  [[58.1,'Chalkboard swings in with the QURAN plate; Hadi points.'],[59.1,'Text writes on phrase by phrase with the voice.'],[60.9,'"at fixed times" glows yellow.'],[62.5,'Red handwriting under the board: "not whenever it fits".']],
  'Very slow push-in. No SFX on the ayah.','none'],
 ['QURAN & SUNNAH','ev',64.92,73.2,"A companion once asked the Prophet sallallahu alayhi wa sallam, which deed Allah loves the most? And he said, the prayer at its time.",
- bgPhoto('nabawi2',.55,'center 70%')+`<div class="a" data-k="text" style="left:260px;top:220px;width:1400px;background:#fff;border-radius:24px;padding:30px 40px;font:900 64px Nunito;text-align:center">Which deed does Allah love the most?</div>`+K('THE PRAYER AT ITS TIME',560,104,'#FFE14D','text-shadow:0 8px 30px rgba(0,0,0,.6)')+`<div class="ref" data-k="text" style="top:920px;color:#ddd">Sahih al-Bukhari 527 · Sahih Muslim 85</div>`,
+ bgPhoto('nabawi-top',.55,'center 30%')+`<div class="a" data-k="text" style="left:260px;top:220px;width:1400px;background:#fff;border-radius:24px;padding:30px 40px;font:900 64px Nunito;text-align:center">Which deed does Allah love the most?</div>`+K('THE PRAYER AT ITS TIME',560,104,'#FFE14D','text-shadow:0 8px 30px rgba(0,0,0,.6)')+`<div class="ref" data-k="text" style="top:920px;color:#ddd">Sahih al-Bukhari 527 · Sahih Muslim 85</div>`,
  [[64.9,'Photo of Masjid an-Nabawi fills the screen, darkened; slow push-in.'],[66.6,'Small caption: "The Prophet ﷺ was asked".'],[68.8,'White question card pops: "Which deed does Allah love the most?"'],[71.0,'Short pause beat: card dims.'],[72.0,'"THE PRAYER AT ITS TIME" slams in gold + reference fades in.']],
  'Slow push-in on the photo.','soft riser · hit'],
 ['QURAN & SUNNAH','wb',74.04,80.5,"Here's what he said about Asr. He said that whoever misses the Asr prayer, it's as if he lost his family and his wealth.",
- Y('About Asr',110,90)+PH('sunset',110,260,460,300,'misses Asr','#FFB36B')+L('=',650,330,160,'#151515')+PH('family',800,260,460,300,'family','#fff','center 70%')+PH('coins',1330,260,460,300,'wealth','#FFE14D')+L('as if he lost both',760,640,72)+`<div class="ref" data-k="text" style="top:900px">Sahih al-Bukhari 552 · Sahih Muslim 626</div>`,
- [[74.0,'Yellow box "About Asr".'],[75.7,'Sunset photo slides in: "misses Asr".'],[77.3,'Big "=" draws on.'],[78.3,'Family silhouette photo pops.'],[79.3,'Gold coins photo pops.'],[80.0,'Both photos drain to grey + "as if he lost both" writes on; reference.']],
+ Y('About Asr',110,90)+PH('sunset',110,260,460,300,'misses Asr','#FFB36B')+L('=',650,330,160,'#151515')+PH('home',800,260,460,300,'family')+PH('coins',1330,260,460,300,'wealth','#FFE14D')+L('as if he lost both',760,640,72)+`<div class="ref" data-k="text" style="top:900px">Sahih al-Bukhari 552 · Sahih Muslim 626</div>`,
+ [[74.0,'Yellow box "About Asr".'],[75.7,'Sunset photo slides in: "misses Asr".'],[77.3,'Big "=" draws on.'],[78.3,'Family-home photo pops.'],[79.3,'Gold coins photo pops.'],[80.0,'Both photos drain to grey + "as if he lost both" writes on; reference.']],
  'Static, slight zoom out as the row fills.','pop ×3 · low hit'],
 ['QURAN & SUNNAH','ev',81.36,86.08,"There's an ayah that narrates, woe to those who pray, but are heedless of their prayer.",
  chalk('QURAN','"Woe to those who pray, but are heedless of their prayer."','Surah Al-Ma\'un 107:4–5'),
@@ -157,12 +157,12 @@ const S=[
  'Slow push-in. No SFX.','none'],
 ['QURAN & SUNNAH','wb',87.08,98.12,"Some of the early scholars explain this as people who do pray, but keep pushing it past its time. So the warning isn't only for people who don't pray, but also for people who pray late out of laziness.",
  PH('books-shelf',110,110,300,240)+L('early scholars',110,370,52)+SI('pray-stand',520,90,280)+bar(860,170,900,[['DHUHR',0,60,'#1FA34A'],['ASR',60,100,'#E8A92E']],0,100,90)+AR('M900,330 C1100,420 1300,420 1480,330','#E31B1B',9)+L('pushed past its time',1050,410,50)+`<div class="a" data-k="icon" style="left:950px;top:680px;width:8px;height:320px;background:#ddd"></div>`+SI('walk1',300,600,330,1)+L("don't pray",280,940,54,'#151515')+SI('sleep',1260,600,330)+L('pray late out of laziness',1100,940,54)+ST('WARNING',720,540,'#E31B1B',-6,60),
- [[87.1,'Hadith-shelf photo + "early scholars".'],[88.8,'Silhouette praying pops.'],[90.5,'Mini prayer bar; a red arrow drags the prayer past the end of the window: "pushed past its time".'],[93.0,'Cut to a split board. Left: silhouette walking away, "don\'t pray".'],[95.7,'Right: silhouette asleep at a desk, "pray late out of laziness".'],[96.6,'"WARNING" stamp slams across the middle.']],
+ [[87.1,'Hadith-shelf photo + "early scholars".'],[88.8,'Hadi praying pops.'],[90.5,'Mini prayer bar; a red arrow drags the prayer past the end of the window: "pushed past its time".'],[93.0,'Cut to a split board. Left: Hadi walking away, "don\'t pray".'],[95.7,'Right: Hadi asleep at a desk, "pray late out of laziness".'],[96.6,'"WARNING" stamp slams across the middle.']],
  'Pan down from the top row to the split.','pop ×3 · drag · stamp'],
 
 ['NOT YOUR FAULT','wb',98.96,100.8,"So now, what's not your fault?",
  L("what's not your fault?",560,120,84,'#151515')+SI('sleep',300,380,460)+L('fell asleep',330,880,60)+SI('sad',1220,380,460)+cloud('?',1540,190,200,150,80)+L('forgot',1290,880,60),
- [[99.0,'"what\'s not your fault?" writes across the top of a clean board.'],[99.6,'Silhouette asleep at a desk + "fell asleep".'],[100.2,'Second silhouette with a "?" cloud + "forgot". Cut to the bedroom.']],
+ [[99.0,'"what\'s not your fault?" writes across the top of a clean board.'],[99.6,'Hadi asleep at a desk + "fell asleep".'],[100.2,'Second Hadi with a "?" cloud + "forgot". Cut to the bedroom.']],
  'Straight cut from the WARNING board.','marker · pop ×2'],
 ['NOT YOUR FAULT','sc',101.48,111.64,"If you genuinely fall asleep, or you completely forget, the Prophet sallallahu alayhi wa sallam said, pray it when you remember, as you're not sinful for something you didn't choose.",
  bg('bedroom',.45)+H('sleep',260,330,640)+PH('alarm',1380,140,330,420)+`<div class="a" data-k="text" style="left:900px;top:640px;width:900px;background:#F4F1E8;border:10px solid #5B3A1E;border-radius:16px;padding:26px 30px;font:italic 700 54px 'Comic Neue';text-align:center;text-transform:uppercase">"Pray it when you remember"<div style="font:700 26px Nunito;color:#666;text-transform:none;font-style:normal;margin-top:8px">Sahih al-Bukhari 597 · Sahih Muslim 684</div></div>`+P('not sinful ✓',360,180,'#1FA34A',54),
@@ -190,8 +190,8 @@ const S=[
  [[135.9,'Clean board. Green "but there is a solution" pops.'],[136.6,'DHUHR and ASR blocks slide in from the sides with arrows pointing at each other, setting up the combining board.']],
  'Straight cut from the balance scale.','pop · swish'],
 ['COMBINING','wb',138.04,147.02,"Ibn Abbas narrated that the Prophet sallallahu alayhi wa sallam combined Dhuhr and Asr in Madinah with no travel, no fear, and no rain.",
- PH('quran-ms',90,110,260,260)+L('Ibn Abbas (RA)',70,390,52)+PH('nabawi2',420,110,420,260,'Madinah')+bar(940,170,880,[['DHUHR',0,48,'#1FA34A'],['ASR',52,100,'#E8A92E']],0,100,110)+P('COMBINED',1200,320,'#151515',48)+PH('suitcase',120,560,420,320)+PH('rain',1380,560,420,320)+SI('panic-plain',800,520,380)+L('no travel ✕',180,900,58)+L('no fear ✕',760,900,58)+L('no rain ✕',1450,900,58),
- [[138.0,'Manuscript photo + "Ibn Abbas (RA)".'],[139.6,'"narrated": a hand-drawn line connects the manuscript to the next item.'],[141.6,'Masjid an-Nabawi photo tagged "Madinah".'],[142.0,'DHUHR and ASR blocks slide together and lock: "COMBINED".'],[143.9,'Suitcase photo + red "no travel ✕".'],[145.3,'Frightened silhouette + "no fear ✕".'],[146.3,'Rain photo + "no rain ✕".']],
+ PH('quran-ms',90,110,260,260)+L('Ibn Abbas (RA)',70,390,52)+PH('nabawi-top',420,110,420,260,'Madinah')+bar(940,170,880,[['DHUHR',0,48,'#1FA34A'],['ASR',52,100,'#E8A92E']],0,100,110)+P('COMBINED',1200,320,'#151515',48)+PH('suitcase',120,560,420,320)+PH('rain2',1380,560,420,320)+SI('panic-plain',800,520,380)+L('no travel ✕',180,900,58)+L('no fear ✕',760,900,58)+L('no rain ✕',1450,900,58),
+ [[138.0,'Manuscript photo + "Ibn Abbas (RA)".'],[139.6,'"narrated": a hand-drawn line connects the manuscript to the next item.'],[141.6,'Masjid an-Nabawi photo tagged "Madinah".'],[142.0,'DHUHR and ASR blocks slide together and lock: "COMBINED".'],[143.9,'Suitcase photo + red "no travel ✕".'],[145.3,'Frightened Hadi + "no fear ✕".'],[146.3,'Rain photo + "no rain ✕".']],
  'Board builds top row then bottom row.','pop · lock click · pen ×3'],
 ['COMBINING','ev',147.84,152.6,"When Ibn Abbas was asked why, he said, so his ummah wouldn't be put in hardship.",
  L('Why?',860,150,90,'#151515')+`<div class="quote" data-k="text">"So his ummah wouldn't be put in <mark>hardship</mark>."</div>`+`<div class="ref" data-k="text" style="top:760px">Sahih Muslim 705</div>`,
@@ -202,12 +202,12 @@ const S=[
  [[152.9,'Scholars\' books photo + "many scholars allow it".'],[154.4,'"Dhuhr and Asr": the locked DHUHR+ASR blocks from the last board pop in small.'],[157.0,'Green "real hardship ✓".'],[158.5,'Green "occasional ✓".'],[159.8,'Red "a habit ✕"; a week strip fills red day by day underneath.']],
  'Static.','pop ×3'],
 ['COMBINING','wb',161.34,165.44,"Hanafi scholars are stricter on this and generally only allow it during Hajj.",
- Y('Hanafi scholars',110,110,56)+P('stricter',640,118,'#E31B1B',48)+PH('arafat',560,300,800,520,'Hajj')+L('only during Hajj',760,860,70),
+ Y('Hanafi scholars',110,110,56)+P('stricter',640,118,'#E31B1B',48)+PH('arafat-top',460,330,1000,300,'Mount Arafat · Hajj','#fff','center 40%')+L('only during Hajj',760,860,70),
  [[161.3,'"Hanafi scholars" box + red "stricter" pill.'],[163.4,'Arafat photo slides up, tagged "Hajj".'],[164.6,'"only during Hajj" writes on.']],
  'Slow push-in on the photo.','pop · whoosh'],
 ['COMBINING','wb',165.86,170.16,"But combining is for genuine hardship. It doesn't cover inconvenience at all.",
  SI('panic-plain',300,240,460)+SI('sit-bored',1260,240,460)+ST('GENUINE HARDSHIP ✓',140,780,'#1FA34A',-4,58)+ST('INCONVENIENCE ✕',1130,780,'#E31B1B',4,58),
- [[165.9,'Left: stressed silhouette + green "GENUINE HARDSHIP ✓" stamp.'],[168.4,'Right: bored silhouette scrolling + red "INCONVENIENCE ✕" stamp.']],
+ [[165.9,'Left: stressed Hadi + green "GENUINE HARDSHIP ✓" stamp.'],[168.4,'Right: bored Hadi scrolling + red "INCONVENIENCE ✕" stamp.']],
  'Split, stamp hits.','stamp ×2'],
 
 ['AT SCHOOL OR WORK','wb',170.16,180.56,"So, how does this work during school or work hours? There are four parts to it. Timing, wudu, where you pray, and what happens if a prayer has already passed.",
@@ -223,12 +223,12 @@ const S=[
  [[201.3,'Yellow "A simple trick".'],[202.6,'Tap photo tagged "7:00 AM" + Hadi doing wudu.'],[205.0,'Green "wudu stays valid".'],[207.7,'"toilet ✕" writes on.'],[208.6,'"sleep ✕" writes on.'],[210.3,'Quick insert: home → school arrow, sink icon crossed: "no sink needed".'],[212.9,'"without needing a sink": tap photo gets a red ✕ "no sink needed".'],[214.2,'School photo card pops with a green ✓.'],[215.7,'Drawn leather sock (khuff) drops in + "khuffs".'],[218.5,'Tag "put on with wudu".'],[219.8,'Blue wipe arrow sweeps over the top of the khuff.'],[222.0,'"up to 24 hours" pill; a ring timer fills once.']],
  'Pan right as the board grows.','water · pop ×4 · swipe'],
 ['AT SCHOOL OR WORK','wb',224.04,238.28,"Where you pray. You don't need a masjid or a prayer mat to pray. The Prophet sallallahu alayhi wa sallam said that the whole earth has been made a place of prayer. So, any clean place works like an empty classroom or a quiet part of the library or an office.",
- Y('Where you pray',110,80)+PH('wudu-fountain',110,200,360,240)+PH('pray-rug',500,200,240,240)+P('not required',300,460,'#9AA0A6',44)+globe(860,200,200)+L('"the whole earth has been made a place of prayer"',1080,240,46,'#151515')+`<div class="ref" data-k="text" style="top:330px;left:1080px;right:auto;font-size:28px">Sahih al-Bukhari 335</div>`+PH('empty-classroom',110,600,540,360,'classroom')+PH('library',690,600,540,360,'library')+PHbg('office',1270,600,540,360,'office'),
+ Y('Where you pray',110,80)+PH('wudu-fountain',110,200,360,240)+PH('pray-rug',500,200,240,240)+P('not required',300,460,'#9AA0A6',44)+globe(860,200,200)+L('"the whole earth has been made a place of prayer"',1080,240,46,'#151515')+`<div class="ref" data-k="text" style="top:330px;left:1080px;right:auto;font-size:28px">Sahih al-Bukhari 335</div>`+PH('empty-classroom',110,600,540,360,'classroom')+PH('library-crop',690,600,540,360,'library')+PHbg('office',1270,600,540,360,'office'),
  [[224.0,'Yellow "Where you pray".'],[225.2,'Masjid photo + prayer-mat photo pop, then a grey "not required" tag.'],[227.4,'Globe spins in; the hadith writes on next to it; reference.'],[229.4,'"the whole earth": the globe spins and the words highlight.'],[231.2,'"place of prayer": a prayer-mat outline draws onto the globe.'],[232.4,'Small tag "any clean place ✓".'],[233.3,'Empty classroom photo slides in.'],[235.7,'Library photo slides in.'],[237.0,'Office photo slides in.']],
  'Board builds top to bottom.','pop ×5'],
 ['AT SCHOOL OR WORK','sc',239.0,247.2,"One thing to know is that an obligatory prayer has to be prayed standing if you're able to. So, sitting in your car doesn't count, but praying next to it does.",
  `<div class="a" data-k="bg" style="left:0;top:0;width:960px;height:1080px;background:url(bg-car.png) 30% center/cover"></div><div class="a" data-k="bg" style="left:960px;top:0;width:960px;height:1080px;background:url(bg-street.png) 60% center/cover"></div><div class="a" data-k="bg" style="left:954px;top:0;width:12px;height:1080px;background:#fff"></div>`+Y('obligatory prayer = standing',110,80,52)+ST('SITTING INSIDE ✕',140,460,'#E31B1B',-6,60)+H('pray-stand',1420,380,620)+P('standing, outside ✓',1160,240,'#1FA34A',50),
- [[239.0,'Your car scene. Yellow "obligatory prayer = standing".'],[240.4,'"obligatory prayer": a "fard" tag pops.'],[242.2,'"standing": a standing silhouette pops next to the label.'],[243.9,'"SITTING INSIDE ✕" stamp over the car seat.'],[245.9,'Split wipes in: outside on the street, Hadi standing in prayer outside + green "standing, outside ✓".']],
+ [[239.0,'Your car scene. Yellow "obligatory prayer = standing".'],[240.4,'"obligatory prayer": a "fard" tag pops.'],[242.2,'"standing": a standing Hadi pops next to the label.'],[243.9,'"SITTING INSIDE ✕" stamp over the car seat.'],[245.9,'Split wipes in: outside on the street, Hadi standing in prayer outside + green "standing, outside ✓".']],
  'Slow push-in.','stamp · pop'],
 ['AT SCHOOL OR WORK','wb',247.94,256.4,"For the qibla, a compass or a qibla app is enough. If you make a real effort and you're slightly off, your prayer is still valid in sha Allah.",
  Y('Qibla',110,80)+PH('compass',110,200,520,360)+PH('phone-hand',690,200,520,360)+AR('M1400,760 L1700,620','#1FA34A',12)+AR('M1400,760 L1690,700','#E8A92E',8).replace('data-k="arrow"','data-k="arrow" data-over="1"')+L('slightly off',1360,820,54,'#E8A92E')+P('still valid ✓',1300,260,'#1FA34A',54),
@@ -240,7 +240,7 @@ const S=[
  'Static.','spin · slam · pop ×4'],
 ['AT SCHOOL OR WORK','wb',268.16,277.02,"But if you missed your prayers on purpose, making it up isn't the whole fix. You also need to perform tawbah, which means sincerely asking Allah for forgiveness.",
  L('missed on purpose',110,110,70)+progress(110,330,1700,.5,.5)+L('making it up',260,460,56,'#2F80ED')+L('tawbah',1200,460,56,'#C98A12')+H('dua',800,520,440)+L('sincerely asking Allah for forgiveness',470,980,50,'#151515'),
- [[268.2,'Red "missed on purpose".'],[270.3,'A bar fills halfway in blue: "making it up".'],[271.0,'The bar stops: "not the whole fix".'],[272.6,'The other half fills gold: "tawbah".'],[274.6,'Silhouette with raised hands fades in under soft light + caption.'],[276.2,'"forgiveness": soft gold light grows behind Hadi.']],
+ [[268.2,'Red "missed on purpose".'],[270.3,'A bar fills halfway in blue: "making it up".'],[271.0,'The bar stops: "not the whole fix".'],[272.6,'The other half fills gold: "tawbah".'],[274.6,'Hadi with raised hands fades in under soft light + caption.'],[276.2,'"forgiveness": soft gold light grows behind Hadi.']],
  'Slow push-in.','marker · fill ×2 · soft pad'],
 ['ANSWER','wb',277.86,290.0,"So, to answer the question. Praying when you get home is fine if you get home before the next prayer comes in. If you don't, it has to be prayed at school or at work, and in most cases, that only takes a 5-minute break.",
  Y('So, to answer the question',110,80)+bar(110,260,1700,[['DHUHR',0,55,'#1FA34A'],['ASR',55,100,'#E8A92E']],0,100,110)+SI('walk1',700,400,240)+P('home before Asr ✓',140,440,'#1FA34A',44)+PH('lecture-hall',110,680,520,320,'school')+PHbg('office',690,680,520,320,'work')+PH('stopwatch',1300,640,300,380)+L('5 min',1640,760,90,'#151515'),

@@ -4,6 +4,16 @@ The house style for every Halal YT video. It draws on two reference channels I s
 
 **In one line:** plain white screen, a real internet image for every few words, simple keyframed motion, and Hadi as the narrator. Playful when we set up the story, still when we quote Allah or His Messenger ﷺ.
 
+
+## Hard rules from channel feedback (these override anything below)
+
+- **No images of women** in any video, even covered or seen from behind. Check every photo with people in it, crowds included; crop or replace it.
+- **No black silhouette figures.** Wherever a "person" is needed, use Hadi.
+- **No emojis as the main visuals.** Narrate with small real photos, Hadi, and drawn diagrams (arrows, labels, highlight boxes, stamps).
+- **No numbered section cards.** The script flows on; scene changes follow the script with straight cuts, not "1 / 2 / 3" chapter titles.
+- **Pace:** a new beat about every 1.5–2 s, and nothing held for more than 3 s without a change.
+- **Every scene passes the layout check** (`tools/audit_board.js` / `tools/audit_layout.mjs` + `tools/audit_layout.py`): no overlaps, nothing off-frame, no text spilling out of its box. Then check the frames by eye.
+
 ---
 
 ## 1. What I learned from the references
