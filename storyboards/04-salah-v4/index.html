@@ -47,7 +47,7 @@ h1{font:900 38px Poppins;margin-bottom:6px}
 </style></head><body>
 <h1>Delaying Salah · Scene Board v4 (timed to your voiceover)</h1>
 <div class="sub">Built from your recording (4:50). The timestamps are your actual words, so this is the edit you approve. Every scene lists its <b>beats</b>: a beat is a cut, a punch-in, a new photo, a pop-up or a word slamming in. The voice is calm, so the visuals carry the pace: a new beat about every 1.5–2 s and no shot held longer than about 3 s.<br>
-<span class="tag sc">SCENE</span> illustrated scene + overlays &nbsp; <span class="tag wb">WHITEBOARD</span> builds item by item with photos, silhouettes, arrows, labels &nbsp; <span class="tag ev">EVIDENCE</span> Quran / hadith card with the reference on screen &nbsp; <span class="tag kt">KINETIC</span> big words slamming in &nbsp; <span class="tag ch">CHAPTER</span> 1-second section card with a whip transition</div>
+<span class="tag sc">SCENE</span> illustrated scene + overlays &nbsp; <span class="tag wb">WHITEBOARD</span> builds item by item with photos, silhouettes, arrows, labels &nbsp; <span class="tag ev">EVIDENCE</span> Quran / hadith card with the reference on screen &nbsp; <span class="tag kt">KINETIC</span> big words slamming in &nbsp; </div>
 <div class="stats" id="stats"></div>
 <div id="board"></div>
 <script>
@@ -118,10 +118,10 @@ const S=[
  [[21.5,'Card 1 (Quran manuscript) flips in + "why".'],[22.5,'Card 2 (alarm clock) flips in + "real excuses".'],[23.9,'Card 3 builds as a mini collage: school, office, empty classroom + "what to do".'],[26.0,'Cards nudge up and the camera zooms through card 1 into the next part.']],
  'Zoom-through transition at the end.','flip ×3 · whoosh'],
 
-['PRAYER TIMES','ch',27.82,29.7,"First, how prayer times work.",
- chap('1','How prayer times work','sunset'),
- [[27.8,'Whip to black. Big yellow "1", title types on over a faint sunset photo.']],
- 'Whip pan in / out.','whoosh'],
+['PRAYER TIMES','wb',27.82,29.7,"First, how prayer times work.",
+ clock(420,500,210,12,0)+L('how prayer times work',190,780,64,'#151515')+AR('M700,480 C820,380 960,380 1080,470')+`<div class="a" data-k="icon" style="left:1140px;top:360px;width:260px;height:260px;border-radius:50%;background:#FFC83D;box-shadow:0 0 60px #FFC83D"></div>`+L('they follow the sun',1080,700,64),
+ [[27.8,'Clean whiteboard. A clock draws on; "how prayer times work" writes underneath.'],[28.8,'Arrow draws to a sun: "they follow the sun". Hard cut into the sky drawing.']],
+ 'Straight cut in from the last board, straight cut out to the sky.','marker · pop'],
 ['PRAYER TIMES','wb',30.38,39.4,"Every prayer has a start time and an end time. Dhuhr starts just after midday, when the sun passes its highest point and it ends the moment Asr comes in.",
  sky(960,240)+flag(980,'Dhuhr starts','#1FA34A',440)+flag(1440,'Asr comes in','#E8A92E',560)+L('highest point',1060,200,54,'#151515')+`<div class="a" data-k="icon" style="left:990px;top:760px;width:440px;height:16px;background:#1FA34A;border-radius:8px"></div>`+L('Dhuhr window',1060,690,52,'#0E6B32'),
  [[30.4,'Drawn sky. A dashed sun path draws across. START and END tags flash at both ends.'],[33.4,'Sun travels up the arc.'],[35.3,'Sun reaches the top: "highest point" label + tick.'],[36.0,'Green flag "Dhuhr starts" plants into the ground.'],[37.6,'Yellow flag "Asr comes in" plants.'],[38.4,'A green bar fills between the flags: "Dhuhr window".']],
@@ -135,10 +135,10 @@ const S=[
  [[46.0,'"DEADLINE" slams.'],[47.6,'A red line strikes through it.'],[49.0,'"IT\'S A WINDOW" slams in green; a day bar slides up underneath.'],[49.6,'A thick window frame drops onto the Dhuhr block.'],[50.2,'The frame squeezes narrower (both sides pinch in).'],[51.4,'"shorter than most people think" writes on.']],
  'Snap zoom onto the window frame at 49.6.','slam · strike · thunk · squeeze'],
 
-['QURAN & SUNNAH','ch',53.48,57.1,"Now, what does the Quran and Sunnah actually say about this problem?",
- chap('2','What the Quran and Sunnah say','books-shelf'),
- [[53.5,'Whip to black. Big "2", title types on.'],[55.0,'Two photo strips slide behind (manuscript, hadith shelf).'],[56.4,'"about this problem?": a red question mark stamps next to the title.']],
- 'Whip pan.','whoosh'],
+['QURAN & SUNNAH','wb',53.48,57.1,"Now, what does the Quran and Sunnah actually say about this problem?",
+ PH('quran-ms',110,180,340,380)+L('Quran',200,590,70)+PH('books-shelf',540,180,380,380)+L('Sunnah',630,590,70)+AR('M960,370 C1060,300 1160,300 1250,360')+cloud('pray it<br>later?',1270,220,480,300,52)+H('point-up',1500,560,480),
+ [[53.5,'Quran manuscript photo pops + red "Quran".'],[54.6,'Hadith-shelf photo pops + red "Sunnah".'],[55.6,'Arrow draws across.'],[56.2,'Cloud "pray it later?" pops; Hadi raises a finger.']],
+ 'Whiteboard, straight cut from the "window" board.','pop ×3 · marker'],
 ['QURAN & SUNNAH','ev',58.08,64.14,"Allah says, prayer has been prescribed for the believers at fixed times, not whenever it fits around our day.",
  chalk('QURAN','"Prayer has been prescribed for the believers at fixed times."','Surah An-Nisa 4:103')+L('not whenever it fits',990,960,54),
  [[58.1,'Chalkboard swings in with the QURAN plate; Hadi points.'],[59.1,'Text writes on phrase by phrase with the voice.'],[60.9,'"at fixed times" glows yellow.'],[62.5,'Red handwriting under the board: "not whenever it fits".']],
@@ -160,9 +160,10 @@ const S=[
  [[87.1,'Hadith-shelf photo + "early scholars".'],[88.8,'Silhouette praying pops.'],[90.5,'Mini prayer bar; a red arrow drags the prayer past the end of the window: "pushed past its time".'],[93.0,'Cut to a split board. Left: silhouette walking away, "don\'t pray".'],[95.7,'Right: silhouette asleep at a desk, "pray late out of laziness".'],[96.6,'"WARNING" stamp slams across the middle.']],
  'Pan down from the top row to the split.','pop ×3 · drag · stamp'],
 
-['NOT YOUR FAULT','ch',98.96,100.8,"So now, what's not your fault?",
- chap('3',"What's not your fault",'alarm'),
- [[99.0,'Whip to black. Big "3", title types on.']],'Whip pan.','whoosh'],
+['NOT YOUR FAULT','wb',98.96,100.8,"So now, what's not your fault?",
+ L("what's not your fault?",560,120,84,'#151515')+SI('sleep',300,380,460)+L('fell asleep',330,880,60)+SI('sad',1220,380,460)+cloud('?',1540,190,200,150,80)+L('forgot',1290,880,60),
+ [[99.0,'"what\'s not your fault?" writes across the top of a clean board.'],[99.6,'Silhouette asleep at a desk + "fell asleep".'],[100.2,'Second silhouette with a "?" cloud + "forgot". Cut to the bedroom.']],
+ 'Straight cut from the WARNING board.','marker · pop ×2'],
 ['NOT YOUR FAULT','sc',101.48,111.64,"If you genuinely fall asleep, or you completely forget, the Prophet sallallahu alayhi wa sallam said, pray it when you remember, as you're not sinful for something you didn't choose.",
  bg('bedroom',.45)+H('sleep',260,330,640)+PH('alarm',1380,140,330,420)+`<div class="a" data-k="text" style="left:900px;top:640px;width:900px;background:#F4F1E8;border:10px solid #5B3A1E;border-radius:16px;padding:26px 30px;font:italic 700 54px 'Comic Neue';text-align:center;text-transform:uppercase">"Pray it when you remember"<div style="font:700 26px Nunito;color:#666;text-transform:none;font-style:normal;margin-top:8px">Sahih al-Bukhari 597 · Sahih Muslim 684</div></div>`+P('not sinful ✓',360,180,'#1FA34A',54),
  [[101.5,'Dark bedroom. Hadi asleep at the desk, Zzz floating.'],[102.2,'Alarm-clock photo pops and shakes (ringing).'],[103.4,'A "?" bubble pops over Hadi for "completely forget".'],[105.1,'Hadith card slides up from the bottom.'],[108.0,'"Pray it when you remember" highlights word by word.'],[109.3,'Green "not sinful ✓" pill pops.'],[110.6,'"didn\'t choose": the alarm photo stops shaking and fades grey.']],
@@ -184,9 +185,10 @@ const S=[
  [[130.7,'Left half slams in: trench, "a war".'],[133.3,'Right half slams in: lecture hall, "a school day".'],[134.4,'A drawn balance scale drops in the middle and tips heavily toward "a war".']],
  'Split-screen slam.','slam ×2 · creak'],
 
-['COMBINING','ch',135.92,137.34,"But there is a solution for that.",
- chap('4','Combining prayers','nabawi2'),
- [[135.9,'Whip to black. Big "4", "Combining prayers" types on.']],'Whip pan.','whoosh'],
+['COMBINING','wb',135.92,137.34,"But there is a solution for that.",
+ P('but there is a solution',600,200,'#1FA34A',64)+bar(160,520,700,[['DHUHR',0,100,'#1FA34A']],0,100,130)+bar(1060,520,700,[['ASR',0,100,'#E8A92E']],0,100,130)+AR('M700,760 C800,820 860,820 920,760','#151515',8)+AR('M1220,760 C1120,820 1060,820 1000,760','#151515',8),
+ [[135.9,'Clean board. Green "but there is a solution" pops.'],[136.6,'DHUHR and ASR blocks slide in from the sides with arrows pointing at each other, setting up the combining board.']],
+ 'Straight cut from the balance scale.','pop · swish'],
 ['COMBINING','wb',138.04,147.02,"Ibn Abbas narrated that the Prophet sallallahu alayhi wa sallam combined Dhuhr and Asr in Madinah with no travel, no fear, and no rain.",
  PH('quran-ms',90,110,260,260)+L('Ibn Abbas (RA)',70,390,52)+PH('nabawi2',420,110,420,260,'Madinah')+bar(940,170,880,[['DHUHR',0,48,'#1FA34A'],['ASR',52,100,'#E8A92E']],0,100,110)+P('COMBINED',1200,320,'#151515',48)+PH('suitcase',120,560,420,320)+PH('rain',1380,560,420,320)+SI('panic-plain',800,520,380)+L('no travel ✕',180,900,58)+L('no fear ✕',760,900,58)+L('no rain ✕',1450,900,58),
  [[138.0,'Manuscript photo + "Ibn Abbas (RA)".'],[139.6,'"narrated": a hand-drawn line connects the manuscript to the next item.'],[141.6,'Masjid an-Nabawi photo tagged "Madinah".'],[142.0,'DHUHR and ASR blocks slide together and lock: "COMBINED".'],[143.9,'Suitcase photo + red "no travel ✕".'],[145.3,'Frightened silhouette + "no fear ✕".'],[146.3,'Rain photo + "no rain ✕".']],
@@ -208,16 +210,13 @@ const S=[
  [[165.9,'Left: stressed silhouette + green "GENUINE HARDSHIP ✓" stamp.'],[168.4,'Right: bored silhouette scrolling + red "INCONVENIENCE ✕" stamp.']],
  'Split, stamp hits.','stamp ×2'],
 
-['AT SCHOOL OR WORK','ch',170.16,175.4,"So, how does this work during school or work hours? There are four parts to it.",
- chap('5','At school or at work','lecture-hall'),
- [[170.2,'Whip to black. Big "5", title types on.'],[172.0,'"school or work hours": school and office photo strips slide behind the title.'],[174.0,'"4 parts" ticks in underneath.']],'Whip pan.','whoosh'],
-['AT SCHOOL OR WORK','wb',175.76,180.56,"Timing, wudu, where you pray, and what happens if a prayer has already passed.",
- tile('stopwatch',100,90,'Timing')+tile('tap',1000,90,'Wudu')+tile('empty-classroom',100,560,'Where you pray')+tile('alarm',1000,560,'Missed prayer'),
- [[175.8,'Tile 1 "Timing" (stopwatch).'],[176.6,'Tile 2 "Wudu" (tap).'],[177.2,'Tile 3 "Where you pray" (empty classroom).'],[178.5,'Tile 4 "Missed prayer" (alarm clock).'],[180.4,'Zoom into tile 1.']],
- 'Zoom-through into tile 1.','pop ×4 · whoosh'],
+['AT SCHOOL OR WORK','wb',170.16,180.56,"So, how does this work during school or work hours? There are four parts to it. Timing, wudu, where you pray, and what happens if a prayer has already passed.",
+ PH('lecture-hall',110,110,380,250,'school')+PHbg('office',530,110,380,250,'work')+L('how does this work?',970,170,72,'#151515')+L('4 parts',1100,270,60)+PH('stopwatch',110,500,330,330)+L('timing',190,850,60,'#151515')+PH('tap',560,500,330,330)+L('wudu',660,850,60,'#151515')+PH('empty-classroom',1010,500,330,330)+L('where you pray',1010,850,56,'#151515')+PH('alarm',1460,500,330,330)+L('if it already passed',1400,850,52,'#151515'),
+ [[170.2,'Clean board. School photo pops.'],[171.4,'Work photo pops.'],[172.2,'"how does this work?" writes on.'],[174.0,'"4 parts" in red.'],[175.8,'Stopwatch photo + "timing".'],[176.6,'Tap photo + "wudu".'],[177.4,'Empty classroom photo + "where you pray".'],[178.5,'Alarm photo + "if it already passed".'],[180.2,'Camera pushes into the stopwatch photo, straight into the timing board.']],
+ 'One continuous board; push-in at the end.','pop ×6 · marker'],
 ['AT SCHOOL OR WORK','wb',181.22,200.72,"Know your timing. Dhuhr starts around midday, which is when most schools and workplaces have their lunch break. If your break falls between the start of Dhuhr and the start of Asr, you should pray then. If it doesn't, the best is to ask for a short break. Four rakah of Dhuhr takes around five minutes, which is literally shorter than a toilet break.",
  Y('Know your timing',110,80)+bar(110,260,1700,[['CLASS',8,12,'#9AA0A6'],['LUNCH',12,13,'#2F80ED'],['CLASS',13,17,'#9AA0A6']],8,17,100)+`<div class="a" data-k="icon" style="left:860px;top:400px;width:660px;height:60px;background:#1FA34A;border-radius:12px"></div>`+L('Dhuhr window',960,470,52,'#1FA34A')+PH('lunch-tray',150,420,380,280,'12:30')+PH('stopwatch',1500,560,300,400)+L('≈ 5 min',1100,640,90,'#151515')+L('&lt; a toilet break',1060,780,60),
- [[181.2,'Tile 1 fills the screen, then becomes the "Know your timing" board.'],[182.6,'A school-day bar draws: class / lunch / class.'],[184.3,'Lunch-tray photo pins onto the 12:30 slot.'],[186.0,'"lunch break": a "12:00–1:00" tag pops on the lunch block.'],[187.6,'A green "Dhuhr window" bar slides in under it.'],[189.6,'Where they overlap glows: "pray then ✓".'],[192.4,'Cut: office scene, Hadi raises his hand, bubble "5 minutes to pray?"'],[194.0,'Bubble "5 minutes to pray?" pops; a green ✓ answers it.'],[195.9,'Stopwatch photo; a counter rolls 0:00 → 5:00.'],[198.3,'"< a toilet break" writes on in red.']],
+ [[181.2,'Stopwatch photo fills the screen, then becomes the "Know your timing" board.'],[182.6,'A school-day bar draws: class / lunch / class.'],[184.3,'Lunch-tray photo pins onto the 12:30 slot.'],[186.0,'"lunch break": a "12:00–1:00" tag pops on the lunch block.'],[187.6,'A green "Dhuhr window" bar slides in under it.'],[189.6,'Where they overlap glows: "pray then ✓".'],[192.4,'Cut: office scene, Hadi raises his hand, bubble "5 minutes to pray?"'],[194.0,'Bubble "5 minutes to pray?" pops; a green ✓ answers it.'],[195.9,'Stopwatch photo; a counter rolls 0:00 → 5:00.'],[198.3,'"< a toilet break" writes on in red.']],
  'Board → office cut → board.','marker · pin · tick-tick · pop'],
 ['AT SCHOOL OR WORK','wb',201.26,223.54,"A simple trick to save time is taking your wudu in the morning. Your wudu stays valid until something breaks it, like using the toilet or falling asleep. So, if you make wudu before you leave home, you can still pray at school without needing a sink. And if you put on leather socks, called the khuffs, while you have wudu, you can wipe over them instead of washing your feet for up to a day and a night.",
  Y('A simple trick',110,80)+PH('tap',110,200,320,420,'7:00 AM')+H('wudu',470,190,440)+P('wudu stays valid',900,220,'#1FA34A',46)+L('until: toilet ✕ · sleep ✕',900,320,54)+khuff(1340,520,1)+L('khuffs',1420,920,60,'#151515')+AR('M1300,560 C1380,500 1500,500 1580,560','#2F80ED',9).replace('data-k="arrow"','data-k="arrow" data-over="1"')+L('wipe over',1060,560,56,'#2F80ED')+P('up to 24 hours',900,760,'#151515',48),
@@ -250,8 +249,8 @@ const S=[
 ];
 
 // ---------- render ----------
-let html='',part='',beats=0;
-S.forEach((s,i)=>{const [pt,tag,a,b,vo,sc,bt,cam,sfx]=s;beats+=bt.length;
+let html='',part='',beats=0;const ONLY=(new URLSearchParams(location.search).get('only')||'').split(',').filter(Boolean).map(Number);
+S.forEach((s,i)=>{const [pt,tag,a,b,vo,sc,bt,cam,sfx]=s;beats+=bt.length;if(ONLY.length&&!ONLY.includes(i+1))return;
  if(pt!==part){if(part)html+='</div>';html+=`<div class="part">${pt}</div><div class="grid">`;part=pt;}
  const name={sc:'SCENE',wb:'WHITEBOARD',ev:'EVIDENCE',ch:'CHAPTER',kt:'KINETIC'}[tag];
  const f=x=>`${Math.floor(x/60)}:${String(Math.floor(x%60)).padStart(2,'0')}`;
