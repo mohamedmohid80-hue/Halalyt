@@ -8,6 +8,7 @@ The house style for every Halal YT video. It draws on two reference channels I s
 ## Hard rules from channel feedback (these override anything below)
 
 - **No images of women** in any video, even covered or seen from behind. Check every photo with people in it, crowds included; crop or replace it.
+- **Prophets (and the People of the Cave) can be shown only as a figure in a thobe and Arab turban (or head cloth), with a soft light in place of the face and no facial features.** Use `tools/figure_prophet.py`. Never a face, never a voice acted as them.
 - **No black silhouette figures.** Wherever a "person" is needed, use Hadi.
 - **No emojis as the main visuals.** Narrate with small real photos, Hadi, and drawn diagrams (arrows, labels, highlight boxes, stamps).
 - **No numbered section cards.** The script flows on; scene changes follow the script with straight cuts, not "1 / 2 / 3" chapter titles.
