@@ -16,11 +16,10 @@ Angle: a teaching video that sorts the poses into **avoid / depends on context /
 | Spider-Man web pose | Same hand shape as the horns (thumb tucked). | **Avoid** for the same reason, even if you mean Spider-Man. |
 | ILY 🤟 (thumb **out**) | American Sign Language "I love you": the letters I, L and Y combined. | **Harmless.** It's often mistaken for the horns; the difference is the thumb. |
 | OK sign 👌 | Means "OK" for almost everyone. A 2019 4chan hoax tied it to "white power"; the ADL listed it, and the Christchurch mosque attacker flashed it in court. | **Depends on context.** Fine as "OK". Avoid the upside-down "circle game" version and anything mocking. |
-| Peace / V sign ✌️ | V for victory (WWII) and the 1960s peace sign; now a normal photo pose, especially in East Asia. The "broken cross / anti-Christian" story is a myth. | **Harmless.** Myth busted. |
-| Covering one eye / triangle or diamond hands | Internet "Illuminati" conspiracy. The diamond is a record label's logo (Roc-A-Fella). | **Myth.** There's no religious meaning, but as a "cool" pose it's copying conspiracy culture for nothing. |
-| Raising the index finger ☝️ | In Muslim culture, the sign of tawhid (pointing to the oneness of Allah), as in the tashahhud. | **The good one.** End the video on it. |
+| Peace / V sign ✌️ | Proposed by Victor de Laveleye on the BBC in Jan 1941 ("V" for *victoire* / *vrijheid*), popularised by Churchill, became the peace sign in the Vietnam War era. Palm facing **inward** is an insult in the UK, Australia and New Zealand. | **Fine (palm outward).** Not a devil sign: Islamweb fatwa 398227 ("V has nothing to do with Satan"); Ibn Uthaymeen saw no harm in it. |
 
 ## Sources
+- V sign: https://en.wikipedia.org/wiki/V_sign · https://www.history.com/articles/v-sign-victory-peace-symbol · Islamweb fatwa 398227: https://islamweb.net/en/printfatwa.php?id=398227 · Ibn Uthaymeen: https://madeenah.com/making-the-v-for-victory-sign/
 - Sign of the horns: https://en.wikipedia.org/wiki/Sign_of_the_horns · https://www.mentalfloss.com/entertainment/music/devil-horns-origin · https://blabbermouth.net/news/how-ronnie-james-dio-popularized-devils-horns-hand-gesture
 - ILY sign: https://en.wikipedia.org/wiki/ILY_sign · https://www.dictionary.com/e/emoji/love-you-gesture-emoji
 - OK sign and the ADL (2019): https://www.npr.org/2019/09/26/764728163/the-ok-hand-gesture-is-now-listed-as-a-symbol-of-hate
