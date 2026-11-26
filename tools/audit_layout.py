@@ -52,7 +52,8 @@ def main():
         for e in items:
             if e["kind"] == "spill":
                 add("SPILL", f"text runs outside its box: {e['name']!r}", t)
-        items = [e for e in items if e["kind"] != "spill"]
+        sig_items = [e for e in items if e["kind"] != "spill"]
+        items = [e for e in sig_items if e["kind"] != "hl"]  # highlight frames count as a change, never as an overlap
         bs = [(e, box(e)) for e in items]
         for i in range(len(bs)):
             for j in range(i + 1, len(bs)):
@@ -65,7 +66,7 @@ def main():
             e, (x0, y0, x1, y1) = bs[i]
             if not e.get("crop") and (x0 < -4 or y0 < -4 or x1 > W + 4 or y1 > H + 4):
                 add("OFF-FRAME", f"{e['name']!r}", t)
-        sig = tuple(sorted(e["name"] for e in items))
+        sig = tuple(sorted(e["name"] for e in sig_items))
         if sig != last_sig:
             if last_sig is not None and t - last_change > still:
                 add("STILL", f"nothing new from {last_change:.1f}s to {t:.1f}s ({t - last_change:.1f}s)", last_change)
