@@ -94,16 +94,16 @@ const progress=(x,y,w,f1,f2)=>`<div class="a" data-k="icon" style="left:${x}px;t
 const IM=(f,x,y,w,h,pos='center',label='',lc='#fff')=>`<div class="photo" data-k="photo" style="left:${x}px;top:${y}px;width:${w}px;height:${h}px;background-image:url(img/${f});background-position:${pos}">${label?`<div class="badge" style="color:${lc}">${label}</div>`:''}</div>`;
 const BG=(f,dim=0,pos='center')=>`<div class="a" data-k="bg" style="inset:0;background:url(img/${f}) ${pos}/cover"></div>${dim?`<div class="a" data-k="bg" style="inset:0;background:rgba(0,0,0,${dim})"></div>`:''}`;
 const HAND=(f,x,y,w,label='',lc='#151515')=>`<div class="photo" data-k="photo" style="left:${x}px;top:${y}px;width:${w}px;height:${Math.round(w*0.5625)}px;background-image:url(img/${f})"></div>${label?L(label,x+20,y+Math.round(w*0.5625)+14,52,lc):''}`;
-const RING=(cx,cy,r,c='#E31B1B',w=10)=>`<svg class="a" data-k="icon" data-over="1" style="left:${cx-r-10}px;top:${cy-r-10}px;overflow:visible" width="${2*r+20}" height="${2*r+20}"><ellipse cx="${r+10}" cy="${r+10}" rx="${r}" ry="${r*0.9}" fill="none" stroke="${c}" stroke-width="${w}" stroke-dasharray="6 0"/></svg>`;
+const RING=(cx,cy,r,c='#E31B1B',w=10,ry=r*0.9)=>`<svg class="a" data-k="icon" data-over="1" style="left:${cx-r-10}px;top:${cy-ry-10}px;overflow:visible" width="${2*r+20}" height="${2*ry+20}"><ellipse cx="${r+10}" cy="${ry+10}" rx="${r}" ry="${ry}" fill="none" stroke="${c}" stroke-width="${w}" stroke-dasharray="6 0"/></svg>`;
 const CARD=(txt,src,y=260)=>`<div class="a" data-k="text" style="left:240px;top:${y}px;width:1440px;background:#fff;border:6px solid #1E7B4F;border-radius:24px;padding:40px 60px;text-align:center;font:900 70px Nunito;line-height:1.25;box-shadow:0 14px 30px rgba(0,0,0,.12)">${txt}<div style="font:800 32px Nunito;color:#777;margin-top:18px">${src}</div></div>`;
 
 const S=[
 ['HOOK','sc',0,10,"This is a statue of Baphomet, made by the Satanic Temple. Look at its hand. Two fingers up. And a lot of people online say this is where the peace sign comes from.",
- BG('baphomet-handonly.jpg',0,'25% center')+RING(470,520,250)+cap('Look at the hand',960).replace('color:#111','color:#fff;text-shadow:0 4px 18px #000')+HAND('1-peace-palm-out.png',1180,640,560)+L('= peace sign?',1260,480,80,'#FFE14D'),
+ BG('baphomet-handonly.jpg',0,'25% center')+RING(395,560,175,'#E31B1B',10,330)+cap('Look at the hand',960).replace('color:#111','color:#fff;text-shadow:0 4px 18px #000')+HAND('1-peace-palm-out.png',1180,640,560)+L('= peace sign?',1260,480,80,'#FFE14D'),
  [[0,'The statue fades in, blurred except the hand (the goat face is never shown sharp). Slow push-in toward the hand.'],[2.6,'Caption "Look at the hand".'],[3.4,'A red ring draws around the two raised fingers.'],[6.0,'Peace-sign hand card slides in bottom right.'],[8.2,'"= peace sign?" pops in yellow.']],
  'Slow push-in on the hand, then hold.','low hit on the ring'],
 ['HOOK','sc',10,19,"So should Muslims stop doing it in pictures? Let's go through the poses everyone does in photos, where each one actually comes from, and which ones you should avoid.",
- BG('7-selfie.png')+RING(470,640,120,'#FFE14D')+cloud('should we<br>stop?',1250,620,420,240,46),
+ BG('7-selfie.png')+RING(532,690,140,'#FFE14D')+cloud('should we<br>stop?',1250,620,420,240,46),
  [[10,'Cut to the selfie scene.'],[11.0,'Yellow ring around the boy\'s peace-sign hand.'],[12.4,'Cloud "should we stop?" pops.'],[14.0,'Slow push-in on the phone screen.']],
  'Push-in on the phone screen.','phone shutter click'],
 ['HOOK','wb',14.5,19,"(…the poses everyone does in photos, where each one comes from, and which to avoid.)",
@@ -111,7 +111,7 @@ const S=[
  [[14.5,'Clean whiteboard. Four hand cards pop in one after another.'],[16.6,'Yellow "where it comes from".'],[18.0,'Yellow "avoid it?".']],
  'Static.','none'],
 ['PEACE SIGN','wb',19,37,"First, the peace sign. Look closely at the statue's hand again. The two fingers are pressed together… It's an old blessing gesture you'll find in church paintings, and the statue copies a drawing made by a French occultist in 1856, where one hand points up and the other points down.",
- Y('First, the peace sign',110,80)+IM('baphomet-hand-crop.jpg',110,220,300,420)+L('statue',190,660,52,'#151515')+HAND('3-two-fingers-together.png',470,240,560,'pressed together')+RING(750,330,90)+HAND('1-peace-palm-out.png',1150,240,560,'spread apart','#1FA34A')+RING(1430,330,140,'#1FA34A')+ST('NOT THE SAME',760,700,'#E31B1B',-6,64)+L('old blessing gesture · drawing from 1856 (one hand up ↑ one hand down ↓)',220,880,48,'#151515'),
+ Y('First, the peace sign',110,80)+IM('baphomet-hand-crop.jpg',110,220,300,420)+L('statue',190,660,52,'#151515')+HAND('3-two-fingers-together.png',470,240,560,'pressed together')+RING(750,313,85)+HAND('1-peace-palm-out.png',1150,240,560,'spread apart','#1FA34A')+RING(1426,312,130,'#1FA34A')+ST('NOT THE SAME',760,700,'#E31B1B',-6,64)+L('old blessing gesture · drawing from 1856 (one hand up ↑ one hand down ↓)',220,880,48,'#151515'),
  [[19,'Yellow "First, the peace sign".'],[20.5,'Small cropped photo of the statue\'s hand only.'],[22.5,'Fingers-together hand card + red ring + "pressed together".'],[25.0,'Peace hand card + green ring + "spread apart".'],[27.0,'"NOT THE SAME" stamp.'],[29.0,'Label "old blessing gesture" writes on.'],[32.5,'"drawing from 1856" + up/down arrows.']],
  'Static, slight zoom out as the board fills.','stamp thud'],
 ['PEACE SIGN','sc',37,55,"The peace sign is different… It started in 1941, when a Belgian politician asked people on BBC radio to use the letter V as a sign of victory against the Nazis. Churchill made it famous, and years later it became the peace sign.",
@@ -131,7 +131,7 @@ const S=[
  [[73,'Green "not a devil sign ✓".'],[76.5,'Hadi raises a finger; hadith card rises in.'],[83.0,'Hadith text highlights while it\'s read.'],[87.0,'Peace hand card drops in under the card.'],[90.0,'"AVOID IT" stamp across the hand.']],
  'Slow push-in.','stamp thud (only on AVOID IT)'],
 ['DEVIL HORNS','wb',92,107,"Second, the devil horns. This one is the index finger and the pinky up, with your thumb holding the other two fingers down. It comes from Italy, where it was used as a gesture to protect against the evil eye, or to put the evil eye on someone.",
- Y('Second, the devil horns',110,80)+HAND('4-devil-horns.png',110,220,720)+RING(470,440,90)+L('thumb holds the fingers down',150,660,54)+AR('M870,420 C960,360 1040,360 1110,420')+IM('10-italy-charm.png',1130,220,680,383,'70% center','Italy')+L('a charm against the evil eye',1160,640,52,'#151515'),
+ Y('Second, the devil horns',110,80)+HAND('4-devil-horns.png',110,220,720)+RING(476,427,85)+L('thumb holds the fingers down',150,660,54)+AR('M870,420 C960,360 1040,360 1110,420')+IM('10-italy-charm.png',1130,220,680,383,'70% center','Italy')+L('a charm against the evil eye',1160,640,52,'#151515'),
  [[92,'Yellow "Second, the devil horns".'],[93.6,'Horns hand card pops.'],[95.5,'Red ring on the thumb + "thumb holds the fingers down".'],[100.0,'Arrow draws to the Italy street photo, tagged "Italy".'],[102.5,'Slow push-in on the red horn charm in the photo.'],[104.5,'"a charm against the evil eye" writes on.']],
  'Static, then push-in on the charm photo.','none'],
 ['DEVIL HORNS','sc',107,118,"Then in the 1980s a heavy metal singer named Ronnie James Dio made it famous at concerts, and that's when everyone started calling it the devil horns. Today it's also used as a gang sign.",
@@ -143,7 +143,7 @@ const S=[
  [[118,'Horns hand centred.'],[119.5,'Three red pills pop as each meaning is said.'],[124.8,'"AVOID IT" stamp.']],
  'Static.','stamp thud'],
 ['I LOVE YOU','wb',126,148,"Third, the I love you sign. This one looks almost the same, but there's one difference. The thumb is out… That's American Sign Language, and it combines the letters I, L and Y… Just make sure your thumb is actually out.",
- Y('Third, the "I love you" sign',110,80)+HAND('4-devil-horns.png',110,220,780,'thumb in ✕')+RING(500,450,95)+HAND('5-i-love-you.png',1030,220,780,'thumb out ✓','#1FA34A')+RING(1290,425,95,'#1FA34A')+P('I + L + Y = I love you',1080,840,'#1FA34A',48)+L('American Sign Language',1100,950,46,'#151515'),
+ Y('Third, the "I love you" sign',110,80)+HAND('4-devil-horns.png',110,220,780,'thumb in ✕')+RING(506,444,90)+HAND('5-i-love-you.png',1030,220,780,'thumb out ✓','#1FA34A')+RING(1282,425,90,'#1FA34A')+P('I + L + Y = I love you',1080,840,'#1FA34A',48)+L('American Sign Language',1100,950,46,'#151515'),
  [[126,'Yellow "Third, the I love you sign".'],[128.0,'Horns card on the left (faded), ILY card slides in on the right.'],[130.5,'Rings: red on the tucked thumb, green on the thumb that\'s out.'],[133.0,'"thumb in ✕" / "thumb out ✓".'],[136.0,'Letters I, L and Y draw onto the three raised fingers.'],[138.0,'"I + L + Y = I love you" + "American Sign Language".'],[143.5,'The two thumbs pulse once.']],
  'Static, slow push-in on the thumbs at the end.','none'],
 ['OK SIGN','wb',148,172,"Fourth, the OK sign. For almost everyone, this just means OK. But in 2017, people online started a hoax claiming it secretly meant white power… So in normal use, it's fine. But be careful… and stay away from the upside down version people use as a joke.",

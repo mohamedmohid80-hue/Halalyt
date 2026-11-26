@@ -1,0 +1,7 @@
+// ---------- ep6 helpers ----------
+const IM=(f,x,y,w,h,pos='center',label='',lc='#fff')=>`<div class="photo" data-k="photo" style="left:${x}px;top:${y}px;width:${w}px;height:${h}px;background-image:url(${A}img/${f});background-position:${pos}">${label?`<div class="badge" style="color:${lc}">${label}</div>`:''}</div>`;
+const BG=(f,dim=0,pos='center')=>`<div class="a" data-k="bg" style="inset:0;background:url(${A}img/${f}) ${pos}/cover"></div>${dim?`<div class="a" data-k="bg" style="inset:0;background:rgba(0,0,0,${dim})"></div>`:''}`;
+const HAND=(f,x,y,w,label='',lc='#151515')=>`<div class="photo" data-k="photo" style="left:${x}px;top:${y}px;width:${w}px;height:${Math.round(w*0.5625)}px;background-image:url(${A}img/${f})"></div>${label?L(label,x+20,y+Math.round(w*0.5625)+14,52,lc):''}`;
+const RING=(cx,cy,r,c='#E31B1B',w=10,ry=r*0.9)=>`<svg class="a" data-k="icon" data-over="1" style="left:${cx-r-10}px;top:${cy-ry-10}px;overflow:visible" width="${2*r+20}" height="${2*ry+20}"><ellipse cx="${r+10}" cy="${ry+10}" rx="${r}" ry="${ry}" fill="none" stroke="${c}" stroke-width="${w}" stroke-dasharray="6 0"/></svg>`;
+const CARD=(txt,src,y=260)=>`<div class="a" data-k="text" style="left:240px;top:${y}px;width:1440px;background:#fff;border:6px solid #1E7B4F;border-radius:24px;padding:40px 60px;text-align:center;font:900 70px Nunito;line-height:1.25;box-shadow:0 14px 30px rgba(0,0,0,.12)">${txt}<div style="font:800 32px Nunito;color:#777;margin-top:18px">${src}</div></div>`;
+
