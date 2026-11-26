@@ -35,7 +35,7 @@ const CSS = `/* scene elements (1920x1080 space) */
 .quote{position:absolute;left:180px;right:180px;top:300px;text-align:center;font:900 84px Nunito;line-height:1.25}
 .quote mark{background:#FFE14D;padding:0 10px}
 .ref{position:absolute;left:0;right:0;text-align:center;font:800 34px Nunito;color:#777}
-`;
+.hlbox,.hlbox *{color:transparent!important;background:transparent!important;border-color:transparent!important;text-shadow:none!important}.hlbox{box-shadow:0 0 0 8px var(--hl),0 0 28px var(--hl)!important}`;
 let _id=0;
 const bg=(f,dim=0,pos='center')=>`<div class="a" data-k="bg" style="inset:0;background:url(${A}bg-${f}.png) ${pos}/cover"></div>${dim?`<div class="a" data-k="bg" style="inset:0;background:rgba(10,5,30,${dim})"></div>`:''}`;
 const bgPhoto=(f,dim=.45,pos='center')=>`<div class="a" data-k="bg" style="inset:0;background:url(${A}photos/${f}.jpg) ${pos}/cover"></div><div class="a" data-k="bg" style="inset:0;background:rgba(0,0,0,${dim})"></div>`;
@@ -88,7 +88,8 @@ const over=(html)=>html.replace('data-k="','data-over="1" data-k="');
 const I=(at,a,h,o={})=>({at,a,h,...o});
 const whiteCap=(t)=>cap(t).replace('color:#111','color:#fff;text-shadow:0 4px 18px #000');
 const q={sfx:0};
-const HLB=(x,y,w,h,c='#FFE14D')=>`<div class="a" data-k="hl" style="left:${x}px;top:${y}px;width:${w}px;height:${h}px;border:10px solid ${c};border-radius:24px;box-shadow:0 0 24px ${c}"></div>`;
+const HLB=(html,c='#FFE14D')=>html.replace(/class="([^"]*)"/,'class="$1 hlbox"').replace(/data-k="[a-z]+"/,'data-k="hl"').replace('style="',`style="--hl:${c};`);
+const ONLYBOX=(html)=>html.slice(0,html.indexOf('</div>')+6);
 const SC=[
 // 1 · hook: the statue (blurred, only the hand sharp)
 {from:0,to:10.38,zoom:.04,ox:395,oy:560,items:[
@@ -152,14 +153,14 @@ const SC=[
  I(58.2,'pop',Y('Islamic rulings say the same',110,80)),
  I(60.6,'rise',CARD('"V (Victory Sign) Has Nothing to Do with Satan"','Islamweb · Fatwa No. 398227')),
  I(62.8,'pop',P('not a devil sign ✓',240,640,'#1FA34A',50)),
- I(64.2,'fade',HLB(226,246,1468,330,'#1FA34A')),
+ I(64.2,'fade',HLB(CARD('"V (Victory Sign) Has Nothing to Do with Satan"','Islamweb · Fatwa No. 398227'),'#1FA34A')),
 ]},
 // 8 · the catch
 {from:65.3,to:75.68,items:[
  I(65.4,'pop',Y('one catch',110,80),q),
  I(66.4,'pop',HAND('1-peace-palm-out.png',110,220,620,'palm out ✓','#1FA34A'),q),
  I(68.0,'pop',HAND('2-peace-back-of-hand.png',1190,220,620,'palm facing you'),q),
- I(69.4,'fade',HLB(1176,206,648,377,'#E31B1B')),
+ I(69.4,'fade',HLB(ONLYBOX(HAND('2-peace-back-of-hand.png',1190,220,620)),'#E31B1B')),
  I(70.6,'pop',P('UK',1190,820,'#151515',40),q),I(71.4,'pop',P('Australia',1330,820,'#151515',40),q),I(72.2,'pop',P('New Zealand',1590,820,'#151515',36),q),
  I(73.6,'stamp',ST('INSULT',820,620,'#E31B1B',-8,80)),
 ]},
@@ -170,7 +171,7 @@ const SC=[
  I(78.9,'slideL',H('point-up',120,560,460),q),
  I(80.3,'pop',P('but…',600,90,'#151515',50),q),
  I(81.9,'rise',CARD('"Leave what makes you doubt for what does not make you doubt."','Jami\' at-Tirmidhi 2518 · Sunan an-Nasa\'i 5711',230)),
- I(83.6,'fade',HLB(226,216,1468,330)),
+ I(83.6,'fade',HLB(CARD('"Leave what makes you doubt for what does not make you doubt."','Jami\' at-Tirmidhi 2518 · Sunan an-Nasa\'i 5711',230))),
  I(85.2,'pop',IM('baphomet-hand-crop.jpg',1000,600,150,210),q),
  I(86.6,'wipe',L('looks close to the statue',1180,610,44,'#151515')),
  I(88.0,'fade',RING(1075,705,95,'#E31B1B',8,125)),
@@ -215,7 +216,7 @@ const SC=[
  I(134.6,'wipe',L('index · pinky · thumb',1100,760,44,'#151515')),
  I(136.8,'wipe',L('American Sign Language',1100,950,46,'#151515')),
  I(139.0,'pop',P('I + L + Y = I love you',1080,840,'#1FA34A',48),q),
- I(140.8,'fade',HLB(1066,826,560,96,'#1FA34A')),
+ I(140.8,'fade',HLB(P('I + L + Y = I love you',1080,840,'#1FA34A',48),'#1FA34A')),
   I(142.4,'wipe',L('nothing to do with the horns',110,760,50,'#1FA34A')),
  I(145.2,'wipe',L('make sure your thumb is out',110,840,50,'#E31B1B')),
  I(143.8,'pop',P('fine to use ✓',620,920,'#1FA34A',40),q),
@@ -236,30 +237,30 @@ const SC=[
  I(169.3,'pop',P('normal use ✓',820,640,'#1FA34A',50),q),
  I(171.3,'wipe',L('be careful how and where',820,720,44,'#151515')),
  I(173.4,'pop',P('upside-down joke ✕',820,790,'#E31B1B',50),q),
- I(176.6,'fade',HLB(806,776,568,112,'#E31B1B')),
+ I(176.6,'fade',HLB(P('upside-down joke ✕',820,790,'#E31B1B',50),'#E31B1B')),
  I(175.0,'pop',P('avoid this one',1400,790,'#151515',40),q),
 ]},
 // 15 · why it matters
 {from:178.16,to:197.52,zoom:.03,quiet:1,items:[
  I(178.3,'slideR',H('explain',1500,700,360)),
- I(178.6,'pop',Y('why does it matter?',110,40,46)),
- I(180.1,'rise',CARD('"Whoever imitates a people is one of them."','Sunan Abi Dawud 4031',120)),
- I(181.8,'fade',HLB(226,106,1468,300)),
- I(183.0,'wipe',L('imitating = copying what makes them who they are',150,450,46,'#151515')),
- I(184.9,'pop',P('one of them',1250,545,'#151515',36)),
- I(186.6,'pop',P('special to their religion or identity → avoid',150,560,'#E31B1B',48)),
- I(188.6,'pop',P('beliefs',1040,440,'#E31B1B',40)),I(190.0,'pop',P('identity',1250,440,'#E31B1B',40)),
- I(191.6,'pop',P('everything else → fine',150,680,'#1FA34A',48)),
- I(196.0,'pop',P('know the difference',150,900,'#151515',40)),
- I(194.4,'wipe',L('some are a problem · some aren\'t',150,800,54,'#151515')),
+ I(178.6,'pop',Y('why does it matter?',110,70,46)),
+ I(180.1,'rise',CARD('"Whoever imitates a people is one of them."','Sunan Abi Dawud 4031',160)),
+ I(181.8,'fade',HLB(CARD('"Whoever imitates a people is one of them."','Sunan Abi Dawud 4031',160))),
+ I(183.0,'wipe',L('imitating = copying what makes them who they are',150,500,46,'#151515')),
+ I(184.9,'pop',P('one of them',1250,605,'#151515',36)),
+ I(186.6,'pop',P('special to their religion or identity → avoid',150,610,'#E31B1B',48)),
+ I(188.6,'pop',P('beliefs',1040,490,'#E31B1B',40)),I(190.0,'pop',P('identity',1250,490,'#E31B1B',40)),
+ I(191.6,'pop',P('everything else → fine',150,730,'#1FA34A',48)),
+ I(196.0,'pop',P('know the difference',150,930,'#151515',40)),
+ I(194.4,'wipe',L('some are a problem · some aren\'t',150,840,54,'#151515')),
 ]},
 // 16 · intentions
 {from:197.52,to:210.0,zoom:.03,quiet:1,items:[
  I(197.6,'rise',CARD('"Actions are judged by intentions."','Sahih al-Bukhari 1',120)),
- I(199.8,'pop',IM('7-selfie.png',220,520,560,315),{gray:201.3}),
+ I(199.8,'pop',IM('7-selfie.png',220,560,560,315),{gray:201.3}),
  I(201.6,'wipe',L('most people have no idea',900,560,56,'#151515')),
- I(203.8,'pop',P('no judging old photos ✓',260,880,'#1FA34A',44)),
- I(205.2,'fade',HLB(214,514,572,327,'#1FA34A')),
+ I(203.8,'pop',P('no judging old photos ✓',260,905,'#1FA34A',44)),
+ I(205.2,'fade',HLB(IM('7-selfie.png',220,560,560,315),'#1FA34A')),
  I(206.6,'wipe',L('now you know',900,660,60,'#1FA34A')),
  I(208.2,'wipe',L('what your hands are saying',900,750,56,'#151515')),
 ]},
