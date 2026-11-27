@@ -106,9 +106,9 @@ const Subs: React.FC<{t: number}> = ({t}) => {
   const c = (CAPTIONS as {w: [string, number][]; s: number; e: number}[]).find((x) => t >= x.s - 0.05 && t < x.e);
   if (!c) return null;
   return (
-    <div style={{position: 'absolute', left: 0, right: 0, bottom: 64, display: 'flex', justifyContent: 'center'}}>
-      <div style={{maxWidth: 1500, textAlign: 'center', fontFamily: NUN, fontWeight: 900, fontSize: 64, lineHeight: 1.15,
-        WebkitTextStroke: '10px #000', paintOrder: 'stroke fill', textShadow: '0 4px 12px rgba(0,0,0,.55)'}}>
+    <div style={{position: 'absolute', left: 0, right: 0, bottom: 56, display: 'flex', justifyContent: 'center'}}>
+      <div style={{maxWidth: 1500, textAlign: 'center', fontFamily: NUN, fontWeight: 900, fontSize: 46, lineHeight: 1.15,
+        WebkitTextStroke: '7px #000', paintOrder: 'stroke fill', textShadow: '0 4px 12px rgba(0,0,0,.55)'}}>
         {c.w.map(([w, at], i) => (
           <span key={i} style={{color: t >= at - 0.05 ? '#FFD400' : '#FFFFFF', marginRight: i < c.w.length - 1 ? '0.28em' : 0}}>{w}</span>
         ))}
