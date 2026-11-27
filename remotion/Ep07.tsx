@@ -5,10 +5,11 @@ import {AbsoluteFill, Audio, Img, Sequence, interpolate, staticFile, useCurrentF
 import {loadFont as lPoppins} from '@remotion/google-fonts/Poppins';
 import {loadFont as lComic} from '@remotion/google-fonts/ComicNeue';
 import {loadFont as lNunito} from '@remotion/google-fonts/Nunito';
+import CAPTIONS from './ep7-captions.json';
 
 const POP = lPoppins('normal', {weights: ['900'], subsets: ['latin']}).fontFamily;
 const COMIC = lComic('italic', {weights: ['700'], subsets: ['latin']}).fontFamily;
-const NUN = lNunito('normal', {weights: ['800'], subsets: ['latin']}).fontFamily;
+const NUN = lNunito('normal', {weights: ['800', '900'], subsets: ['latin']}).fontFamily;
 
 export const EP07_FPS = 30;
 export const EP07_DURATION_S = 238.6;
@@ -94,13 +95,29 @@ const ShotView: React.FC<{s: Shot; next: number; t: number}> = ({s, next, t}) =>
         <span style={{fontFamily: COMIC, fontStyle: 'italic', fontWeight: 700, fontSize: 60, color: '#fff', letterSpacing: 2, textShadow: '0 3px 14px rgba(0,0,0,.85), 0 0 4px #000'}}>{s.cap}</span></div>}
       {s.quote && <div data-k="text" style={{position: 'absolute', left: '22%', width: '50%', top: 60, textAlign: 'center', opacity: qO}}>
         <span style={{fontFamily: COMIC, fontStyle: 'italic', fontWeight: 700, fontSize: 64, color: '#151515'}}>{s.quote}</span></div>}
-      {s.ref && <div data-k="text" style={{position: 'absolute', right: 28, bottom: 26, opacity: refO, background: 'rgba(0,0,0,.62)', color: '#fff',
+      {s.ref && <div data-k="text" style={{position: 'absolute', right: 28, top: 26, opacity: refO, background: 'rgba(0,0,0,.62)', color: '#fff',
         fontFamily: NUN, fontWeight: 800, fontSize: 26, padding: '6px 16px', borderRadius: 10}}>{s.ref}</div>}
     </AbsoluteFill>
   );
 };
 
-export const Ep07: React.FC = () => {
+/** Subtitles: bottom centre, yellow with a black outline, the spoken word brightens as it's said. */
+const Subs: React.FC<{t: number}> = ({t}) => {
+  const c = (CAPTIONS as {w: [string, number][]; s: number; e: number}[]).find((x) => t >= x.s - 0.05 && t < x.e);
+  if (!c) return null;
+  return (
+    <div style={{position: 'absolute', left: 0, right: 0, bottom: 64, display: 'flex', justifyContent: 'center'}}>
+      <div style={{maxWidth: 1500, textAlign: 'center', fontFamily: NUN, fontWeight: 900, fontSize: 64, lineHeight: 1.15,
+        WebkitTextStroke: '10px #000', paintOrder: 'stroke fill', textShadow: '0 4px 12px rgba(0,0,0,.55)'}}>
+        {c.w.map(([w, at], i) => (
+          <span key={i} style={{color: t >= at - 0.05 ? '#FFD400' : '#FFFFFF', marginRight: i < c.w.length - 1 ? '0.28em' : 0}}>{w}</span>
+        ))}
+      </div>
+    </div>
+  );
+};
+
+export const Ep07: React.FC<{subs?: boolean}> = ({subs = true}) => {
   const frame = useCurrentFrame();
   const {fps} = useVideoConfig();
   const t = frame / fps;
@@ -114,7 +131,7 @@ export const Ep07: React.FC = () => {
   const fadeOut = interpolate(t, [END - 0.8, END], [1, 0], clampE);
   return (
     <AbsoluteFill style={{background: '#000'}}>
-      <AbsoluteFill style={{opacity: fadeOut}}>{live}</AbsoluteFill>
+      <AbsoluteFill style={{opacity: fadeOut}}>{live}{subs && <Subs t={t} />}</AbsoluteFill>
       <Audio src={staticFile('ep7v/vo.mp3')} />
       {sfx.map(([at, n, v], i) => <Sequence key={i} from={Math.round(at * fps)} durationInFrames={Math.round(fps * 1.1)}><Audio src={staticFile(`ep7v/sfx/${n}.wav`)} volume={v} /></Sequence>)}
     </AbsoluteFill>
