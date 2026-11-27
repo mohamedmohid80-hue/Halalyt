@@ -79,7 +79,8 @@ const ShotView: React.FC<{s: Shot; next: number; t: number}> = ({s, next, t}) =>
   let scale = 1 + (zoomTo - 1) * k;
   if (s.type === 'W') scale *= interpolate(t - s.t, [0, 0.35], [0.96, 1], {...clampE, easing: Easing.out(Easing.cubic)});
   const op = s.t === 0 ? 1 : interpolate(t, [s.t, s.t + FADE], [0, 1], clampE);
-  const capO = interpolate(t, [s.t + 0.3, s.t + 0.8, s.t + Math.min(dur, 3.2) - 0.3, s.t + Math.min(dur, 3.2)], [0, 1, 1, 0], clampE);
+  const capEnd = Math.max(1.2, Math.min(dur, 3.2));
+  const capO = interpolate(t, [s.t + 0.3, s.t + 0.6, s.t + capEnd - 0.3, s.t + capEnd], [0, 1, 1, 0], clampE);
   const refO = interpolate(t, [s.t + 0.6, s.t + 1.1], [0, 1], clampE);
   const qO = interpolate(t, [s.t + 0.5, s.t + 0.9], [0, 1], clampE);
   return (
