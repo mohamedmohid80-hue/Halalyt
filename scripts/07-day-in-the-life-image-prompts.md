@@ -2,7 +2,7 @@
 
 **F** = full illustrated scene (slow zoom-in in the video). **W** = whiteboard: white background, a stick figure and at most 2 objects, a few words at most (I add any words in the edit, so keep the images text-free).
 
-**Style lock for F scenes:** warm hand-drawn cartoon, clean bold outlines, soft desert colours, 16:9, no text, no logos. Characters are simple stick-figure men like the thumbnail: round heads, thin black limbs, a thobe (white or brown) with a headband and head cloth. **Men only, no women. No figure ever represents the Prophet ﷺ or a named Companion.**
+**Style lock for F scenes:** warm hand-drawn cartoon, clean bold outlines, soft desert colours, 16:9, no text, no logos. Characters are simple stick-figure men like the thumbnail: round heads, thin black limbs, a thobe (white or brown) with a headband and head cloth. Women may appear only in full hijab, like the reference video (headscarf covering the hair and neck, loose long clothing). **No figure ever represents the Prophet ﷺ or a named Companion, or his wives.**
 **Style lock for W images:** plain off-white background, black-line stick figure in the same thobe and headband, flat colour on objects only, lots of empty space, 16:9, no text.
 
 | # | Line | Type | Image |
@@ -23,7 +23,7 @@
 | 14 | from before sunrise until the lights went out | F | A sundial-style timeline across a Madinah courtyard, from a dark sky on the left to a starry sky on the right. |
 | 15 | before dawn, the adhan over quiet streets | F | Dark blue pre-dawn Madinah, a man on a rooftop calling the adhan (seen from behind, small), lit windows starting to glow. |
 | 16 | waking up for Fajr | F | Inside a simple mud-brick room, a stick man waking up on a floor mat in the dark. |
-| 17 | still dark when they walked home | F | Men walking home from the mosque through dark streets after Fajr, the sky only just turning blue. |
+| 17 | women walking home in the dark, not recognised | F | Women in full hijab and long cloaks walking home from the mosque through dark streets after Fajr, the sky only just turning blue, faces in shadow. |
 | 18 | stayed sitting until the sun had risen | F | Inside the simple mosque at sunrise, a circle of men sitting on the floor talking, sunlight coming through the palm-branch roof. Seen from a distance, no figure singled out. |
 | 19 | they would laugh | W | Two stick men in thobes laughing together. |
 | 20 | prayer, people, laughter | W | A prayer mat and two laughing stick men. |
