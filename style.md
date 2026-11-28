@@ -13,6 +13,7 @@ The house style for every Halal YT video. It draws on two reference channels I s
 - **No emojis as the main visuals.** Narrate with small real photos, Hadi, and drawn diagrams (arrows, labels, highlight boxes, stamps).
 - **No numbered section cards.** The script flows on; scene changes follow the script with straight cuts, not "1 / 2 / 3" chapter titles.
 - **Pace:** a new beat about every 1.5–2 s, and nothing held for more than 3 s without a change.
+- **Filler motion:** whenever the next item is waiting on the narrator, something on screen keeps moving: a slow push-in, a counter still ticking, Hadi's small idle bob or blink, a gentle pulse or wiggle on the last item, a highlight sweep. Never a fully frozen frame.
 - **Every scene passes the layout check** (`tools/audit_board.js` / `tools/audit_layout.mjs` + `tools/audit_layout.py`): no overlaps, nothing off-frame, no text spilling out of its box. Then check the frames by eye.
 
 ---
