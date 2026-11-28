@@ -1,0 +1,30 @@
+<!doctype html><html><head><meta charset="utf-8">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@800;900&family=Patrick+Hand&display=swap" rel="stylesheet">
+<style>
+*{margin:0;box-sizing:border-box}
+body{width:2560px;height:1440px;background:#FBF6EA;position:relative;overflow:hidden}
+.bg{position:absolute;inset:0;background:radial-gradient(circle at 50% 50%,#FFFDF7 0%,#F6EFDD 70%,#EDE3CB 100%)}
+.h{position:absolute;filter:drop-shadow(0 10px 10px rgba(0,0,0,.25))}
+.plate{position:absolute;left:780px;top:570px;width:1000px;height:300px;background:#1E7B4F;border:10px solid #151515;border-radius:40px;box-shadow:0 18px 0 #151515;display:flex;flex-direction:column;align-items:center;justify-content:center}
+.name{font:900 96px Poppins;color:#fff;letter-spacing:-2px;line-height:1}
+.name span{color:#F2C14E}
+.tag{font:400 50px 'Patrick Hand';color:#E7F3EC;margin-top:14px}
+</style></head><body>
+<div class="bg"></div>
+<div id="crowd"></div>
+<div class="plate"><div class="name">hadi<span>.</span>teachings</div><div class="tag">Islam, explained simply.</div></div>
+<script>
+const poses=['read-book','pray-stand','celebrate','walk1','explain','dua','raise-hand','wudu','sit-floor','run','point-up','hadi-think','carry-bag','check-watch','ask','pray-hands-up','walk-phone','shrug','sit-desk','sleep','walk3','hadi-point','open-door','stop'];
+let html='',k=0,seed=7;const rnd=()=>{seed=(seed*9301+49297)%233280;return seed/233280};
+const rows=[[40,190],[300,210],[560,220],[820,220],[1080,210],[1300,190]];
+rows.forEach(([y,h],r)=>{
+  const step=h*0.95, off=(r%2)*step/2-60;
+  for(let x=off;x<2600;x+=step){
+    const cx=x+step/2, cy=y+h/2;
+    if(x+step*0.8>740 && x+step*0.2<1820 && y+h>550 && y<910) continue; // keep the name plate clear // keep the name plate clear
+    const p=poses[k++%poses.length], s=h*(0.9+rnd()*0.2), rot=(rnd()-.5)*10, flip=(['shrug','ask','check-watch','hadi-think','panic'].includes(p)?1:(rnd()<.5?-1:1));
+    html+=`<img class="h" src="hadi/${p}.svg" style="left:${x}px;top:${y+(h-s)/2}px;height:${s}px;transform:rotate(${rot}deg) scaleX(${flip})">`;
+  }
+});
+document.getElementById('crowd').innerHTML=html;
+</script></body></html>

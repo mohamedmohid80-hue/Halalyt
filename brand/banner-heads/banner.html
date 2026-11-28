@@ -1,0 +1,36 @@
+<!doctype html><html><head><meta charset="utf-8">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@800;900&family=Patrick+Hand&display=swap" rel="stylesheet">
+<style>
+*{margin:0;box-sizing:border-box}
+body{width:2560px;height:1440px;background:#1E7B4F;position:relative;overflow:hidden}
+svg.heads{position:absolute;inset:0}
+.plate{position:absolute;left:760px;top:575px;width:1040px;height:290px;background:#FBF8F1;border:12px solid #17201B;border-radius:44px;box-shadow:0 16px 0 #17201B;display:flex;flex-direction:column;align-items:center;justify-content:center}
+.name{font:900 100px Poppins;color:#17201B;letter-spacing:-2px;line-height:1}
+.name span{color:#1E7B4F}
+.tag{font:400 50px 'Patrick Hand';color:#555;margin-top:12px}
+</style></head><body>
+<svg class="heads" width="2560" height="1440" viewBox="0 0 2560 1440" id="h"></svg>
+<div class="plate"><div class="name">hadi<span>.</span>teachings</div><div class="tag">Islam, explained simply.</div></div>
+<script>
+// one Hadi head: green hood behind, skin face (no features), white kufi with green dots — same drawing as the rig
+const INK='#17201B',SKIN='#D9A57B',GREEN='#1E7B4F',GD='#145C3A';
+const head=(cx,cy,s,rot)=>{
+  const dots=[...Array(8)].map((_,i)=>`<circle cx="${-53+i*15}" cy="${i%2?-38:-50}" r="3.5" fill="${GREEN}"/>`).join('');
+  return `<g transform="translate(${cx} ${cy}) rotate(${rot}) scale(${s})">
+    <path d="M-82,40 C-90,-20 -60,-70 0,-72 C60,-70 90,-20 82,40 Z" fill="${GD}" stroke="${INK}" stroke-width="7"/>
+    <circle cx="0" cy="0" r="70" fill="${SKIN}" stroke="${INK}" stroke-width="7"/>
+    <path d="M-69,-14 C-67,-82 67,-82 69,-14 Z" fill="#fff" stroke="${INK}" stroke-width="7" stroke-linejoin="round"/>${dots}
+  </g>`;};
+let seed=11;const rnd=()=>{seed=(seed*9301+49297)%233280;return seed/233280};
+const items=[];
+const r=78, dx=r*1.62, dy=r*1.42;
+for(let row=-1, y=-40; y<1520; row++, y+=dy){
+  for(let x=(row%2?dx/2:0)-60; x<2640; x+=dx){
+    const cx=x+(rnd()-.5)*24, cy=y+(rnd()-.5)*24;
+    if(cx>720&&cx<1840&&cy>540&&cy<900) continue; // leave room for the name plate
+    items.push([cx,cy,0.92+rnd()*0.22,(rnd()-.5)*36]);
+  }
+}
+items.sort((a,b)=>a[1]-b[1]); // lower heads overlap the ones above, so they look joined together
+document.getElementById('h').innerHTML=items.map(a=>head(...a)).join('');
+</script></body></html>
