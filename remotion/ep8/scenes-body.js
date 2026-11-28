@@ -98,7 +98,7 @@ const SC=[
 // 8 · #3 every letter
 {from:W('Number three.'),to:W('Surah al-Fatihah has'),items:[
  I(W('Number three.'),'pop',N(3,60,86),q),I(W('Reading the Quran'),'pop',Y('Every letter of the Quran',130,80,56),q),
- I(W('letter by letter.'),'wipe',L('letter by letter',800,90,52,'#151515')),
+ I(W('letter by letter.'),'wipe',L('letter by letter',920,90,52,'#151515')),
  I(W('every letter you read'),'pop',BOX('1 letter',160,260,64),q),
  I(W('from the Book of Allah'),'pop',P('= 1 good deed',160,420,'#1FA34A',44),q),
  I(W('multiplied by ten'),'wipe',AR('M500,320 C555,275 610,275 665,315')),I(W('multiplied by ten',0.3),'stamp',BIG('×10',730,230,150,'#1FA34A')),
@@ -135,12 +135,13 @@ const SC=[
  I(W('Read it three times'),'stamp',P('× 3',1170,640,'#151515',60)),
  I(W('reward of the whole Quran'),'wipe',L('= the whole Quran',1050,760,64,'#1FA34A')),
  I(W('Thirty seconds a day'),'pop',P('30 seconds a day',170,640,'#1FA34A',50),{sfx:0,idle:'pulse'}),
- I(W('equal to a third'),'fade',REF('Sahih al-Bukhari 5013 · Sahih Muslim 811',1110,950)),
+ I(W('Surah al-Ikhlas.',1.4),'fade',REF('Sahih al-Bukhari 5013 · Sahih Muslim 811',1110,950)),
 ]},
 // 12 · #5 la ilaha illallah
 {from:W('Number five.'),to:W('Number six.'),items:[
  I(W('Number five.'),'pop',N(5,60,86),q),I(W('One sentence, one hundred'),'pop',Y('One sentence ×100',130,80,56),q),
  I(W('la ilaha illallah'),'rise',CARD('<span class="ar" style="font-size:54px">لا إله إلا الله وحده لا شريك له، له الملك وله الحمد وهو على كل شيء قدير</span>',160,200,1600,50),{idle:'glow'}),
+ I(W('The Prophet said that whoever says'),'slideR',H('point-up',1550,600,360),{sfx:0,idle:'bob'}),
  I(W('la ilaha illallah,'),'wipe',L('La ilaha illallah',160,330,34,'#151515')),
  I(W('wahdahu la sharika'),'wipe',L('wahdahu la sharika lah',520,330,34,'#151515')),
  I(W('lahul mulku'),'wipe',L('lahul mulku wa lahul hamd',950,330,34,'#151515')),
@@ -208,7 +209,7 @@ const SC=[
  I(W("That's close to twenty"),'fade',CNT(20000,W("That's close to twenty"),W("That's close to twenty",1.4),520,160,170,'#E8A92E'),{idle:'pulse'}),
  I(W('good deeds a day, before'),'wipe',L('good deeds a day',700,400,64,'#151515')),
  I(W('before even counting'),'pop',P('+ steps + a night of prayer',1250,420,'#9AA0A6',36),q),
- I(W('the steps or the night'),'wipe',L('even more on top ↑',1250,500,40,'#9AA0A6')),
+ I(W('the steps or the night'),'wipe',L('even more on top ↑',1250,425,40,'#9AA0A6')),
  I(W('less than fifteen minutes'),'pop',CLOCK15(300,560),{sfx:0,idle:'pulse'}),I(W('less than fifteen minutes',0.3),'wipe',L('< 15 minutes',620,640,72,'#1FA34A')),
  I(W("or you're already doing it"),'slideR',H('celebrate',1450,520,440),{sfx:0,idle:'bob'}),
  I(W("or you're already doing it",0.4),'pop',P('already doing it ✓',620,780,'#1FA34A',44),q),
