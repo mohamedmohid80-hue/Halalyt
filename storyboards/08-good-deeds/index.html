@@ -49,7 +49,7 @@ h1{font:900 38px Poppins;margin-bottom:6px}
 .row .f{color:#8E44AD;font-weight:900}
 </style></head><body>
 <h1>How to Earn 1000s of Good Deeds Every Day · Scene Board</h1>
-<div class="sub">Mostly whiteboard teaching with Hadi, plus <b>4 images for you to generate</b> (dashed boxes). Times are <b>estimated</b> at ~190 words/min until the voiceover is in. Every card lists its beats and a purple <b>Filler</b> line: the motion that keeps the screen alive while the next item waits on the narrator.<br>
+<div class="sub">Mostly whiteboard teaching with Hadi, plus <b>your 4 images</b>. Times are <b>estimated</b> at ~190 words/min until the voiceover is in. Every card lists its beats and a purple <b>Filler</b> line: the motion that keeps the screen alive while the next item waits on the narrator.<br>
 <span class="tag sc">SCENE</span> your image + overlays &nbsp; <span class="tag wb">WHITEBOARD</span> builds item by item &nbsp; <span class="tag ev">EVIDENCE</span> hadith card with the reference</div>
 <div class="stats" id="stats"></div><div id="board"></div>
 <script>let _id=0;
@@ -92,7 +92,8 @@ const progress=(x,y,w,f1,f2)=>`<div class="a" data-k="icon" style="left:${x}px;t
 
 const CARD=(txt,x,y,w,size=60)=>`<div class="card" data-k="text" style="left:${x}px;top:${y}px;width:${w}px;font-size:${size}px">${txt}</div>`;
 const REF=(t,x,y)=>`<div class="lbl" data-k="text" style="left:${x}px;top:${y}px;font:800 30px Nunito;color:#777">${t}</div>`;
-const YIMG=(t,x,y,w,h)=>`<div class="ph" data-k="photo" style="left:${x}px;top:${y}px;width:${w}px;height:${h}px">YOUR IMAGE<br>${t}</div>`;
+const IMGS={'a man standing in prayer on a mat, reciting (warm light)':'1-prayer','an open mushaf on a wooden stand, morning light':'2-mushaf','men praying Fajr in jamaah in a masjid at dawn, rows from behind':'3-jamaah','a man walking to the masjid at dawn, seen from behind':'4-walking'};
+const YIMG=(t,x,y,w,h)=>`<div class="photo" data-k="photo" style="left:${x}px;top:${y}px;width:${w}px;height:${h}px;background-image:url(img/${IMGS[t]}.jpg)"></div>`;
 const BIG=(t,x,y,size=170,c='#E8A92E')=>`<div class="lbl" data-k="text" style="left:${x}px;top:${y}px;font:900 ${size}px Poppins;color:${c};letter-spacing:-2px;line-height:1.3">${t}</div>`;
 const BOX=(t,x,y,size=64)=>`<div class="lbl" data-k="text" style="left:${x}px;top:${y}px;border:8px solid #151515;border-radius:22px;padding:22px 36px;font:900 ${size}px Poppins;color:#151515">${t}</div>`;
 const TASBIH=(x,y,r=150,fill=33)=>{let s='';for(let i=0;i<33;i++){const a=i/33*2*Math.PI-Math.PI/2;s+=`<circle cx="${r+30+Math.cos(a)*r}" cy="${r+30+Math.sin(a)*r}" r="13" fill="${i<fill?'#1FA34A':'#E6DED2'}" stroke="#151515" stroke-width="3"/>`}return `<svg class="a" data-k="icon" style="left:${x}px;top:${y}px" width="${2*r+60}" height="${2*r+110}"><circle cx="${r+30}" cy="${r+30}" r="${r}" fill="none" stroke="#8B5E3C" stroke-width="4"/>${s}<path d="M${r+30},${2*r+30} l-16,50 h32 z" fill="#8B5E3C" stroke="#151515" stroke-width="3"/></svg>`};
