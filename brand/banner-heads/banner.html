@@ -14,21 +14,53 @@ svg.heads{position:absolute;inset:0}
 <script>
 // one Hadi head: green hood behind, skin face (no features), white kufi with green dots — same drawing as the rig
 const INK='#17201B',SKIN='#D9A57B',GREEN='#1E7B4F',GD='#145C3A';
-const head=(cx,cy,s,rot)=>{
+// cartoon Hadi head with a random facial expression
+const E=[ // [eyes, brows, mouth]
+ ['dots','up','smile'],['happy','none','grin'],['dots','up','o'],['wink','none','smile'],['dots','tilt','flat'],
+ ['happy','none','laugh'],['big','up','o'],['dots','down','smirk'],['sleepy','none','flat'],['happy','none','smile'],
+ ['dots','none','grin'],['big','up','smile'],['dots','worry','wobble'],['star','none','grin']];
+const eyes=(t)=>{const L=-24,R=24,Y=6;
+ if(t==='dots')return `<circle cx="${L}" cy="${Y}" r="7" fill="${INK}"/><circle cx="${R}" cy="${Y}" r="7" fill="${INK}"/>`;
+ if(t==='big')return `<circle cx="${L}" cy="${Y}" r="13" fill="#fff" stroke="${INK}" stroke-width="5"/><circle cx="${L}" cy="${Y+2}" r="6" fill="${INK}"/><circle cx="${R}" cy="${Y}" r="13" fill="#fff" stroke="${INK}" stroke-width="5"/><circle cx="${R}" cy="${Y+2}" r="6" fill="${INK}"/>`;
+ if(t==='happy')return `<path d="M${L-9},${Y+4} Q${L},${Y-8} ${L+9},${Y+4}" fill="none" stroke="${INK}" stroke-width="6" stroke-linecap="round"/><path d="M${R-9},${Y+4} Q${R},${Y-8} ${R+9},${Y+4}" fill="none" stroke="${INK}" stroke-width="6" stroke-linecap="round"/>`;
+ if(t==='wink')return `<circle cx="${L}" cy="${Y}" r="7" fill="${INK}"/><path d="M${R-9},${Y+2} Q${R},${Y-6} ${R+9},${Y+2}" fill="none" stroke="${INK}" stroke-width="6" stroke-linecap="round"/>`;
+ if(t==='sleepy')return `<path d="M${L-9},${Y} H${L+9}" stroke="${INK}" stroke-width="6" stroke-linecap="round"/><path d="M${R-9},${Y} H${R+9}" stroke="${INK}" stroke-width="6" stroke-linecap="round"/>`;
+ if(t==='star')return `<text x="${L}" y="${Y+9}" text-anchor="middle" font-size="26" fill="#F2B705" stroke="${INK}" stroke-width="2">★</text><text x="${R}" y="${Y+9}" text-anchor="middle" font-size="26" fill="#F2B705" stroke="${INK}" stroke-width="2">★</text>`;
+ return '';};
+const brows=(t)=>{
+ if(t==='up')return `<path d="M-34,-14 Q-24,-22 -14,-16" fill="none" stroke="${INK}" stroke-width="5" stroke-linecap="round"/><path d="M14,-16 Q24,-22 34,-14" fill="none" stroke="${INK}" stroke-width="5" stroke-linecap="round"/>`;
+ if(t==='down')return `<path d="M-34,-18 L-14,-12" stroke="${INK}" stroke-width="5" stroke-linecap="round"/><path d="M14,-12 L34,-18" stroke="${INK}" stroke-width="5" stroke-linecap="round"/>`;
+ if(t==='tilt')return `<path d="M-34,-14 L-14,-18" stroke="${INK}" stroke-width="5" stroke-linecap="round"/><path d="M14,-20 Q24,-26 34,-18" fill="none" stroke="${INK}" stroke-width="5" stroke-linecap="round"/>`;
+ if(t==='worry')return `<path d="M-34,-12 L-14,-20" stroke="${INK}" stroke-width="5" stroke-linecap="round"/><path d="M14,-20 L34,-12" stroke="${INK}" stroke-width="5" stroke-linecap="round"/>`;
+ return '';};
+const mouth=(t)=>{
+ if(t==='smile')return `<path d="M-18,30 Q0,46 18,30" fill="none" stroke="${INK}" stroke-width="6" stroke-linecap="round"/>`;
+ if(t==='grin')return `<path d="M-22,26 Q0,54 22,26 Z" fill="#fff" stroke="${INK}" stroke-width="5" stroke-linejoin="round"/>`;
+ if(t==='laugh')return `<path d="M-24,24 Q0,62 24,24 Z" fill="#7A2B2B" stroke="${INK}" stroke-width="5" stroke-linejoin="round"/><path d="M-12,44 Q0,52 12,44" fill="#E86A6A"/>`;
+ if(t==='o')return `<ellipse cx="0" cy="36" rx="9" ry="12" fill="#7A2B2B" stroke="${INK}" stroke-width="5"/>`;
+ if(t==='flat')return `<path d="M-14,36 H14" stroke="${INK}" stroke-width="6" stroke-linecap="round"/>`;
+ if(t==='smirk')return `<path d="M-14,38 Q6,40 18,30" fill="none" stroke="${INK}" stroke-width="6" stroke-linecap="round"/>`;
+ if(t==='wobble')return `<path d="M-18,38 q6,-6 12,0 q6,6 12,0 q6,-6 12,0" fill="none" stroke="${INK}" stroke-width="5" stroke-linecap="round"/>`;
+ return '';};
+const head=(cx,cy,s,rot,e)=>{
   const dots=[...Array(8)].map((_,i)=>`<circle cx="${-53+i*15}" cy="${i%2?-38:-50}" r="3.5" fill="${GREEN}"/>`).join('');
+  const [ey,br,mo]=E[e%E.length];
+  const cheeks=(mo==='grin'||mo==='laugh'||ey==='happy')?`<ellipse cx="-42" cy="24" rx="10" ry="6" fill="#E88A7A" opacity=".7"/><ellipse cx="42" cy="24" rx="10" ry="6" fill="#E88A7A" opacity=".7"/>`:'';
   return `<g transform="translate(${cx} ${cy}) rotate(${rot}) scale(${s})">
     <path d="M-82,40 C-90,-20 -60,-70 0,-72 C60,-70 90,-20 82,40 Z" fill="${GD}" stroke="${INK}" stroke-width="7"/>
-    <circle cx="0" cy="0" r="70" fill="${SKIN}" stroke="${INK}" stroke-width="7"/>
-    <path d="M-69,-14 C-67,-82 67,-82 69,-14 Z" fill="#fff" stroke="${INK}" stroke-width="7" stroke-linejoin="round"/>${dots}
+    <circle cx="0" cy="4" r="70" fill="${SKIN}" stroke="${INK}" stroke-width="7"/>
+    <g transform="translate(0 10)">${cheeks}${eyes(ey)}${mouth(mo)}</g>
+    <path d="M-69,-10 C-67,-82 67,-82 69,-10 C40,-22 -40,-22 -69,-10 Z" fill="#fff" stroke="${INK}" stroke-width="7" stroke-linejoin="round"/>${dots}
+    <g transform="translate(0 20)">${brows(br)}</g>
   </g>`;};
 let seed=11;const rnd=()=>{seed=(seed*9301+49297)%233280;return seed/233280};
 const items=[];
-const r=78, dx=r*1.62, dy=r*1.42;
+const r=80, dx=r*1.95, dy=r*1.72;
 for(let row=-1, y=-40; y<1520; row++, y+=dy){
   for(let x=(row%2?dx/2:0)-60; x<2640; x+=dx){
     const cx=x+(rnd()-.5)*24, cy=y+(rnd()-.5)*24;
     if(cx>720&&cx<1840&&cy>540&&cy<900) continue; // leave room for the name plate
-    items.push([cx,cy,0.92+rnd()*0.22,(rnd()-.5)*36]);
+    items.push([cx,cy,0.92+rnd()*0.22,(rnd()-.5)*30,Math.floor(rnd()*100)]);
   }
 }
 items.sort((a,b)=>a[1]-b[1]); // lower heads overlap the ones above, so they look joined together
