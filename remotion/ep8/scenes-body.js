@@ -45,7 +45,7 @@ const SC=[
 {from:W('First, you need'),to:W('Number one.'),items:[
  I(W('First, you need'),'pop',Y('how good deeds are counted',110,80,52),q),
  I(W('when you do a good deed'),'pop',BOX('1 deed',160,360,70),{sfx:0,idle:'pulse'}),
- I(W('writes it down as ten'),'wipe',AR('M560,430 C620,380 680,380 740,430')),
+ I(W('writes it down as ten'),'wipe',AR('M540,430 C595,385 650,385 705,425')),
  I(W('as ten,'),'stamp',BIG('×10',770,330,170,'#1FA34A')),I(W('as ten,',0.5),'wipe',L('written as ten',790,560,52,'#1FA34A')),
  I(W('multiply it up'),'wipe',AR('M1110,430 C1170,380 1230,380 1290,430')),
  I(W('seven hundred times'),'stamp',BIG('×700',1320,330),{idle:'glow'}),
@@ -58,12 +58,14 @@ const SC=[
 {from:W('Number one.'),to:W('Number two.'),items:[
  I(W('Number one.'),'pop',N(1,60,86),q),I(W('SubhanAllah, one hundred'),'pop',Y('SubhanAllah ×100',130,80,56),q),
  I(W('This is the answer'),'wipe',L('the answer to his question',110,190,52,'#151515')),
+ I(W('to his own question'),'slideL',H('point-up',1500,560,380),{sfx:0,idle:'bob'}),
  I(W('glorify Allah one hundred'),'fade',t=>TASBIH(150,300,150,Math.floor(lerp(t,W('glorify Allah one hundred'),W('a thousand good deeds will'),0,33)))),
  I(W('glorify Allah one hundred'),'fade',CNT(100,W('glorify Allah one hundred'),W('a thousand good deeds will'),230,760,90,'#151515')),
  I(W('a thousand good deeds will'),'wipe',AR('M560,500 C660,430 760,430 860,490')),
  I(W('a thousand good deeds will',0.2),'fade',CNT(1000,W('a thousand good deeds will',0.2),W('a thousand good deeds will',1.2),900,380),{idle:'pulse'}),
  I(W('written for you'),'wipe',L('good deeds',940,590,60,'#151515')),
  I(W('or a thousand sins'),'pop',P('or 1,000 sins wiped',940,690,'#E31B1B',46),q),
+ I(W('One hundred SubhanAllah takes'),'pop',P('100 × SubhanAllah',1450,90,'#151515',40),q),
  I(W('takes about two minutes'),'pop',`<div class="lbl" data-k="text" style="left:1450px;top:180px;font:900 64px Poppins;color:#2F80ED">≈ 2 min</div>`,q),
  I(W("That's a thousand good deeds in two"),'pop',P('1,000 in 2 min',1450,300,'#1FA34A',44),{sfx:0,idle:'pulse'}),
  I(W('glorify Allah one hundred'),'fade',REF('Sahih Muslim 2698',1530,950)),
@@ -96,8 +98,10 @@ const SC=[
 // 8 · #3 every letter
 {from:W('Number three.'),to:W('Surah al-Fatihah has'),items:[
  I(W('Number three.'),'pop',N(3,60,86),q),I(W('Reading the Quran'),'pop',Y('Every letter of the Quran',130,80,56),q),
+ I(W('letter by letter.'),'wipe',L('letter by letter',800,90,52,'#151515')),
  I(W('every letter you read'),'pop',BOX('1 letter',160,260,64),q),
- I(W('multiplied by ten'),'wipe',AR('M520,320 C580,270 640,270 700,320')),I(W('multiplied by ten',0.3),'stamp',BIG('×10',730,230,150,'#1FA34A')),
+ I(W('from the Book of Allah'),'pop',P('= 1 good deed',160,420,'#1FA34A',44),q),
+ I(W('multiplied by ten'),'wipe',AR('M500,320 C555,275 610,275 665,315')),I(W('multiplied by ten',0.3),'stamp',BIG('×10',730,230,150,'#1FA34A')),
  I(W("I'm not saying"),'pop',L('not one letter…',1150,300,56,'#151515'),q),
  I(W('Alif is a letter'),'pop',`<div class="lbl ar" data-k="text" style="left:1300px;top:560px;font-size:180px;color:#151515">ا</div>`,{sfx:0,idle:'glow'}),I(W('Alif is a letter',0.3),'pop',P('+10',1450,600,'#1FA34A',46),q),
  I(W('Lam is a letter'),'pop',`<div class="lbl ar" data-k="text" style="left:800px;top:560px;font-size:180px;color:#151515">ل</div>`,{sfx:0,idle:'glow'}),I(W('Lam is a letter',0.3),'pop',P('+10',920,600,'#1FA34A',46),q),
@@ -122,6 +126,7 @@ const SC=[
 // 11 · #4 al-Ikhlas
 {from:W('Number four.'),to:W('Number five.'),items:[
  I(W('Number four.'),'pop',N(4,60,86),q),I(W('Surah al-Ikhlas.'),'pop',Y('Surah al-Ikhlas',130,80,56),q),
+ I(W('Surah al-Ikhlas.',0.6),'slideR',H('hadi-think',1550,560,360),{sfx:0,idle:'bob'}),
  I(W('Qul huwallahu ahad'),'fade',`<div class="lbl ar" data-k="text" style="left:150px;top:230px;font-size:90px;color:#1E7B4F">قُلْ هُوَ اللَّهُ أَحَدٌ</div>`,{idle:'glow'}),
  I(W('equal to a third'),'fade',t=>PIE(1100,180,200,t<W('Read it three times')?1:Math.min(3,1+Math.floor((t-W('Read it three times'))/0.5)))),
  I(W('equal to a third',0.3),'wipe',L('= ⅓ of the Quran',170,380,64)),
@@ -136,6 +141,10 @@ const SC=[
 {from:W('Number five.'),to:W('Number six.'),items:[
  I(W('Number five.'),'pop',N(5,60,86),q),I(W('One sentence, one hundred'),'pop',Y('One sentence ×100',130,80,56),q),
  I(W('la ilaha illallah'),'rise',CARD('<span class="ar" style="font-size:54px">لا إله إلا الله وحده لا شريك له، له الملك وله الحمد وهو على كل شيء قدير</span>',160,200,1600,50),{idle:'glow'}),
+ I(W('la ilaha illallah,'),'wipe',L('La ilaha illallah',160,330,34,'#151515')),
+ I(W('wahdahu la sharika'),'wipe',L('wahdahu la sharika lah',520,330,34,'#151515')),
+ I(W('lahul mulku'),'wipe',L('lahul mulku wa lahul hamd',950,330,34,'#151515')),
+ I(W('wa huwa ala'),'wipe',L('wa huwa ala kulli shayin qadir',1380,330,34,'#151515')),
  I(W('one hundred times in a day'),'stamp',P('× 100',820,400,'#151515',50)),
  I(W('freeing ten slaves'),'pop',P('freeing 10 slaves',110,520,'#8E44AD',48),q),
  I(W('one hundred good deeds are'),'pop',BIG('100',600,480,110),q),I(W('one hundred good deeds are',0.3),'wipe',L('good deeds',800,520,52,'#151515')),
@@ -199,6 +208,7 @@ const SC=[
  I(W("That's close to twenty"),'fade',CNT(20000,W("That's close to twenty"),W("That's close to twenty",1.4),520,160,170,'#E8A92E'),{idle:'pulse'}),
  I(W('good deeds a day, before'),'wipe',L('good deeds a day',700,400,64,'#151515')),
  I(W('before even counting'),'pop',P('+ steps + a night of prayer',1250,420,'#9AA0A6',36),q),
+ I(W('the steps or the night'),'wipe',L('even more on top ↑',1250,500,40,'#9AA0A6')),
  I(W('less than fifteen minutes'),'pop',CLOCK15(300,560),{sfx:0,idle:'pulse'}),I(W('less than fifteen minutes',0.3),'wipe',L('< 15 minutes',620,640,72,'#1FA34A')),
  I(W("or you're already doing it"),'slideR',H('celebrate',1450,520,440),{sfx:0,idle:'bob'}),
  I(W("or you're already doing it",0.4),'pop',P('already doing it ✓',620,780,'#1FA34A',44),q),
@@ -207,5 +217,6 @@ const SC=[
 {from:W('So, is any one of us'),to:W('So, is any one of us',5.2),zoom:.04,items:[
  I(W('So, is any one of us'),'rise',CARD('Is any one of us unable to earn <span style="color:#E8A92E">a thousand good deeds</span> every day?',260,260,1400),{idle:'glow'}),
  I(W('unable to earn'),'slideL',H('point-up',150,600,380),{sfx:0,idle:'bob'}),
+ I(W('So, is any one of us',2.4),'pop',Y('every day?',1180,700,56),{sfx:0,idle:'pulse'}),
 ]},
 ];
